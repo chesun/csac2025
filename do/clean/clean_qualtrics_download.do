@@ -16,7 +16,7 @@ set scheme s1color
 set seed 1984
 
 // this is the correct file, the older file has line breaks in text response which results in incorrect import
-import delimited "$rawdtadir/csac2025_raw_label.csv", varnames(1) rowrange(4) clear 
+import delimited "$rawdtadir/csac_2025_label.csv", varnames(1) rowrange(4) clear 
 // Q33: Which campus are you most likely to attend? (if UC selected)
 encode q33, generate(which_uc_campus) label(which_uc_campus_lab)
 label var which_uc_campus "Q33: which campus are you most likely to attend (if UC)"
@@ -31,7 +31,7 @@ keep responseid which_uc_campus which_csu_campus
 tempfile campus 
 save `campus', replace 
 
-import delimited "$rawdtadir/csac2025_raw_value.csv", varnames(1) rowrange(4) clear 
+import delimited "$rawdtadir/csac_2025_value.csv", varnames(1) rowrange(4) clear 
 
 // drop empty system variables
 drop recipient*name recipientemail externalreference
@@ -724,6 +724,14 @@ lab define hs_grade 1 "Mostly A" 2 "Mostly A/B" 3 "Mostly B" 4 "Mostly B/C" 5 "M
 lab val hs_grade hs_grade
 lab var hs_grade "Q54: high school grades"
 
+// create a coarse category of hs grades
+gen hs_grade_coarse = hs_grade if inlist(hs_grade,1,2)
+replace hs_grade_coarse = 3 if inlist(hs_grade,3,4)
+replace hs_grade_coarse = 4 if inlist(hs_grade,5,6)
+lab define hs_grade_coarse 1 "Mostly A" 2 "Mostly A/B" 3 "Mostly B or B/C" 4 "Mostly C or C/D"
+lab val hs_grade_coarse hs_grade_coarse
+lab var hs_grade_coarse "HS grade (coarse)"
+
 // Q55: Are you on track to complete the "a-g" course requirements - the group of courses necessary for admission to UC and CSU?
 destring q55, replace 
 rename q55 complete_atog
@@ -760,6 +768,7 @@ lab var why_no_atog_nocollege "Q57: I am not planning to attend college"
 lab var why_no_atog_other "Q57: Other"
 
 rename q57_6_text why_no_atog_other_text
+lab var why_no_atog_other_text "Q57: why not on track to complete a-g: other (text)"
 
 order why_no_atog_raw why_no_atog_other_text, after(why_no_atog_other)
 
@@ -1084,7 +1093,7 @@ lab var hours_perweek "Q78: how many hours work a week"
 // Q80: gender identity 
 rename q80 gender_raw
 
-label define gender_lab 1 "Man" 2 "Woman" 3 "Non-binary" 4 "Prefer not to say" 5 "Other"
+label define gender_lab 1 "Woman" 2 "Man" 3 "Non-binary" 4 "Prefer not to say" 5 "Other"
 destring gender_raw, gen(gender)
 lab val gender gender_lab
 

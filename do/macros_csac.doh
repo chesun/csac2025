@@ -545,7 +545,38 @@ local demo_qs
 local other_tab_qs
     plan_transfer_cat
     hs_grade
+    hs_grade_coarse
     ;
+
+local text_qs 
+    why_fafsa_other_text
+    finaid_challenge_other_text
+    coll_factor_other_text
+    collapp_chall_other_text
+    fall_plan_other_text
+    why_no_coll_other_text
+    transfer_factor_other_text
+    cc_goal_other_text
+    transfer_concern_text
+    why_no_atog_other_text
+    why_de_other_text
+    de_type_oth_text
+    have_career_yes_text
+    where_learn_career_other_text
+    careerplan_hs_yes_text
+    career_course_yes_text
+    other_race_text
+    gender_other_text
+    coll_excite
+    coll_challenge
+    ;
+
+
+
+    
+
+
+    
 
 local race_hrchy_str "Race";
 local gender_str "Gender";

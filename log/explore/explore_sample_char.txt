@@ -1,9 +1,8 @@
--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
       name:  <unnamed>
-       log:  /home/research/ca_ed_lab/projects/csac_survey2024/temp2025/log/exp
-> lore/explore_sample_char.txt
+       log:  /home/research/ca_ed_lab/projects/csac_survey2024/temp2025/log/explore/explore_sample_char.txt
   log type:  text
- opened on:   3 Jul 2025, 19:57:26
+ opened on:  20 Jul 2025, 09:55:11
 
 . 
 . graph drop _all
@@ -34,10 +33,10 @@
   spring or |
 summer 2025 |      Freq.     Percent        Cum.
 ------------+-----------------------------------
-          0 |         48        0.86        0.86
-          1 |      5,526       99.14      100.00
+          0 |         56        0.80        0.80
+          1 |      6,924       99.20      100.00
 ------------+-----------------------------------
-      Total |      5,574      100.00
+      Total |      6,980      100.00
 
 . 
 . tab attend_coll if hs_senior == 1
@@ -47,11 +46,11 @@ Q27: plan to |
   college in |
     the fall |      Freq.     Percent        Cum.
 -------------+-----------------------------------
-I don't know |        183        3.74        3.74
-          No |        106        2.17        5.91
-         Yes |      4,598       94.09      100.00
+I don't know |        222        3.67        3.67
+          No |        127        2.10        5.78
+         Yes |      5,694       94.22      100.00
 -------------+-----------------------------------
-       Total |      4,887      100.00
+       Total |      6,043      100.00
 
 . 
 . 
@@ -69,17 +68,17 @@ race for all respondents
  exclusive race, |
     2023 version |      Freq.     Percent        Cum.
 -----------------+-----------------------------------
-           Black |        170        3.87        3.87
-          Native |         14        0.32        4.18
-           Asian |        488       11.10       15.28
-        Filipino |         61        1.39       16.67
-        Hispanic |      2,189       49.78       66.45
-Pacific Islander |          8        0.18       66.64
-           White |        655       14.90       81.53
-      Other Race |        101        2.30       83.83
-     Multiracial |        711       16.17      100.00
+           Black |        210        3.91        3.91
+          Native |         18        0.34        4.25
+           Asian |        568       10.58       14.83
+        Filipino |         73        1.36       16.19
+        Hispanic |      2,728       50.82       67.01
+Pacific Islander |          8        0.15       67.16
+           White |        782       14.57       81.73
+      Other Race |        130        2.42       84.15
+     Multiracial |        851       15.85      100.00
 -----------------+-----------------------------------
-           Total |      4,397      100.00
+           Total |      5,368      100.00
 
 . tab race_simple_24
 
@@ -89,33 +88,33 @@ Pacific Islander |          8        0.18       66.64
 exclusive), 2024 |
          version |      Freq.     Percent        Cum.
 -----------------+-----------------------------------
-           Black |        175        3.98        3.98
-          Native |         14        0.32        4.30
-           Asian |        501       11.39       15.69
-        Filipino |         61        1.39       17.08
-        Hispanic |      2,217       50.42       67.50
-Pacific Islander |          8        0.18       67.68
-           White |        686       15.60       83.28
-      Other Race |        101        2.30       85.58
-     Multiracial |        634       14.42      100.00
+           Black |        216        4.02        4.02
+          Native |         18        0.34        4.36
+           Asian |        582       10.84       15.20
+        Filipino |         73        1.36       16.56
+        Hispanic |      2,761       51.43       68.00
+Pacific Islander |          8        0.15       68.14
+           White |        816       15.20       83.35
+      Other Race |        130        2.42       85.77
+     Multiracial |        764       14.23      100.00
 -----------------+-----------------------------------
-           Total |      4,397      100.00
+           Total |      5,368      100.00
 
 . tab race_hrchy
 
  mutually exclusive race based |
               on URM hierarchy |      Freq.     Percent        Cum.
 -------------------------------+-----------------------------------
-American Indian/Alaskan Native |         88        2.00        2.00
-                         Black |        289        6.57        8.57
-                      Hispanic |      2,480       56.40       64.98
-              Pacific Islander |         27        0.61       65.59
-                      Filipino |        148        3.37       68.96
-                         Asian |        578       13.15       82.10
-                    Other race |        132        3.00       85.10
-            White/Non-Hispanic |        655       14.90      100.00
+American Indian/Alaskan Native |        112        2.09        2.09
+                         Black |        360        6.71        8.79
+                      Hispanic |      3,084       57.45       66.24
+              Pacific Islander |         29        0.54       66.78
+                      Filipino |        168        3.13       69.91
+                         Asian |        669       12.46       82.38
+                    Other race |        164        3.06       85.43
+            White/Non-Hispanic |        782       14.57      100.00
 -------------------------------+-----------------------------------
-                         Total |      4,397      100.00
+                         Total |      5,368      100.00
 
 . 
 . di "race for high school seniors"
@@ -127,17 +126,17 @@ race for high school seniors
  exclusive race, |
     2023 version |      Freq.     Percent        Cum.
 -----------------+-----------------------------------
-           Black |        170        3.87        3.87
-          Native |         14        0.32        4.18
-           Asian |        488       11.10       15.28
-        Filipino |         61        1.39       16.67
-        Hispanic |      2,189       49.78       66.45
-Pacific Islander |          8        0.18       66.64
-           White |        655       14.90       81.53
-      Other Race |        101        2.30       83.83
-     Multiracial |        711       16.17      100.00
+           Black |        210        3.91        3.91
+          Native |         18        0.34        4.25
+           Asian |        568       10.58       14.83
+        Filipino |         73        1.36       16.19
+        Hispanic |      2,728       50.82       67.01
+Pacific Islander |          8        0.15       67.16
+           White |        782       14.57       81.73
+      Other Race |        130        2.42       84.15
+     Multiracial |        851       15.85      100.00
 -----------------+-----------------------------------
-           Total |      4,397      100.00
+           Total |      5,368      100.00
 
 . tab race_simple_23 if hs_senior==1 
 
@@ -145,33 +144,33 @@ Pacific Islander |          8        0.18       66.64
  exclusive race, |
     2023 version |      Freq.     Percent        Cum.
 -----------------+-----------------------------------
-           Black |        170        3.87        3.87
-          Native |         14        0.32        4.18
-           Asian |        488       11.10       15.28
-        Filipino |         61        1.39       16.67
-        Hispanic |      2,189       49.78       66.45
-Pacific Islander |          8        0.18       66.64
-           White |        655       14.90       81.53
-      Other Race |        101        2.30       83.83
-     Multiracial |        711       16.17      100.00
+           Black |        210        3.91        3.91
+          Native |         18        0.34        4.25
+           Asian |        568       10.58       14.83
+        Filipino |         73        1.36       16.19
+        Hispanic |      2,728       50.82       67.01
+Pacific Islander |          8        0.15       67.16
+           White |        782       14.57       81.73
+      Other Race |        130        2.42       84.15
+     Multiracial |        851       15.85      100.00
 -----------------+-----------------------------------
-           Total |      4,397      100.00
+           Total |      5,368      100.00
 
 . tab race_hrchy if hs_senior == 1
 
  mutually exclusive race based |
               on URM hierarchy |      Freq.     Percent        Cum.
 -------------------------------+-----------------------------------
-American Indian/Alaskan Native |         88        2.00        2.00
-                         Black |        289        6.57        8.57
-                      Hispanic |      2,480       56.40       64.98
-              Pacific Islander |         27        0.61       65.59
-                      Filipino |        148        3.37       68.96
-                         Asian |        578       13.15       82.10
-                    Other race |        132        3.00       85.10
-            White/Non-Hispanic |        655       14.90      100.00
+American Indian/Alaskan Native |        112        2.09        2.09
+                         Black |        360        6.71        8.79
+                      Hispanic |      3,084       57.45       66.24
+              Pacific Islander |         29        0.54       66.78
+                      Filipino |        168        3.13       69.91
+                         Asian |        669       12.46       82.38
+                    Other race |        164        3.06       85.43
+            White/Non-Hispanic |        782       14.57      100.00
 -------------------------------+-----------------------------------
-                         Total |      4,397      100.00
+                         Total |      5,368      100.00
 
 . 
 . 
@@ -181,42 +180,47 @@ parent education
 . 
 . tab parent_edu if hs_senior==1
 
-       Q72: |
-    highest |
-     parent |
-  education |      Freq.     Percent        Cum.
-------------+-----------------------------------
-          1 |        880       19.99       19.99
-          2 |      1,208       27.44       47.43
-          3 |        500       11.36       58.79
-          4 |        251        5.70       64.49
-          5 |        639       14.52       79.01
-          6 |        633       14.38       93.39
-          7 |        291        6.61      100.00
-------------+-----------------------------------
-      Total |      4,402      100.00
+  Q72: highest parent education |      Freq.     Percent        Cum.
+--------------------------------+-----------------------------------
+                     Don't know |      1,082       20.12       20.12
+   Did not complete high school |      1,488       27.67       47.80
+            High school diploma |        607       11.29       59.08
+Some college, no college degree |        315        5.86       64.94
+               Associate degree |        757       14.08       79.02
+              Bachelor's degree |        756       14.06       93.08
+   Graduate/Professional degree |        372        6.92      100.00
+--------------------------------+-----------------------------------
+                          Total |      5,377      100.00
 
 . 
+. 
+. di "First-gen status, defined by college degree"
+First-gen status, defined by college degree
+
 . tab firstgen_bydegree if hs_senior==1
 
-firstgen_by |
-     degree |      Freq.     Percent        Cum.
-------------+-----------------------------------
-          0 |      1,563       35.51       35.51
-          1 |      2,839       64.49      100.00
-------------+-----------------------------------
-      Total |      4,402      100.00
+firstgen_byd |
+       egree |      Freq.     Percent        Cum.
+-------------+-----------------------------------
+Not firstgen |      1,885       35.06       35.06
+    Firstgen |      3,492       64.94      100.00
+-------------+-----------------------------------
+       Total |      5,377      100.00
 
 . 
+. 
+. di "First-gen status, defined by attending college"
+First-gen status, defined by attending college
+
 . tab firstgen_byattend if hs_senior==1
 
-firstgen_by |
-     attend |      Freq.     Percent        Cum.
-------------+-----------------------------------
-          0 |      1,814       41.21       41.21
-          1 |      2,588       58.79      100.00
-------------+-----------------------------------
-      Total |      4,402      100.00
+firstgen_bya |
+       ttend |      Freq.     Percent        Cum.
+-------------+-----------------------------------
+Not firstgen |      2,200       40.92       40.92
+    Firstgen |      3,177       59.08      100.00
+-------------+-----------------------------------
+       Total |      5,377      100.00
 
 . 
 . 
@@ -231,10 +235,10 @@ home language is english
    language |
     English |      Freq.     Percent        Cum.
 ------------+-----------------------------------
-         No |      1,989       45.16       45.16
-        Yes |      2,415       54.84      100.00
+         No |      2,451       45.57       45.57
+        Yes |      2,927       54.43      100.00
 ------------+-----------------------------------
-      Total |      4,404      100.00
+      Total |      5,378      100.00
 
 . 
 . di "has a job"
@@ -247,10 +251,10 @@ has a job
   currently |
   has a job |      Freq.     Percent        Cum.
 ------------+-----------------------------------
-         No |      3,438       77.99       77.99
-        Yes |        970       22.01      100.00
+         No |      4,190       77.77       77.77
+        Yes |      1,198       22.23      100.00
 ------------+-----------------------------------
-      Total |      4,408      100.00
+      Total |      5,388      100.00
 
 . 
 . di "gender"
@@ -261,21 +265,20 @@ gender
 
               Q80 |      Freq.     Percent        Cum.
 ------------------+-----------------------------------
-              Man |      2,646       60.20       60.20
-            Woman |      1,528       34.77       94.97
-       Non-binary |         93        2.12       97.09
-Prefer not to say |         96        2.18       99.27
-            Other |         32        0.73      100.00
+            Woman |      3,221       59.99       59.99
+              Man |      1,876       34.94       94.93
+       Non-binary |        110        2.05       96.98
+Prefer not to say |        127        2.37       99.35
+            Other |         35        0.65      100.00
 ------------------+-----------------------------------
-            Total |      4,395      100.00
+            Total |      5,369      100.00
 
 . 
 . 
 . 
 . log close 
       name:  <unnamed>
-       log:  /home/research/ca_ed_lab/projects/csac_survey2024/temp2025/log/exp
-> lore/explore_sample_char.txt
+       log:  /home/research/ca_ed_lab/projects/csac_survey2024/temp2025/log/explore/explore_sample_char.txt
   log type:  text
- closed on:   3 Jul 2025, 19:57:26
--------------------------------------------------------------------------------
+ closed on:  20 Jul 2025, 09:55:11
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
