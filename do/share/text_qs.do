@@ -18,6 +18,11 @@ foreach v of local text_qs {
 
 }
 
+
+
+
+
+
 // emails
 replace interview_email = strlower(stritrim(strtrim(interview_email)))
 export delimited responseid interview_email using $projdir/out/interview_email.csv if !mi(interview_email), replace 

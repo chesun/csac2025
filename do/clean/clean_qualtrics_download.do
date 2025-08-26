@@ -475,7 +475,7 @@ label var which_coll "Q32: Which specific college are you mostly likely to atten
 order which_coll, after(where_attend_coll)
 
 // which UC/CSU campus: Q33 and Q34
-merge 1:1 responseid using `campus', keep (3)
+merge 1:1 responseid using `campus', keep (3) nogen
 
 
 // Q35: How sure are you that you will attend this school in the fall?
@@ -1047,6 +1047,13 @@ label values race_hrchy race_hrchy_lab
 
 order race_raw other_race_text black-other_race numrace race_simple_24, after(vote_important)
 
+
+
+
+
+
+
+
 // Q72: What is the highest level of education completed among either of your parents (or those who raised you)?
 label define parent_edu_lab 1 "Don't know" 2 "Did not complete high school" ///
     3 "High school diploma" 4 "Some college, no college degree" ///
@@ -1113,6 +1120,61 @@ rename q88 coll_challenge
 label var coll_challenge "Q92: biggest challenge you will face in college"
 
 order coll_excite coll_challenge, after(interview_email)
+
+
+
+
+//------------------ clear text variables
+include $projdir/do/macros_csac.doh 
+
+foreach v of local text_qs {
+    replace `v' =  strupper(stritrim(strtrim(`v')))
+
+
+}
+
+//------------ consolidate people who responded other to race and wrote in
+
+/* labelbook: 
+  Definition
+           1   American Indian/Alaskan Native
+           2   Black
+           3   Hispanic
+           4   Pacific Islander
+           5   Filipino
+           6   Asian
+           7   Other race
+           8   White/Non-Hispanic
+
+ */
+// if only white, then white
+replace race_hrchy = 8 if other_race_text=="WHITE" & race_hrchy==7
+replace race_hrchy = 6 if strpos(other_race_text, "ASIAN")!=0 & race_hrchy==7
+replace race_hrchy = 3 if (strpos(other_race_text, "MEXICAN")!=0 ///
+    | strpos(other_race_text, "LATINO")!=0 ///
+    | strpos(other_race_text, "LATINA")!=0 ///
+    | strpos(other_race_text, "LATINX")!=0 ///
+    | strpos(other_race_text, "HISPANIC")!=0) ///
+    & race_hrchy==7
+replace race_hrchy = 2 if strpos(other_race_text, "AFRICAN") !=0 ///
+    | strpos(other_race_text, "BLACK") !=0 ///
+    & race_hrchy==7
+
+
+
+//------ merge in NCES codes
+preserve 
+import delimited  $projdir/dta/survey_25_nces.csv, varnames(1) clear
+tempfile nces 
+save `nces', replace 
+restore 
+
+merge 1:1 responseid using `nces', keep(1 3) noupdate nogen  
+
+// the email variable seems different from what they provided in the survey
+lab var email "Email from merging on NCES codes"
+rename stdt_hs_code nces_code 
+lab var nces_code "NCES code for high school"
 
 compress 
 save $projdir/dta/csac_2025_initial_clean.dta, replace 

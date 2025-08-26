@@ -2,7 +2,7 @@
       name:  <unnamed>
        log:  /home/research/ca_ed_lab/projects/csac_survey2024/temp2025/log/explore/tab_questions_simple.txt
   log type:  text
- opened on:  20 Jul 2025, 10:44:14
+ opened on:  23 Jul 2025, 16:57:42
 
 . foreach var of local all_qs {
   2.     di "tabulation of `var'"
@@ -1898,5 +1898,5 @@ More than 30 |        124       10.39      100.00
       name:  <unnamed>
        log:  /home/research/ca_ed_lab/projects/csac_survey2024/temp2025/log/explore/tab_questions_simple.txt
   log type:  text
- closed on:  20 Jul 2025, 10:44:14
+ closed on:  23 Jul 2025, 16:57:42
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

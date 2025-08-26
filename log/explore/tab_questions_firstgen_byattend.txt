@@ -2,7 +2,7 @@
       name:  <unnamed>
        log:  /home/research/ca_ed_lab/projects/csac_survey2024/temp2025/log/explore/tab_questions_firstgen_byattend.txt
   log type:  text
- opened on:  20 Jul 2025, 10:44:15
+ opened on:  23 Jul 2025, 16:57:43
 hs_senior by firstgen_byattend
 
 +----------------+
@@ -3610,5 +3610,5 @@ Not firstgen |       172        234        138         58 |       602
       name:  <unnamed>
        log:  /home/research/ca_ed_lab/projects/csac_survey2024/temp2025/log/explore/tab_questions_firstgen_byattend.txt
   log type:  text
- closed on:  20 Jul 2025, 10:44:15
+ closed on:  23 Jul 2025, 16:57:43
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

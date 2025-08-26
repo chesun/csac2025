@@ -546,6 +546,7 @@ local other_tab_qs
     plan_transfer_cat
     hs_grade
     hs_grade_coarse
+    where_attend_coll
     ;
 
 local text_qs 
