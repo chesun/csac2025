@@ -5,13 +5,20 @@ do /home/research/ca_ed_lab/projects/csac_survey2025/do/main.do
  */
 
 *********** temp project folder
-cd "/home/research/ca_ed_lab/projects/csac_survey2024/temp2025"
+cd "/home/research/ca_ed_lab/projects/csac_survey2025"
 do do/settings.do
 
 
+ssc install randomtag, replace
+ssc install spmap, replace 
+ssc install shp2dta, replace 
+ssc install geo2xy, replace 
 
 // clean data
 do $projdir/do/clean/clean_qualtrics_download.do
 
 
 do $projdir/do/explore/sample_char.do
+
+do $projdir/do/explore/tab_questions.do
+

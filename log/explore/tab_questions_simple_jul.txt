@@ -1,15 +1,8 @@
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
       name:  <unnamed>
-       log:  /home/research/ca_ed_lab/projects/csac_survey2024/temp2025/log/explore/tab_questions_simple.txt
+       log:  /home/research/ca_ed_lab/projects/csac_survey2025/log/explore/tab_questions_simple_jul.txt
   log type:  text
- opened on:  12 Aug 2025, 16:53:49
-
-. foreach var of local all_qs {
-  2.     di "tabulation of `var'"
-  3.     
-.     tab `var' if hs_senior==1
-  4. 
-. }
+ opened on:   5 Sep 2025, 12:40:58
 tabulation of hs_senior
 
         Q8: |
@@ -999,11 +992,11 @@ tabulation of where_transfer
 intend to transfer |      Freq.     Percent        Cum.
 -------------------+-----------------------------------
                 UC |        614       34.69       34.69
-               CSU |         38        2.15       36.84
-     Private in CA |        459       25.93       62.77
- Public Outside CA |        597       33.73       96.50
-Private Outside CA |         35        1.98       98.47
-          Not Sure |         27        1.53      100.00
+               CSU |        597       33.73       68.42
+     Private in CA |         38        2.15       70.56
+ Public Outside CA |         35        1.98       72.54
+Private Outside CA |         27        1.53       74.07
+          Not Sure |        459       25.93      100.00
 -------------------+-----------------------------------
              Total |      1,770      100.00
 tabulation of heard_pathway_tag
@@ -1892,11 +1885,8 @@ Less than 10 |        313       26.24       26.24
 More than 30 |        124       10.39      100.00
 -------------+-----------------------------------
        Total |      1,193      100.00
-
-. 
-. log close 
       name:  <unnamed>
-       log:  /home/research/ca_ed_lab/projects/csac_survey2024/temp2025/log/explore/tab_questions_simple.txt
+       log:  /home/research/ca_ed_lab/projects/csac_survey2025/log/explore/tab_questions_simple_jul.txt
   log type:  text
- closed on:  12 Aug 2025, 16:53:49
+ closed on:   5 Sep 2025, 12:40:58
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

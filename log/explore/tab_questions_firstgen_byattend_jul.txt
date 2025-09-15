@@ -1,8 +1,8 @@
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
       name:  <unnamed>
-       log:  /home/research/ca_ed_lab/projects/csac_survey2024/temp2025/log/explore/tab_questions_firstgen_byattend.txt
+       log:  /home/research/ca_ed_lab/projects/csac_survey2025/log/explore/tab_questions_firstgen_byattend_jul.txt
   log type:  text
- opened on:  12 Aug 2025, 16:53:50
+ opened on:   5 Sep 2025, 12:40:59
 hs_senior by firstgen_byattend
 
 +----------------+
@@ -1833,14 +1833,14 @@ where_transfer by firstgen_byattend
 firstgen_bya |               Q38: where do you intend to transfer
        ttend |        UC        CSU  Private i  Public Ou  Private O   Not Sure |     Total
 -------------+------------------------------------------------------------------+----------
-Not firstgen |       236         18        161        217         13         12 |       657 
-             |     35.92       2.74      24.51      33.03       1.98       1.83 |    100.00 
+Not firstgen |       236        217         18         13         12        161 |       657 
+             |     35.92      33.03       2.74       1.98       1.83      24.51 |    100.00 
 -------------+------------------------------------------------------------------+----------
-    Firstgen |       284         16        210        292         18         11 |       831 
-             |     34.18       1.93      25.27      35.14       2.17       1.32 |    100.00 
+    Firstgen |       284        292         16         18         11        210 |       831 
+             |     34.18      35.14       1.93       2.17       1.32      25.27 |    100.00 
 -------------+------------------------------------------------------------------+----------
-       Total |       520         34        371        509         31         23 |     1,488 
-             |     34.95       2.28      24.93      34.21       2.08       1.55 |    100.00 
+       Total |       520        509         34         31         23        371 |     1,488 
+             |     34.95      34.21       2.28       2.08       1.55      24.93 |    100.00 
 heard_pathway_tag by firstgen_byattend
 
 +----------------+
@@ -3608,7 +3608,7 @@ Not firstgen |       188        260        160         61 |       669
        Total |       302        422        295        117 |     1,136 
              |     26.58      37.15      25.97      10.30 |    100.00 
       name:  <unnamed>
-       log:  /home/research/ca_ed_lab/projects/csac_survey2024/temp2025/log/explore/tab_questions_firstgen_byattend.txt
+       log:  /home/research/ca_ed_lab/projects/csac_survey2025/log/explore/tab_questions_firstgen_byattend_jul.txt
   log type:  text
- closed on:  12 Aug 2025, 16:53:51
+ closed on:   5 Sep 2025, 12:40:59
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

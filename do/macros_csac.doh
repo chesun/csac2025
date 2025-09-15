@@ -372,12 +372,7 @@ local q78_str
     ;
 
 
-foreach num in `all_qnums' {;
-    foreach q in `q`num'_subqs' {;
-        local `q'_str: variable label `q';
-    };
-}
-;
+
 
 
 local fafsa_qs 
@@ -547,6 +542,10 @@ local other_tab_qs
     hs_grade
     hs_grade_coarse
     where_attend_coll
+    schoollocale
+    schoolregion
+    schoollocale_comb
+    schoollocale_comb2
     ;
 
 local text_qs 

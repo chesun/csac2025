@@ -67,6 +67,17 @@ di "gender"
 
 tab gender if hs_senior == 1
 
+/* jake add for locale */
+
+di "locale"
+
+tab schoollocale if hs_senior == 1,m
+
+di "region"
+
+tab schoolregion if hs_senior == 1,m
+
+/*end jake add */
 
 
 log close 

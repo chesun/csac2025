@@ -2,7 +2,7 @@
       name:  <unnamed>
        log:  /home/research/ca_ed_lab/projects/csac_survey2024/temp2025/log/explore/explore_sample_char.txt
   log type:  text
- opened on:  20 Jul 2025, 09:55:11
+ opened on:  12 Aug 2025, 16:56:32
 
 . 
 . graph drop _all
@@ -106,13 +106,13 @@ Pacific Islander |          8        0.15       68.14
               on URM hierarchy |      Freq.     Percent        Cum.
 -------------------------------+-----------------------------------
 American Indian/Alaskan Native |        112        2.09        2.09
-                         Black |        360        6.71        8.79
-                      Hispanic |      3,084       57.45       66.24
-              Pacific Islander |         29        0.54       66.78
-                      Filipino |        168        3.13       69.91
-                         Asian |        669       12.46       82.38
-                    Other race |        164        3.06       85.43
-            White/Non-Hispanic |        782       14.57      100.00
+                         Black |        366        6.82        8.90
+                      Hispanic |      3,116       58.05       66.95
+              Pacific Islander |         29        0.54       67.49
+                      Filipino |        168        3.13       70.62
+                         Asian |        673       12.54       83.16
+                    Other race |        121        2.25       85.41
+            White/Non-Hispanic |        783       14.59      100.00
 -------------------------------+-----------------------------------
                          Total |      5,368      100.00
 
@@ -162,13 +162,13 @@ Pacific Islander |          8        0.15       67.16
               on URM hierarchy |      Freq.     Percent        Cum.
 -------------------------------+-----------------------------------
 American Indian/Alaskan Native |        112        2.09        2.09
-                         Black |        360        6.71        8.79
-                      Hispanic |      3,084       57.45       66.24
-              Pacific Islander |         29        0.54       66.78
-                      Filipino |        168        3.13       69.91
-                         Asian |        669       12.46       82.38
-                    Other race |        164        3.06       85.43
-            White/Non-Hispanic |        782       14.57      100.00
+                         Black |        366        6.82        8.90
+                      Hispanic |      3,116       58.05       66.95
+              Pacific Islander |         29        0.54       67.49
+                      Filipino |        168        3.13       70.62
+                         Asian |        673       12.54       83.16
+                    Other race |        121        2.25       85.41
+            White/Non-Hispanic |        783       14.59      100.00
 -------------------------------+-----------------------------------
                          Total |      5,368      100.00
 
@@ -182,13 +182,13 @@ parent education
 
   Q72: highest parent education |      Freq.     Percent        Cum.
 --------------------------------+-----------------------------------
-                     Don't know |      1,082       20.12       20.12
-   Did not complete high school |      1,488       27.67       47.80
-            High school diploma |        607       11.29       59.08
-Some college, no college degree |        315        5.86       64.94
-               Associate degree |        757       14.08       79.02
-              Bachelor's degree |        756       14.06       93.08
-   Graduate/Professional degree |        372        6.92      100.00
+   Did not complete high school |      1,082       20.12       20.12
+            High school diploma |      1,488       27.67       47.80
+Some college, no college degree |        607       11.29       59.08
+               Associate degree |        315        5.86       64.94
+              Bachelor's degree |        757       14.08       79.02
+   Graduate/Professional degree |        756       14.06       93.08
+                     Don't know |        372        6.92      100.00
 --------------------------------+-----------------------------------
                           Total |      5,377      100.00
 
@@ -202,10 +202,10 @@ First-gen status, defined by college degree
 firstgen_byd |
        egree |      Freq.     Percent        Cum.
 -------------+-----------------------------------
-Not firstgen |      1,885       35.06       35.06
-    Firstgen |      3,492       64.94      100.00
+Not firstgen |      1,828       36.52       36.52
+    Firstgen |      3,177       63.48      100.00
 -------------+-----------------------------------
-       Total |      5,377      100.00
+       Total |      5,005      100.00
 
 . 
 . 
@@ -217,10 +217,10 @@ First-gen status, defined by attending college
 firstgen_bya |
        ttend |      Freq.     Percent        Cum.
 -------------+-----------------------------------
-Not firstgen |      2,200       40.92       40.92
-    Firstgen |      3,177       59.08      100.00
+Not firstgen |      2,435       48.65       48.65
+    Firstgen |      2,570       51.35      100.00
 -------------+-----------------------------------
-       Total |      5,377      100.00
+       Total |      5,005      100.00
 
 . 
 . 
@@ -274,11 +274,62 @@ Prefer not to say |        127        2.37       99.35
             Total |      5,369      100.00
 
 . 
+. /* jake add for locale */
+. 
+. di "locale"
+locale
+
+. 
+. tab schoollocale if hs_senior == 1,m
+
+          LOCALE |      Freq.     Percent        Cum.
+-----------------+-----------------------------------
+      City Large |      1,342       19.38       19.38
+    City Midsize |        522        7.54       26.92
+      City Small |        348        5.03       31.95
+  Suburban Large |      1,933       27.92       59.86
+Suburban Midsize |        184        2.66       62.52
+  Suburban Small |        134        1.94       64.46
+     Town Fringe |        168        2.43       66.88
+    Town Distant |        148        2.14       69.02
+     Town Remote |         45        0.65       69.67
+    Rural Fringe |        256        3.70       73.37
+   Rural Distant |         52        0.75       74.12
+    Rural Remote |         13        0.19       74.31
+               . |      1,779       25.69      100.00
+-----------------+-----------------------------------
+           Total |      6,924      100.00
+
+. 
+. di "region"
+region
+
+. 
+. tab schoolregion if hs_senior == 1,m
+
+        schoolregion |      Freq.     Percent        Cum.
+---------------------+-----------------------------------
+            Superior |        516        7.45        7.45
+         North Coast |        105        1.52        8.97
+         SF Bay Area |        622        8.98       17.95
+N San Joaquin Valley |        173        2.50       20.45
+       Central Coast |        347        5.01       25.46
+S San Joaquin Valley |        523        7.55       33.02
+       Inland Empire |        674        9.73       42.75
+           LA County |      1,292       18.66       61.41
+       Orange County |        373        5.39       66.80
+       SD - Imperial |        396        5.72       72.52
+                   . |      1,903       27.48      100.00
+---------------------+-----------------------------------
+               Total |      6,924      100.00
+
+. 
+. /*end jake add */
 . 
 . 
 . log close 
       name:  <unnamed>
        log:  /home/research/ca_ed_lab/projects/csac_survey2024/temp2025/log/explore/explore_sample_char.txt
   log type:  text
- closed on:  20 Jul 2025, 09:55:11
+ closed on:  12 Aug 2025, 16:56:32
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

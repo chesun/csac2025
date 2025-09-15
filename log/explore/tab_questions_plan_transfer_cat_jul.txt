@@ -1,8 +1,8 @@
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
       name:  <unnamed>
-       log:  /home/research/ca_ed_lab/projects/csac_survey2024/temp2025/log/explore/tab_questions_plan_transfer_cat.txt
+       log:  /home/research/ca_ed_lab/projects/csac_survey2025/log/explore/tab_questions_plan_transfer_cat_jul.txt
   log type:  text
- opened on:  12 Aug 2025, 16:53:51
+ opened on:   5 Sep 2025, 12:40:59
 hs_senior by plan_transfer_cat
 
 +----------------+
@@ -1677,11 +1677,11 @@ where_transfer by plan_transfer_cat
  crosstab, by plan to |               Q38: where do you intend to transfer
              transfer |        UC        CSU  Private i  Public Ou  Private O   Not Sure |     Total
 ----------------------+------------------------------------------------------------------+----------
-     plan to transfer |       614         38        459        597         35         27 |     1,770 
-                      |     34.69       2.15      25.93      33.73       1.98       1.53 |    100.00 
+     plan to transfer |       614        597         38         35         27        459 |     1,770 
+                      |     34.69      33.73       2.15       1.98       1.53      25.93 |    100.00 
 ----------------------+------------------------------------------------------------------+----------
-                Total |       614         38        459        597         35         27 |     1,770 
-                      |     34.69       2.15      25.93      33.73       1.98       1.53 |    100.00 
+                Total |       614        597         38         35         27        459 |     1,770 
+                      |     34.69      33.73       2.15       1.98       1.53      25.93 |    100.00 
 heard_pathway_tag by plan_transfer_cat
 
 +----------------+
@@ -3691,7 +3691,7 @@ Unsure or no transfer |        17         41         29         14 |       101
                 Total |       284        403        281        109 |     1,077 
                       |     26.37      37.42      26.09      10.12 |    100.00 
       name:  <unnamed>
-       log:  /home/research/ca_ed_lab/projects/csac_survey2024/temp2025/log/explore/tab_questions_plan_transfer_cat.txt
+       log:  /home/research/ca_ed_lab/projects/csac_survey2025/log/explore/tab_questions_plan_transfer_cat_jul.txt
   log type:  text
- closed on:  12 Aug 2025, 16:53:51
+ closed on:   5 Sep 2025, 12:40:59
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

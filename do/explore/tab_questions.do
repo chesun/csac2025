@@ -15,36 +15,41 @@ set graphics off
 set scheme s1color
 set seed 1984
 
+    include $projdir/do/macros_csac.doh 
 
-use $projdir/dta/csac_2025_initial_clean.dta, clear 
+foreach version in jul aug {
 
-include $projdir/do/macros_csac.doh 
-
-*********** simple tab
-log using $projdir/log/explore/tab_questions_simple.txt, text replace 
-foreach var of local all_qs {
-    di "tabulation of `var'"
-    
-    tab `var' if hs_senior==1
-
-}
-
-log close 
+    use $projdir/dta/csac_2025_initial_clean_`version'.dta, clear 
 
 
-*********** tab by demographics and other characteristics
-
-foreach c in `demo_qs' `other_tab_qs' {
-    di "tabulation by `c'"
-    log using $projdir/log/explore/tab_questions_`c'.txt, text replace 
-
-        foreach var of local all_qs {
-        di "`var' by `c'"
-
-
-        tabulate `c' `var'  if hs_senior==1, row 
+    *********** simple tab
+    log using $projdir/log/explore/tab_questions_simple_`version'.txt, text replace 
+    foreach var of local all_qs {
+        di "tabulation of `var'"
+        
+        tab `var' if hs_senior==1
 
     }
 
     log close 
+
+
+    *********** tab by demographics and other characteristics
+
+    foreach c in `demo_qs' `other_tab_qs' {
+        di "tabulation by `c'"
+        log using $projdir/log/explore/tab_questions_`c'_`version'.txt, text replace 
+
+            foreach var of local all_qs {
+            di "`var' by `c'"
+
+
+            tabulate `c' `var'  if hs_senior==1, row 
+
+        }
+
+        log close 
+    }
+
 }
+
