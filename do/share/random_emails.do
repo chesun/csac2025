@@ -18,7 +18,7 @@ use $projdir/dta/csac_2025_initial_clean_aug.dta, clear
 include $projdir/do/macros_csac.doh 
 
 
-keep responseid interview_email `demo_qs' `other_tab_qs'
+keep responseid interview_email `demo_qs' `other_tab_qs' plan_transfer
 
 keep if !mi(interview_email)
 
@@ -30,5 +30,8 @@ randomtag if _randomtag!=1, count(150) generate(_randomtag2)
 
 export delimited if _randomtag2==1 using $projdir/out/interview_email_random150_batch2_withdemo.csv, replace 
 
+randomtag if _randomtag!=1 & _randomtag2!=1 & plan_transfer==1, count(150) generate(_randomtagxfer)
+
+export delimited if _randomtagxfer==1 using $projdir/out/interview_email_random150_xfer_withdemo.csv, replace 
 
 save $projdir/dta/email_list_withdemo.dta, replace 

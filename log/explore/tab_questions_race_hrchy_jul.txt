@@ -2,7 +2,7 @@
       name:  <unnamed>
        log:  /home/research/ca_ed_lab/projects/csac_survey2025/log/explore/tab_questions_race_hrchy_jul.txt
   log type:  text
- opened on:   5 Sep 2025, 12:40:58
+ opened on:  17 Sep 2025, 11:24:45
 hs_senior by race_hrchy
 
 +----------------+
@@ -6754,5 +6754,5 @@ American Indian/Alask |         8          7          6          2 |        23
       name:  <unnamed>
        log:  /home/research/ca_ed_lab/projects/csac_survey2025/log/explore/tab_questions_race_hrchy_jul.txt
   log type:  text
- closed on:   5 Sep 2025, 12:40:58
+ closed on:  17 Sep 2025, 11:24:45
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

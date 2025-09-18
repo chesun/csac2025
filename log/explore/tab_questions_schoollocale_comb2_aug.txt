@@ -2,7 +2,7 @@
       name:  <unnamed>
        log:  /home/research/ca_ed_lab/projects/csac_survey2025/log/explore/tab_questions_schoollocale_comb2_aug.txt
   log type:  text
- opened on:   5 Sep 2025, 12:41:04
+ opened on:  17 Sep 2025, 11:24:50
 hs_senior by schoollocale_comb2
 
 +----------------+
@@ -4129,5 +4129,5 @@ Town/Rural |        35         49         29         16 |       129
       name:  <unnamed>
        log:  /home/research/ca_ed_lab/projects/csac_survey2025/log/explore/tab_questions_schoollocale_comb2_aug.txt
   log type:  text
- closed on:   5 Sep 2025, 12:41:04
+ closed on:  17 Sep 2025, 11:24:50
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

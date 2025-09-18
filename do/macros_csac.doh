@@ -548,6 +548,13 @@ local other_tab_qs
     schoollocale_comb2
     ;
 
+local location_qs
+    schoollocale
+    schoolregion
+    schoollocale_comb
+    schoollocale_comb2
+    ;
+
 local text_qs 
     why_fafsa_other_text
     finaid_challenge_other_text

@@ -2,7 +2,7 @@
       name:  <unnamed>
        log:  /home/research/ca_ed_lab/projects/csac_survey2025/log/explore/tab_questions_hs_grade_coarse_jul.txt
   log type:  text
- opened on:   5 Sep 2025, 12:41:00
+ opened on:  17 Sep 2025, 11:24:46
 hs_senior by hs_grade_coarse
 
 +----------------+
@@ -4645,5 +4645,5 @@ Mostly C or C/D |         9         18         19          7 |        53
       name:  <unnamed>
        log:  /home/research/ca_ed_lab/projects/csac_survey2025/log/explore/tab_questions_hs_grade_coarse_jul.txt
   log type:  text
- closed on:   5 Sep 2025, 12:41:00
+ closed on:  17 Sep 2025, 11:24:46
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

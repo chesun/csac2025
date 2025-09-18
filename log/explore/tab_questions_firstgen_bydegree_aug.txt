@@ -2,7 +2,7 @@
       name:  <unnamed>
        log:  /home/research/ca_ed_lab/projects/csac_survey2025/log/explore/tab_questions_firstgen_bydegree_aug.txt
   log type:  text
- opened on:   5 Sep 2025, 12:41:02
+ opened on:  17 Sep 2025, 11:24:48
 hs_senior by firstgen_bydegree
 
 +----------------+
@@ -3610,5 +3610,5 @@ Not firstgen |       163        214        126         53 |       556
       name:  <unnamed>
        log:  /home/research/ca_ed_lab/projects/csac_survey2025/log/explore/tab_questions_firstgen_bydegree_aug.txt
   log type:  text
- closed on:   5 Sep 2025, 12:41:02
+ closed on:  17 Sep 2025, 11:24:49
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

@@ -53,3 +53,20 @@ foreach version in jul aug {
 
 }
 
+*** demographics by region and locale 
+use $projdir/dta/csac_2025_initial_clean_aug.dta, clear 
+
+foreach c of local location_qs {
+        di "tabulation by `c'"
+        log using $projdir/log/explore/tab_demo_`c'_aug.txt, text replace 
+
+            foreach var of local demo_qs {
+            di "`var' by `c'"
+
+
+            tabulate `c' `var'  if hs_senior==1, row 
+
+        }
+
+        log close 
+    }
