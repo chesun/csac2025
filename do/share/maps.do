@@ -30,13 +30,16 @@ use $projdir/dta/csac_2025_initial_clean_aug.dta, clear
 gen plan_transfer_yes = (plan_transfer==1)
 replace plan_transfer_yes = . if mi(plan_transfer)
 
-keep schoolcountyfips schoolregion plan_transfer_yes transfer_factor_proximity
-keep if !mi(plan_transfer_yes) | !mi(transfer_factor_proximity)
+gen de_yes = (de==1)
+replace de_yes=. if mi(de)
+
+keep schoolcountyfips schoolregion plan_transfer_yes transfer_factor_proximity de_yes
+keep if !mi(plan_transfer_yes) | !mi(transfer_factor_proximity) | !mi(de_yes)
 keep if !mi(schoolcountyfips)
 
 rename schoolcountyfips geoid 
 
-collapse plan_transfer_yes transfer_factor_proximity, by(schoolregion)
+collapse plan_transfer_yes transfer_factor_proximity de_yes, by(schoolregion)
 tempfile byregion 
 save `byregion', replace 
 
@@ -51,6 +54,9 @@ keep if strpos(geoid, "06")==1
 
 merge m:1 schoolregion using `byregion', nogen keep(3)
 
+save $projdir/dta/char_by_county.dta, replace 
+export delimited geoid transfer_factor_proximity using $projdir/out/proximity_by_county.csv, replace 
+
 ** merge to shapefile 
 merge 1:1 geoid using counties.dta
 
@@ -59,4 +65,7 @@ graph export  plan_transfer_yes.png, replace
 
 spmap transfer_factor_proximity using coord, id(id) fcolor(Blues) clnumber(6)
 graph export  transfer_factor_proximity.png, replace 
+
+spmap de_yes using coord, id(id) fcolor(Blues) clnumber(6)
+graph export  de_yes.png, replace 
 
