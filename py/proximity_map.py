@@ -19,52 +19,52 @@ df["fips"] = df["geoid"].astype(str).str.zfill(5)
 g = gdf.merge(df, on="fips", how="left")
 
 
-
 # Bounds tell us if the shapefile is projected (meters) or degrees
 xmin, ymin, xmax, ymax = g.total_bounds
 is_projected_like_3857 = (abs(xmin) > 1e6 and abs(ymin) > 1e6)
 
-print("County bounds:", g.total_bounds, "| projected≈3857?", is_projected_like_3857)
+print("County bounds:", g.total_bounds,
+      "| projected≈3857?", is_projected_like_3857)
 
 # ---- UC + CSU campus coordinates (lat, lon; WGS84) ----
 rows = [
     # UC (10)
-    ("UC Berkeley","UC",37.8719,-122.2585,"UCB"),
-    ("UC Davis","UC",38.5382,-121.7617,"UCD"),
-    ("UC Irvine","UC",33.6405,-117.8443,"UCI"),
-    ("UC Los Angeles","UC",34.0689,-118.4452,"UCLA"),
-    ("UC Merced","UC",37.3649,-120.4240,"UCM"),
-    ("UC Riverside","UC",33.9737,-117.3281,"UCR"),
-    ("UC San Diego","UC",32.8801,-117.2340,"UCSD"),
-    ("UC San Francisco","UC",37.7631,-122.4586,"UCSF"),
-    ("UC Santa Barbara","UC",34.4139,-119.8489,"UCSB"),
-    ("UC Santa Cruz","UC",36.9916,-122.0583,"UCSC"),
+    ("UC Berkeley", "UC", 37.8719, -122.2585, "UCB"),
+    ("UC Davis", "UC", 38.5382, -121.7617, "UCD"),
+    ("UC Irvine", "UC", 33.6405, -117.8443, "UCI"),
+    ("UC Los Angeles", "UC", 34.0689, -118.4452, "UCLA"),
+    ("UC Merced", "UC", 37.3649, -120.4240, "UCM"),
+    ("UC Riverside", "UC", 33.9737, -117.3281, "UCR"),
+    ("UC San Diego", "UC", 32.8801, -117.2340, "UCSD"),
+    # ("UC San Francisco","UC",37.7631,-122.4586,"UCSF"),
+    ("UC Santa Barbara", "UC", 34.4139, -119.8489, "UCSB"),
+    ("UC Santa Cruz", "UC", 36.9916, -122.0583, "UCSC"),
     # CSU (23)
-    ("CSU Bakersfield","CSU",35.3503,-119.1045,"CSUB"),
-    ("CSU Channel Islands","CSU",34.1623,-119.0430,"CSUCI"),
-    ("CSU Chico","CSU",39.7285,-121.8460,"Chico"),
-    ("CSU Dominguez Hills","CSU",33.8644,-118.2551,"CSUDH"),
-    ("CSU East Bay (Hayward)","CSU",37.6547,-122.0578,"CSUEB"),
-    ("Fresno State","CSU",36.8123,-119.7485,"Fresno"),
-    ("CSU Fullerton","CSU",33.8826,-117.8856,"CSUF"),
-    ("Cal Poly Humboldt","CSU",40.8734,-124.0770,"Humboldt"),
-    ("CSU Long Beach","CSU",33.7838,-118.1141,"CSULB"),
-    ("CSU Los Angeles","CSU",34.0669,-118.1689,"CSULA"),
-    ("CSU Maritime (Vallejo)","CSU",38.0680,-122.2566,"Maritime"),
-    ("CSU Monterey Bay","CSU",36.6500,-121.8000,"CSUMB"),
-    ("CSU Northridge","CSU",34.2396,-118.5286,"CSUN"),
-    ("Cal Poly Pomona","CSU",34.0572,-117.8210,"CPP"),
-    ("Sacramento State","CSU",38.5610,-121.4241,"Sac State"),
-    ("CSU San Bernardino","CSU",34.1814,-117.3230,"CSUSB"),
-    ("San Diego State","CSU",32.7757,-117.0719,"SDSU"),
-    ("San Francisco State","CSU",37.7219,-122.4782,"SFSU"),
-    ("San José State","CSU",37.3352,-121.8811,"SJSU"),
-    ("Cal Poly San Luis Obispo","CSU",35.3050,-120.6625,"Cal Poly"),
-    ("CSU San Marcos","CSU",33.1300,-117.1600,"CSUSM"),
-    ("Sonoma State","CSU",38.3404,-122.6742,"SSU"),
-    ("CSU Stanislaus (Turlock)","CSU",37.5230,-120.8567,"Stanislaus"),
+    ("CSU Bakersfield", "CSU", 35.3503, -119.1045, "CSUB"),
+    ("CSU Channel Islands", "CSU", 34.1623, -119.0430, "CSUCI"),
+    ("CSU Chico", "CSU", 39.7285, -121.8460, "Chico"),
+    ("CSU Dominguez Hills", "CSU", 33.8644, -118.2551, "CSUDH"),
+    ("CSU East Bay (Hayward)", "CSU", 37.6547, -122.0578, "CSUEB"),
+    ("Fresno State", "CSU", 36.8123, -119.7485, "Fresno"),
+    ("CSU Fullerton", "CSU", 33.8826, -117.8856, "CSUF"),
+    ("Cal Poly Humboldt", "CSU", 40.8734, -124.0770, "Humboldt"),
+    ("CSU Long Beach", "CSU", 33.7838, -118.1141, "CSULB"),
+    ("CSU Los Angeles", "CSU", 34.0669, -118.1689, "CSULA"),
+    ("CSU Maritime (Vallejo)", "CSU", 38.0680, -122.2566, "Maritime"),
+    ("CSU Monterey Bay", "CSU", 36.6500, -121.8000, "CSUMB"),
+    ("CSU Northridge", "CSU", 34.2396, -118.5286, "CSUN"),
+    ("Cal Poly Pomona", "CSU", 34.0572, -117.8210, "CPP"),
+    ("Sacramento State", "CSU", 38.5610, -121.4241, "Sac State"),
+    ("CSU San Bernardino", "CSU", 34.1814, -117.3230, "CSUSB"),
+    ("San Diego State", "CSU", 32.7757, -117.0719, "SDSU"),
+    ("San Francisco State", "CSU", 37.7219, -122.4782, "SFSU"),
+    ("San José State", "CSU", 37.3352, -121.8811, "SJSU"),
+    ("Cal Poly San Luis Obispo", "CSU", 35.3050, -120.6625, "Cal Poly"),
+    ("CSU San Marcos", "CSU", 33.1300, -117.1600, "CSUSM"),
+    ("Sonoma State", "CSU", 38.3404, -122.6742, "SSU"),
+    ("CSU Stanislaus (Turlock)", "CSU", 37.5230, -120.8567, "Stanislaus"),
 ]
-camp = pd.DataFrame(rows, columns=["name","system","lat","lon","abbr"])
+camp = pd.DataFrame(rows, columns=["name", "system", "lat", "lon", "abbr"])
 
 # --- Prepare campus XY in the SAME coordinate system as counties ---
 if is_projected_like_3857:
@@ -81,7 +81,7 @@ else:
     camp_y = camp["lat"].to_numpy()
     label_dx = 0.08      # small degree offset for labels
 
-is_uc  = (camp["system"].values == "UC")
+is_uc = (camp["system"].values == "UC")
 is_csu = (camp["system"].values == "CSU")
 
 # --- Plot heatmap ---
@@ -93,7 +93,7 @@ map = g.plot(
     edgecolor="black", linewidth=0.3,
     legend=True,
     figsize=(6, 8), cmap="Blues",
-    ax = ax,
+    ax=ax,
     legend_kwds={
         "title": "Share Citing Proximity",
         "loc": "lower left",
@@ -105,7 +105,7 @@ map = g.plot(
 mapleg = ax.get_legend()
 # --- Overlay campuses ---
 # --- colors ---
-uc_color  = "#FFD200"   # orange
+uc_color = "#FFD200"   # orange
 csu_color = "#CC0B2A"   # red
 
 # --- draw markers (with white outlines for contrast) ---
@@ -125,27 +125,30 @@ ax.scatter(
 # ax.scatter(camp_x[is_csu], camp_y[is_csu], marker="o", s=28, label="CSU (23)")
 
 marker_handles = [
-    Line2D([0],[0], marker="^", linestyle="None",
+    Line2D([0], [0], marker="^", linestyle="None",
            markerfacecolor=uc_color, markeredgecolor="white",
-           markeredgewidth=0.7, markersize=7, label="UC (10)"),
-    Line2D([0],[0], marker="o", linestyle="None",
+           markeredgewidth=0.7, markersize=7, label="UC"),
+    Line2D([0], [0], marker="o", linestyle="None",
            markerfacecolor=csu_color, markeredgecolor="white",
-           markeredgewidth=0.7, markersize=7, label="CSU (23)")
+           markeredgewidth=0.7, markersize=7, label="CSU")
 ]
 
 # Optional short labels
 # label style (white halo makes text readable over any fill)
 halo = [pe.withStroke(linewidth=2, foreground="white")]
 
-uc_label = dict(fontsize=6, color=uc_color,     path_effects=halo)      # match UC marker
-csu_label = dict(fontsize=6, color=csu_color, path_effects=halo)     # match CSU marker
+uc_label = dict(fontsize=6, color=uc_color,
+                path_effects=halo)      # match UC marker
+csu_label = dict(fontsize=6, color=csu_color,
+                 path_effects=halo)     # match CSU marker
 
 for x, y, abbr, sys in zip(camp_x, camp_y, camp["abbr"], camp["system"]):
     style = uc_label if sys == "UC" else csu_label
     ax.text(x + label_dx, y, abbr, **style)
 
 ax.set_aspect("equal", adjustable="box")
-ax.legend(handles=marker_handles, loc="upper right", frameon=True, title="Campuses")
+ax.legend(handles=marker_handles, loc="upper right",
+          frameon=True, title="Campuses")
 ax.add_artist(mapleg)
 ax.set_axis_off()
 plt.tight_layout()
