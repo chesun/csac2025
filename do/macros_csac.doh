@@ -585,13 +585,16 @@ local text_qs
 
     
 
-local race_hrchy_str "Race";
+local race_hrchy_str "Race/Ethnicity";
 local gender_str "Gender";
 local parent_edu_str "Parent Education";
-local firstgen_byattend_str "First-Gen (Attend)";
+local firstgen_byattend_str "First-Gen: Attend";
 local firstgen_bydegree_str "First-Gen (Degree)";
 
 local plan_transfer_cat_str "Transfer Intention Categories";
-local hs_grade "High School Grades";
+local hs_grade_coarse_str "High School Grades";
+
+local schoolregion_str "Region";
+local schoollocale_comb_str "Locale";
 
 #delimit cr 

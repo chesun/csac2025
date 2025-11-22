@@ -57,6 +57,7 @@ merge m:1 schoolregion using `byregion', nogen keep(3)
 save $projdir/dta/char_by_county.dta, replace 
 export delimited geoid transfer_factor_proximity using $projdir/out/proximity_by_county.csv, replace 
 
+export delimited geoid plan_transfer_yes transfer_factor_proximity de_yes using $projdir/out/map_data_by_county.csv, replace
 ** merge to shapefile 
 merge 1:1 geoid using counties.dta
 
