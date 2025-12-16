@@ -115,7 +115,7 @@ foreach version in jul aug {
     rename q14 finaid_challenge_raw
     label var finaid_challenge_raw "Q15: challenges you faced applying to FAFSA/CADAA"
 
-    gen finaid_challenge_tech = (strpos(finaid_challenge_raw, "1")!=0)
+    gen finaid_challenge_tech = (strpos(finaid_challenge_raw, "1,")!=0 | finaid_challenge_raw=="1")
     gen finaid_challenge_none = (strpos(finaid_challenge_raw, "10") !=0)
     gen finaid_challenge_doc = (strpos(finaid_challenge_raw, "2") !=0)
     gen finaid_challenge_invite = (strpos(finaid_challenge_raw, "3") !=0)
@@ -284,7 +284,7 @@ foreach version in jul aug {
     label var coll_applied_none "Q22: did not apply to college"
 
 
-    // a shortened variable for encoding different combos
+    // a shortened string variable for encoding different combos
         gen coll_applied_short = coll_applied_raw
         replace coll_applied_short = subinstr(coll_applied_short, "1", "CCC", .)
         replace coll_applied_short = subinstr(coll_applied_short, "2", "CSU", .)
@@ -302,8 +302,16 @@ foreach version in jul aug {
             12 "CCC,UC,VOCATIONAL" 13 "CCC,CSU,VOCATIONAL" 14 "CSU,UC,VOCATIONAL" 15 "CCC,CSU,UC,VOCATIONAL" ///
             16 "CCC,UC,OUTSIDE" 17 "CCC,CSU,OUTSIDE" 18 "CSU,UC,OUTSIDE" 19 "CCC,CSU,UC,OUTSIDE" 
 
+        // define another value label for single destinations
+        lab define coll_applied_coded_single 1 "CCC" 2 "CSU" 3 "UC" 4 "PRIVATE" 5 "OUTSIDE"
+
         encode coll_applied_short, gen(coll_applied_coded) lab(coll_applied_coded)
         lab var coll_applied_coded "College applied coded with all categories"
+
+        encode coll_applied_short, gen(coll_applied_coded_single) lab(coll_applied_coded_single)
+        replace coll_applied_coded_single = 6 if coll_applied_coded_single > 5 & !mi(coll_applied_coded_single)
+        lab define coll_applied_coded_single 6 "MORE THAN ONE/OTHERS", modify
+        lab val coll_applied_coded_single coll_applied_coded_single
 
         gen coll_applied_coded_trunc = coll_applied_coded
         replace coll_applied_coded_trunc = 20 if coll_applied_coded_trunc >= 20 & !mi(coll_applied_coded_trunc)

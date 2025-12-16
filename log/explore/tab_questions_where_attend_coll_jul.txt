@@ -2,7 +2,7 @@
       name:  <unnamed>
        log:  /home/research/ca_ed_lab/projects/csac_survey2025/log/explore/tab_questions_where_attend_coll_jul.txt
   log type:  text
- opened on:  17 Sep 2025, 11:24:46
+ opened on:  15 Dec 2025, 16:06:18
 hs_senior by where_attend_coll
 
 +----------------+
@@ -6086,5 +6086,5 @@ None of these |         8          6         13          5 |        32
       name:  <unnamed>
        log:  /home/research/ca_ed_lab/projects/csac_survey2025/log/explore/tab_questions_where_attend_coll_jul.txt
   log type:  text
- closed on:  17 Sep 2025, 11:24:47
+ closed on:  15 Dec 2025, 16:06:19
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

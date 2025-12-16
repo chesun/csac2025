@@ -22,6 +22,7 @@ include $projdir/do/macros_csac.doh
 shp2dta using $projdir/dta/ca_counties/CA_Counties.shp, database(counties) coordinates(coord) genid(id) replace 
 use counties, clear 
 rename GEOID geoid 
+rename NAME countyname
 save, replace 
 
 *** create question response rates data by region
@@ -53,6 +54,9 @@ duplicates drop geoid, force
 keep if strpos(geoid, "06")==1
 
 merge m:1 schoolregion using `byregion', nogen keep(3)
+* San Joaquin county is missing the region
+replace schoolregion = 4 if geoid == "06077"
+
 
 save $projdir/dta/char_by_county.dta, replace 
 export delimited geoid transfer_factor_proximity using $projdir/out/proximity_by_county.csv, replace 
@@ -70,3 +74,6 @@ graph export  transfer_factor_proximity.png, replace
 spmap de_yes using coord, id(id) fcolor(Blues) clnumber(6)
 graph export  de_yes.png, replace 
 
+
+* export county region xwalk 
+export delimited geoid countyname schoolregion using $projdir/out/county_region_xwalk.csv, replace 

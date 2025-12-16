@@ -2,7 +2,7 @@
       name:  <unnamed>
        log:  /home/research/ca_ed_lab/projects/csac_survey2025/log/explore/tab_questions_gender_jul.txt
   log type:  text
- opened on:  17 Sep 2025, 11:24:45
+ opened on:  15 Dec 2025, 16:06:17
 hs_senior by gender
 
 +----------------+
@@ -5158,5 +5158,5 @@ Prefer not to say |         8          9          5          4 |        26
       name:  <unnamed>
        log:  /home/research/ca_ed_lab/projects/csac_survey2025/log/explore/tab_questions_gender_jul.txt
   log type:  text
- closed on:  17 Sep 2025, 11:24:45
+ closed on:  15 Dec 2025, 16:06:17
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

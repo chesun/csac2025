@@ -578,6 +578,14 @@ local text_qs
     coll_challenge
     ;
 
+local csac_qs 
+    11 12 14 15 16 42 43 46
+    ;
+
+local csac_text_qs
+    why_fafsa_other_text
+    finaid_challenge_other_text
+    ;
 
 
     

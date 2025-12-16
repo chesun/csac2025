@@ -70,3 +70,41 @@ foreach c of local location_qs {
 
         log close 
     }
+
+*** Tab by college applied
+log using $projdir/log/explore/tab_contact_coll_applied.txt, text replace 
+
+foreach q in coll_contact coll_contact_subject_doc coll_contact_subject_work ///
+    coll_contact_subject_grant coll_contact_subject_loan {
+
+        di "`q' by coll_applied_coded_single"
+        tab coll_applied_coded_single `q' , row 
+
+    }
+
+        log close 
+
+*** tabulate the corrected fafsa challenges
+log using $projdir/log/explore/tab_fafsa_challenge.txt, text replace 
+
+foreach q of local q14_subqs {
+    di "simple tab"
+    tab `q'
+
+
+}
+
+foreach c in `demo_qs' `other_tab_qs' {
+
+    foreach q of local q14_subqs {
+        di "tabulation of `q' by `c'"
+
+    tab `c' `q', row
+
+
+    }
+
+
+}
+
+log close 

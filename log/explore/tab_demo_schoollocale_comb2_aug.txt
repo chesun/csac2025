@@ -2,7 +2,7 @@
       name:  <unnamed>
        log:  /home/research/ca_ed_lab/projects/csac_survey2025/log/explore/tab_demo_schoollocale_comb2_aug.txt
   log type:  text
- opened on:  17 Sep 2025, 11:24:50
+ opened on:  15 Dec 2025, 16:06:22
 race_hrchy by schoollocale_comb2
 
 +----------------+
@@ -121,5 +121,5 @@ Town/Rural |       168        359 |       527
       name:  <unnamed>
        log:  /home/research/ca_ed_lab/projects/csac_survey2025/log/explore/tab_demo_schoollocale_comb2_aug.txt
   log type:  text
- closed on:  17 Sep 2025, 11:24:50
+ closed on:  15 Dec 2025, 16:06:22
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

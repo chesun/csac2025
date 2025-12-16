@@ -2,7 +2,7 @@
       name:  <unnamed>
        log:  /home/research/ca_ed_lab/projects/csac_survey2025/log/explore/tab_questions_plan_transfer_cat_aug.txt
   log type:  text
- opened on:  17 Sep 2025, 11:24:49
+ opened on:  15 Dec 2025, 16:06:21
 hs_senior by plan_transfer_cat
 
 +----------------+
@@ -3693,5 +3693,5 @@ Unsure or no transfer |        18         43         30         15 |       106
       name:  <unnamed>
        log:  /home/research/ca_ed_lab/projects/csac_survey2025/log/explore/tab_questions_plan_transfer_cat_aug.txt
   log type:  text
- closed on:  17 Sep 2025, 11:24:49
+ closed on:  15 Dec 2025, 16:06:21
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
