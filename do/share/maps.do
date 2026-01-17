@@ -52,10 +52,11 @@ rename schoolcountyfips geoid
 duplicates drop geoid, force 
 * keep only california counties
 keep if strpos(geoid, "06")==1
-
-merge m:1 schoolregion using `byregion', nogen keep(3)
 * San Joaquin county is missing the region
 replace schoolregion = 4 if geoid == "06077"
+
+merge m:1 schoolregion using `byregion', nogen keep(3)
+
 
 
 save $projdir/dta/char_by_county.dta, replace 
@@ -65,13 +66,13 @@ export delimited geoid plan_transfer_yes transfer_factor_proximity de_yes using 
 ** merge to shapefile 
 merge 1:1 geoid using counties.dta
 
-spmap plan_transfer_yes using coord, id(id) fcolor(Blues) clnumber(6)
+spmap plan_transfer_yes using coord, id(id) fcolor(Blues) clmethod(custom) clbreaks(0.66 0.68 0.7 0.72 0.74 0.76 0.8 0.86)
 graph export  plan_transfer_yes.png, replace 
 
-spmap transfer_factor_proximity using coord, id(id) fcolor(Blues) clnumber(6)
+spmap transfer_factor_proximity using coord, id(id) fcolor(Blues) clmethod(custom) clbreaks(0.4 0.44 0.48 0.52 0.56 0.6 0.65)
 graph export  transfer_factor_proximity.png, replace 
 
-spmap de_yes using coord, id(id) fcolor(Blues) clnumber(6)
+spmap de_yes using coord, id(id) fcolor(Blues) clmethod(custom) clbreaks(0.32 0.35 0.38 0.41 0.44 0.47 0.51)
 graph export  de_yes.png, replace 
 
 

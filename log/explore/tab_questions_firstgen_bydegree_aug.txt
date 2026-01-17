@@ -2,7 +2,7 @@
       name:  <unnamed>
        log:  /home/research/ca_ed_lab/projects/csac_survey2025/log/explore/tab_questions_firstgen_bydegree_aug.txt
   log type:  text
- opened on:  15 Dec 2025, 16:06:20
+ opened on:  22 Dec 2025, 15:58:57
 hs_senior by firstgen_bydegree
 
 +----------------+
@@ -189,14 +189,14 @@ finaid_challenge_tech by firstgen_bydegree
 firstgen_byd |     difficulties
        egree |         0          1 |     Total
 -------------+----------------------+----------
-Not firstgen |       795      1,032 |     1,827 
-             |     43.51      56.49 |    100.00 
+Not firstgen |     1,617        210 |     1,827 
+             |     88.51      11.49 |    100.00 
 -------------+----------------------+----------
-    Firstgen |     1,549      1,713 |     3,262 
-             |     47.49      52.51 |    100.00 
+    Firstgen |     2,750        512 |     3,262 
+             |     84.30      15.70 |    100.00 
 -------------+----------------------+----------
-       Total |     2,344      2,745 |     5,089 
-             |     46.06      53.94 |    100.00 
+       Total |     4,367        722 |     5,089 
+             |     85.81      14.19 |    100.00 
 finaid_challenge_none by firstgen_bydegree
 
 +----------------+
@@ -3610,5 +3610,5 @@ Not firstgen |       163        214        126         53 |       556
       name:  <unnamed>
        log:  /home/research/ca_ed_lab/projects/csac_survey2025/log/explore/tab_questions_firstgen_bydegree_aug.txt
   log type:  text
- closed on:  15 Dec 2025, 16:06:21
+ closed on:  22 Dec 2025, 15:58:57
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

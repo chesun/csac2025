@@ -106,5 +106,47 @@ foreach c in `demo_qs' `other_tab_qs' {
 
 
 }
+log close 
+
+
+*** pay plan and college worries by college going intentions
+
+log using $projdir/log/explore/tab_pay_plan_worry_coll_applied.txt, text replace 
+foreach n in 46 50 {
+    foreach q of local q`n'_subqs {
+        di "tabulation of `q' by college applied"
+
+        tab coll_applied_coded_single `q', row 
+
+    }
+}
+
+log close 
+
+log using $projdir/log/explore/tab_pay_plan_worry_coll_attend.txt, text replace 
+
+foreach n in 46 50 {
+    foreach q of local q`n'_subqs {
+        di "tabulation of `q' by likely college to attend"
+
+        tab where_attend_coll `q', row
+    }
+}
+log close 
+
+
+*** why fafsa marked at least one of graduation requirement, class assignment,
+* and expectation at school
+log using $projdir/log/explore/why_fafsa_require_assign_expect.txt, text replace 
+
+gen why_fafsa_first3 =.
+replace why_fafsa_first3 = 1 if why_fafsa_requirement==1 | why_fafsa_assignment==1 | why_fafsa_expected==1
+replace why_fafsa_first3 = 0 if why_fafsa_requirement==0 & why_fafsa_assignment==0 & why_fafsa_expected==0
+lab var why_fafsa_first3 "Requirement or assignment or expected"
+
+tab race_hrchy why_fafsa_first3, row 
+
+
+tab schoolregion firstgen_byattend, row
 
 log close 

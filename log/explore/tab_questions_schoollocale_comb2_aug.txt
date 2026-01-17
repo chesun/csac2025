@@ -2,7 +2,7 @@
       name:  <unnamed>
        log:  /home/research/ca_ed_lab/projects/csac_survey2025/log/explore/tab_questions_schoollocale_comb2_aug.txt
   log type:  text
- opened on:  15 Dec 2025, 16:06:22
+ opened on:  22 Dec 2025, 15:58:59
 hs_senior by schoollocale_comb2
 
 +----------------+
@@ -213,17 +213,17 @@ finaid_challenge_tech by schoollocale_comb2
 schoolloca |     difficulties
   le_comb2 |         0          1 |     Total
 -----------+----------------------+----------
-      City |       975      1,151 |     2,126 
-           |     45.86      54.14 |    100.00 
+      City |     1,815        311 |     2,126 
+           |     85.37      14.63 |    100.00 
 -----------+----------------------+----------
-    Suburb |       940      1,181 |     2,121 
-           |     44.32      55.68 |    100.00 
+    Suburb |     1,834        287 |     2,121 
+           |     86.47      13.53 |    100.00 
 -----------+----------------------+----------
-Town/Rural |       294        362 |       656 
-           |     44.82      55.18 |    100.00 
+Town/Rural |       547        109 |       656 
+           |     83.38      16.62 |    100.00 
 -----------+----------------------+----------
-     Total |     2,209      2,694 |     4,903 
-           |     45.05      54.95 |    100.00 
+     Total |     4,196        707 |     4,903 
+           |     85.58      14.42 |    100.00 
 finaid_challenge_none by schoollocale_comb2
 
 +----------------+
@@ -4129,5 +4129,5 @@ Town/Rural |        35         49         29         16 |       129
       name:  <unnamed>
        log:  /home/research/ca_ed_lab/projects/csac_survey2025/log/explore/tab_questions_schoollocale_comb2_aug.txt
   log type:  text
- closed on:  15 Dec 2025, 16:06:22
+ closed on:  22 Dec 2025, 15:58:59
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

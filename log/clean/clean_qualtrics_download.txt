@@ -2,7 +2,7 @@
       name:  <unnamed>
        log:  /home/research/ca_ed_lab/projects/csac_survey2025/log/clean/clean_qualtrics_download.txt
   log type:  text
- opened on:   8 Sep 2025, 13:19:05
+ opened on:  15 Dec 2025, 16:08:25
 
 . 
 . graph drop _all
@@ -118,7 +118,7 @@
 .     rename q14 finaid_challenge_raw
  59.     label var finaid_challenge_raw "Q15: challenges you faced applying to FAFSA/CADAA"
  60. 
-.     gen finaid_challenge_tech = (strpos(finaid_challenge_raw, "1")!=0)
+.     gen finaid_challenge_tech = (strpos(finaid_challenge_raw, "1,")!=0 | finaid_challenge_raw=="1")
  61.     gen finaid_challenge_none = (strpos(finaid_challenge_raw, "10") !=0)
  62.     gen finaid_challenge_doc = (strpos(finaid_challenge_raw, "2") !=0)
  63.     gen finaid_challenge_invite = (strpos(finaid_challenge_raw, "3") !=0)
@@ -287,7 +287,7 @@
 186.     label var coll_applied_none "Q22: did not apply to college"
 187. 
 . 
-.     // a shortened variable for encoding different combos
+.     // a shortened string variable for encoding different combos
 .         gen coll_applied_short = coll_applied_raw
 188.         replace coll_applied_short = subinstr(coll_applied_short, "1", "CCC", .)
 189.         replace coll_applied_short = subinstr(coll_applied_short, "2", "CSU", .)
@@ -305,768 +305,776 @@
 >             12 "CCC,UC,VOCATIONAL" 13 "CCC,CSU,VOCATIONAL" 14 "CSU,UC,VOCATIONAL" 15 "CCC,CSU,UC,VOCATIONAL" ///
 >             16 "CCC,UC,OUTSIDE" 17 "CCC,CSU,OUTSIDE" 18 "CSU,UC,OUTSIDE" 19 "CCC,CSU,UC,OUTSIDE" 
 197. 
+.         // define another value label for single destinations
+.         lab define coll_applied_coded_single 1 "CCC" 2 "CSU" 3 "UC" 4 "PRIVATE" 5 "OUTSIDE"
+198. 
 .         encode coll_applied_short, gen(coll_applied_coded) lab(coll_applied_coded)
-198.         lab var coll_applied_coded "College applied coded with all categories"
-199. 
+199.         lab var coll_applied_coded "College applied coded with all categories"
+200. 
+.         encode coll_applied_short, gen(coll_applied_coded_single) lab(coll_applied_coded_single)
+201.         replace coll_applied_coded_single = 6 if coll_applied_coded_single > 5 & !mi(coll_applied_coded_single)
+202.         lab define coll_applied_coded_single 6 "MORE THAN ONE/OTHERS", modify
+203.         lab val coll_applied_coded_single coll_applied_coded_single
+204. 
 .         gen coll_applied_coded_trunc = coll_applied_coded
-200.         replace coll_applied_coded_trunc = 20 if coll_applied_coded_trunc >= 20 & !mi(coll_applied_coded_trunc)
-201.         lab define coll_applied_coded_trunc ///
+205.         replace coll_applied_coded_trunc = 20 if coll_applied_coded_trunc >= 20 & !mi(coll_applied_coded_trunc)
+206.         lab define coll_applied_coded_trunc ///
 >             1 "CCC" 2 "CSU" 3 "UC" ///
 >             4 "CCC,UC" 5 "CCC,CSU" 6 "CSU,UC" 7 "CCC,CSU,UC" ///
 >             8 "CCC,UC,PRIVATE" 9 "CCC,CSU,PRIVATE" 10 "CSU,UC,PRIVATE" 11 "CCC,CSU,UC,PRIVATE" ///
 >             12 "CCC,UC,VOCATIONAL" 13 "CCC,CSU,VOCATIONAL" 14 "CSU,UC,VOCATIONAL" 15 "CCC,CSU,UC,VOCATIONAL" ///
 >             16 "CCC,UC,OUTSIDE" 17 "CCC,CSU,OUTSIDE" 18 "CSU,UC,OUTSIDE" 19 "CCC,CSU,UC,OUTSIDE"  ///
 >             20 "OTHERCOMBINATIONS"
-202. 
+207. 
 .         lab values coll_applied_coded_trunc coll_applied_coded_trunc
-203.         lab var coll_applied_coded_trunc "Colleges applied with truncated categories"
-204. 
+208.         lab var coll_applied_coded_trunc "Colleges applied with truncated categories"
+209. 
 .         //dummies
 .         gen coll_applied_only_ccc = 1 if coll_applied_coded == 1
-205.         gen coll_applied_only_csu = 1 if coll_applied_coded == 2
-206.         gen coll_applied_only_uc = 1 if coll_applied_coded == 3 
-207.         gen coll_applied_only_ccc_uc = 1 if coll_applied_coded == 4
-208.         gen coll_applied_only_ccc_csu = 1 if coll_applied_coded == 5 
-209.         gen coll_applied_only_csu_uc = 1 if coll_applied_coded == 6 
-210.         gen coll_applied_only_ccc_csu_uc = 1 if coll_applied_coded == 7
-211. 
+210.         gen coll_applied_only_csu = 1 if coll_applied_coded == 2
+211.         gen coll_applied_only_uc = 1 if coll_applied_coded == 3 
+212.         gen coll_applied_only_ccc_uc = 1 if coll_applied_coded == 4
+213.         gen coll_applied_only_ccc_csu = 1 if coll_applied_coded == 5 
+214.         gen coll_applied_only_csu_uc = 1 if coll_applied_coded == 6 
+215.         gen coll_applied_only_ccc_csu_uc = 1 if coll_applied_coded == 7
+216. 
 .     // Q23: What challenges did you face when applying to college or trade school? (Select all that apply)
 .     rename q23 collapp_chall_raw
-212.     label var collapp_chall_raw "Q26: challenges applying to college/trade school"
-213. 
+217.     label var collapp_chall_raw "Q26: challenges applying to college/trade school"
+218. 
 .     gen collapp_chall_dna = (strpos(collapp_chall_raw, "1") !=0)
-214.     gen collapp_chall_none = (strpos(collapp_chall_raw, "2") !=0)
-215.     gen collapp_chall_noinfo = (strpos(collapp_chall_raw, "3") !=0)
-216.     gen collapp_chall_dnu = (strpos(collapp_chall_raw, "4") !=0)
-217.     gen collapp_chall_course = (strpos(collapp_chall_raw, "5") !=0)
-218.     gen collapp_chall_miss = (strpos(collapp_chall_raw, "6") !=0)
-219.     gen collapp_chall_fee = (strpos(collapp_chall_raw, "7") !=0)
-220.     gen collapp_chall_deadline = (strpos(collapp_chall_raw, "8") !=0)
-221.     gen collapp_chall_notready = (strpos(collapp_chall_raw, "11") !=0)
-222.     gen collapp_chall_submit = (strpos(collapp_chall_raw, "9") !=0)
-223.     gen collapp_chall_other = (strpos(collapp_chall_raw, "10") !=0)
-224. 
+219.     gen collapp_chall_none = (strpos(collapp_chall_raw, "2") !=0)
+220.     gen collapp_chall_noinfo = (strpos(collapp_chall_raw, "3") !=0)
+221.     gen collapp_chall_dnu = (strpos(collapp_chall_raw, "4") !=0)
+222.     gen collapp_chall_course = (strpos(collapp_chall_raw, "5") !=0)
+223.     gen collapp_chall_miss = (strpos(collapp_chall_raw, "6") !=0)
+224.     gen collapp_chall_fee = (strpos(collapp_chall_raw, "7") !=0)
+225.     gen collapp_chall_deadline = (strpos(collapp_chall_raw, "8") !=0)
+226.     gen collapp_chall_notready = (strpos(collapp_chall_raw, "11") !=0)
+227.     gen collapp_chall_submit = (strpos(collapp_chall_raw, "9") !=0)
+228.     gen collapp_chall_other = (strpos(collapp_chall_raw, "10") !=0)
+229. 
 .     replace collapp_chall_dna =. if mi(collapp_chall_raw)
-225.     replace collapp_chall_none =. if mi(collapp_chall_raw)
-226.     replace collapp_chall_noinfo =. if mi(collapp_chall_raw)
-227.     replace collapp_chall_dnu =. if mi(collapp_chall_raw)
-228.     replace collapp_chall_course =. if mi(collapp_chall_raw)
-229.     replace collapp_chall_miss =. if mi(collapp_chall_raw)
-230.     replace collapp_chall_fee =. if mi(collapp_chall_raw)
-231.     replace collapp_chall_deadline =. if mi(collapp_chall_raw)
-232.     replace collapp_chall_notready =. if mi(collapp_chall_raw)
-233.     replace collapp_chall_submit =. if mi(collapp_chall_raw)
-234.     replace collapp_chall_other =. if mi(collapp_chall_raw)
-235. 
+230.     replace collapp_chall_none =. if mi(collapp_chall_raw)
+231.     replace collapp_chall_noinfo =. if mi(collapp_chall_raw)
+232.     replace collapp_chall_dnu =. if mi(collapp_chall_raw)
+233.     replace collapp_chall_course =. if mi(collapp_chall_raw)
+234.     replace collapp_chall_miss =. if mi(collapp_chall_raw)
+235.     replace collapp_chall_fee =. if mi(collapp_chall_raw)
+236.     replace collapp_chall_deadline =. if mi(collapp_chall_raw)
+237.     replace collapp_chall_notready =. if mi(collapp_chall_raw)
+238.     replace collapp_chall_submit =. if mi(collapp_chall_raw)
+239.     replace collapp_chall_other =. if mi(collapp_chall_raw)
+240. 
 .     lab var collapp_chall_dna "Q23: did not apply to college"
-236.     lab var collapp_chall_none "Q23: did not face challenges"
-237.     lab var collapp_chall_noinfo "Q23: did nothave enough info"
-238.     lab var collapp_chall_dnu "Q23: did not understand questions on application"
-239.     lab var collapp_chall_course "Q23: trouble entering HS coursework"
-240.     lab var collapp_chall_miss "Q23: missing necessary coursework for eligibility"
-241.     lab var collapp_chall_fee "Q23: could not afford application fees"
-242.     lab var collapp_chall_deadline "Q23: missed application deadline"
-243.     lab var collapp_chall_notready "Q23: not academically ready for college"
-244.     lab var collapp_chall_submit "Q23: difficulty submitting other required items"
-245.     lab var collapp_chall_other "Q23: other (please specify)"
-246. 
+241.     lab var collapp_chall_none "Q23: did not face challenges"
+242.     lab var collapp_chall_noinfo "Q23: did nothave enough info"
+243.     lab var collapp_chall_dnu "Q23: did not understand questions on application"
+244.     lab var collapp_chall_course "Q23: trouble entering HS coursework"
+245.     lab var collapp_chall_miss "Q23: missing necessary coursework for eligibility"
+246.     lab var collapp_chall_fee "Q23: could not afford application fees"
+247.     lab var collapp_chall_deadline "Q23: missed application deadline"
+248.     lab var collapp_chall_notready "Q23: not academically ready for college"
+249.     lab var collapp_chall_submit "Q23: difficulty submitting other required items"
+250.     lab var collapp_chall_other "Q23: other (please specify)"
+251. 
 .     rename q23_10_text collapp_chall_other_text
-247.     label var collapp_chall_other_text "Q23: Free response for Other in college application challenges"
-248. 
+252.     label var collapp_chall_other_text "Q23: Free response for Other in college application challenges"
+253. 
 .     // Q24: Do you plan to attend college in the fall?
 .     label define attend_coll_lab 0 "No" 1 "Yes" -1 "I don't know"
-249.     destring q24, generate(attend_coll) 
-250.     // currently coded as 1 yes,2 no,3 idk
+254.     destring q24, generate(attend_coll) 
+255.     // currently coded as 1 yes,2 no,3 idk
 .     replace attend_coll = (attend_coll - 2)*(-1)
-251.     lab val attend_coll attend_coll_lab
-252.     label var attend_coll "Q27: plan to attend college in the fall"
-253.     drop q24
-254. 
+256.     lab val attend_coll attend_coll_lab
+257.     label var attend_coll "Q27: plan to attend college in the fall"
+258.     drop q24
+259. 
 .     order coll_applied* collapp_chall* attend_coll, after(coll_factor_extra)
-255. 
+260. 
 . 
 .     ************** If not attending college 
 . 
 .     // Q26: What do you think you will be doing this coming Fall? (Select all that apply)
 .     rename q26 fall_plan_raw
-256.     label var fall_plan_raw "Q26: plans for coming fall"
-257. 
-.     gen fall_plan_workpt = (strpos(fall_plan_raw, "1") !=0)
-258.     gen fall_plan_workft = (strpos(fall_plan_raw, "2") !=0)
-259.     gen fall_plan_family = (strpos(fall_plan_raw, "3") !=0)
-260.     gen fall_plan_military = (strpos(fall_plan_raw, "4") !=0)
-261.     gen fall_plan_other = (strpos(fall_plan_raw, "5") !=0)
+261.     label var fall_plan_raw "Q26: plans for coming fall"
 262. 
-.     replace fall_plan_workpt =. if mi(fall_plan_raw)
-263.     replace fall_plan_workft =. if mi(fall_plan_raw)
-264.     replace fall_plan_family =. if mi(fall_plan_raw)
-265.     replace fall_plan_military =. if mi(fall_plan_raw)
-266.     replace fall_plan_other =. if mi(fall_plan_raw)
+.     gen fall_plan_workpt = (strpos(fall_plan_raw, "1") !=0)
+263.     gen fall_plan_workft = (strpos(fall_plan_raw, "2") !=0)
+264.     gen fall_plan_family = (strpos(fall_plan_raw, "3") !=0)
+265.     gen fall_plan_military = (strpos(fall_plan_raw, "4") !=0)
+266.     gen fall_plan_other = (strpos(fall_plan_raw, "5") !=0)
 267. 
-.     lab var fall_plan_workpt "Q26: work part time"
-268.     lab var fall_plan_workft "Q26: work full time"
-269.     lab var fall_plan_family "Q26: family obligations"
-270.     lab var fall_plan_military "Q26: military"
-271.     lab var fall_plan_other "Q26: other"
+.     replace fall_plan_workpt =. if mi(fall_plan_raw)
+268.     replace fall_plan_workft =. if mi(fall_plan_raw)
+269.     replace fall_plan_family =. if mi(fall_plan_raw)
+270.     replace fall_plan_military =. if mi(fall_plan_raw)
+271.     replace fall_plan_other =. if mi(fall_plan_raw)
 272. 
+.     lab var fall_plan_workpt "Q26: work part time"
+273.     lab var fall_plan_workft "Q26: work full time"
+274.     lab var fall_plan_family "Q26: family obligations"
+275.     lab var fall_plan_military "Q26: military"
+276.     lab var fall_plan_other "Q26: other"
+277. 
 .     rename q26_5_text fall_plan_other_text
-273.     label var fall_plan_other_text "Q26: free response for fall plans: other"
-274. 
+278.     label var fall_plan_other_text "Q26: free response for fall plans: other"
+279. 
 .     // Q27: Why won't you be attending college this fall? (Select all that apply)
 .     rename q27 why_no_coll_raw
-275.     label var why_no_coll_raw "Q27: why won't you attend college this fall"
-276. 
+280.     label var why_no_coll_raw "Q27: why won't you attend college this fall"
+281. 
 .     gen why_no_coll_notforme = (strpos(why_no_coll_raw, "1") !=0)
-277.     gen why_no_coll_expensive = (strpos(why_no_coll_raw, "2") !=0)
-278.     gen why_no_coll_notworth = (strpos(why_no_coll_raw, "3") !=0)
-279.     gen why_no_coll_gapyear = (strpos(why_no_coll_raw, "4") !=0)
-280.     gen why_no_coll_military = (strpos(why_no_coll_raw, "5") !=0)
-281.     gen why_no_coll_health = (strpos(why_no_coll_raw, "6") !=0)
-282.     gen why_no_coll_work = (strpos(why_no_coll_raw, "7") !=0)
-283.     gen why_no_coll_training = (strpos(why_no_coll_raw, "8") !=0)
-284.     gen why_no_coll_other = (strpos(why_no_coll_raw, "9") !=0)
-285. 
+282.     gen why_no_coll_expensive = (strpos(why_no_coll_raw, "2") !=0)
+283.     gen why_no_coll_notworth = (strpos(why_no_coll_raw, "3") !=0)
+284.     gen why_no_coll_gapyear = (strpos(why_no_coll_raw, "4") !=0)
+285.     gen why_no_coll_military = (strpos(why_no_coll_raw, "5") !=0)
+286.     gen why_no_coll_health = (strpos(why_no_coll_raw, "6") !=0)
+287.     gen why_no_coll_work = (strpos(why_no_coll_raw, "7") !=0)
+288.     gen why_no_coll_training = (strpos(why_no_coll_raw, "8") !=0)
+289.     gen why_no_coll_other = (strpos(why_no_coll_raw, "9") !=0)
+290. 
 .     replace why_no_coll_notforme =. if mi(why_no_coll_raw)
-286.     replace why_no_coll_expensive =. if mi(why_no_coll_raw)
-287.     replace why_no_coll_notworth =. if mi(why_no_coll_raw)
-288.     replace why_no_coll_gapyear =. if mi(why_no_coll_raw)
-289.     replace why_no_coll_military =. if mi(why_no_coll_raw)
-290.     replace why_no_coll_health =. if mi(why_no_coll_raw)
-291.     replace why_no_coll_work =. if mi(why_no_coll_raw)
-292.     replace why_no_coll_training =. if mi(why_no_coll_raw)
-293.     replace why_no_coll_other =. if mi(why_no_coll_raw)
-294. 
+291.     replace why_no_coll_expensive =. if mi(why_no_coll_raw)
+292.     replace why_no_coll_notworth =. if mi(why_no_coll_raw)
+293.     replace why_no_coll_gapyear =. if mi(why_no_coll_raw)
+294.     replace why_no_coll_military =. if mi(why_no_coll_raw)
+295.     replace why_no_coll_health =. if mi(why_no_coll_raw)
+296.     replace why_no_coll_work =. if mi(why_no_coll_raw)
+297.     replace why_no_coll_training =. if mi(why_no_coll_raw)
+298.     replace why_no_coll_other =. if mi(why_no_coll_raw)
+299. 
 .     lab var why_no_coll_notforme "Q27: not for me"
-295.     lab var why_no_coll_expensive "Q27: too expensive"
-296.     lab var why_no_coll_notworth "Q27: Not worth the cost"
-297.     lab var why_no_coll_gapyear "Q27: gap year"
-298.     lab var why_no_coll_military "Q27: military"
-299.     lab var why_no_coll_health "Q27: health reasons"
-300.     lab var why_no_coll_work "Q27: need to work"
-301.     lab var why_no_coll_training "Q27: in another education/training program"
-302.     lab var why_no_coll_other "Q27: other"
-303. 
+300.     lab var why_no_coll_expensive "Q27: too expensive"
+301.     lab var why_no_coll_notworth "Q27: Not worth the cost"
+302.     lab var why_no_coll_gapyear "Q27: gap year"
+303.     lab var why_no_coll_military "Q27: military"
+304.     lab var why_no_coll_health "Q27: health reasons"
+305.     lab var why_no_coll_work "Q27: need to work"
+306.     lab var why_no_coll_training "Q27: in another education/training program"
+307.     lab var why_no_coll_other "Q27: other"
+308. 
 .     rename q27_9_text why_no_coll_other_text
-304.     label var why_no_coll_other_text "Q27: why won't attend college this fall: other"
-305. 
+309.     label var why_no_coll_other_text "Q27: why won't attend college this fall: other"
+310. 
 .     *************** if idk attending college 
 . 
 .     //Q29: Which of the following might influence your decision of whether or not to attend college? (Select all that apply)
 .     rename q29 coll_decision_raw
-306.     label var coll_decision_raw "Q29: which might influence decision to attend college"
-307. 
+311.     label var coll_decision_raw "Q29: which might influence decision to attend college"
+312. 
 .     gen coll_decision_financial = (strpos(coll_decision_raw, "1") !=0)
-308.     lab var coll_decision_financial "Q29: financial support"
-309.     gen coll_decision_academic = (strpos(coll_decision_raw, "2") !=0)
-310.     lab var coll_decision_academic "Q29: academic support"
-311.     gen coll_decision_family = (strpos(coll_decision_raw, "3") !=0)
-312.     lab var coll_decision_family "Q29: family or other support"
-313. 
+313.     lab var coll_decision_financial "Q29: financial support"
+314.     gen coll_decision_academic = (strpos(coll_decision_raw, "2") !=0)
+315.     lab var coll_decision_academic "Q29: academic support"
+316.     gen coll_decision_family = (strpos(coll_decision_raw, "3") !=0)
+317.     lab var coll_decision_family "Q29: family or other support"
+318. 
 .     replace coll_decision_financial =. if mi(coll_decision_raw)
-314.     replace coll_decision_academic =. if mi(coll_decision_raw)
-315.     replace coll_decision_family =. if mi(coll_decision_raw)
-316. 
+319.     replace coll_decision_academic =. if mi(coll_decision_raw)
+320.     replace coll_decision_family =. if mi(coll_decision_raw)
+321. 
 .     order fall_plan_raw fall_plan_workpt - fall_plan_other fall_plan_other_text ///
 >         why_no_coll_raw why_no_coll_notforme - why_no_coll_other why_no_coll_other_text ///
 >         coll_decision_raw coll_decision_financial - coll_decision_family, after(attend_coll)
-317. 
+322. 
 . 
 .     ************* If yes to attending college 
 . 
 .     // Q31: Where are you most likely to attend college this fall?
 .     encode q31, generate(where_attend_coll) label(where_attend_coll_lab)
-318.     label var where_attend_coll "Q31: where are you mostly likely to attend college this fall"
-319.     drop q31
-320.     label def where_attend_coll_lab 1 "CCC" 2 "CSU" 3 "UC" 4 "Priv 4yr" 5 "Vocational" 6 "Outside CA" 7 "None of these" 8 "Not sure", modify
-321.     lab val where_attend_coll where_attend_coll_lab
-322. 
+323.     label var where_attend_coll "Q31: where are you mostly likely to attend college this fall"
+324.     drop q31
+325.     label def where_attend_coll_lab 1 "CCC" 2 "CSU" 3 "UC" 4 "Priv 4yr" 5 "Vocational" 6 "Outside CA" 7 "None of these" 8 "Not sure", modify
+326.     lab val where_attend_coll where_attend_coll_lab
+327. 
 .     // Q32: text response. Which specific college or university are you most likely to attend?
 .     rename q32 which_coll
-323.     label var which_coll "Q32: Which specific college are you mostly likely to attend"
-324. 
+328.     label var which_coll "Q32: Which specific college are you mostly likely to attend"
+329. 
 .     order which_coll, after(where_attend_coll)
-325. 
+330. 
 .     // which UC/CSU campus: Q33 and Q34
 .     merge 1:1 responseid using `campus', keep (3) nogen
-326. 
+331. 
 . 
 .     // Q35: How sure are you that you will attend this school in the fall?
 .     label define how_sure_attend_lab 0 "unsure" 1 "Somewhat sure" 2 "Absolutely sure"
-327.     destring q35, generate(how_sure_attend) 
-328.     // currently coded as 1,2,3
+332.     destring q35, generate(how_sure_attend) 
+333.     // currently coded as 1,2,3
 .     replace how_sure_attend = how_sure_attend - 1
-329.     lab val how_sure_attend how_sure_attend_lab
-330.     label var how_sure_attend "Q35: how sure are you that you will attend this school in the fall"
-331.     drop q35
-332. 
+334.     lab val how_sure_attend how_sure_attend_lab
+335.     label var how_sure_attend "Q35: how sure are you that you will attend this school in the fall"
+336.     drop q35
+337. 
 .     order where_attend_coll which_coll which_uc_campus which_csu_campus how_sure_attend, after(coll_decision_family)
-333. 
+338. 
 .     //--------------- new questions about transfer intentions 
 .     // Q36 *NEW*: Do you plan to eventually transfer from your community college to a four-year college or university? (if CCC selected)
 .     // currently 1,2,3 for yes, no,notsure
 .     gen plan_transfer=.
-334.     replace plan_transfer = -1 if q36 == "2"
-335.     replace plan_transfer = 0 if q36 == "3"
-336.     replace plan_transfer = 1 if q36 == "1"
-337.     lab def plan_transfer -1 "No" 0 "Not sure" 1 "yes"
-338.     lab val plan_transfer plan_transfer
-339.     lab var plan_transfer "Q36: Do you plan to transfer to 4-year college (if CCC)"
-340. 
+339.     replace plan_transfer = -1 if q36 == "2"
+340.     replace plan_transfer = 0 if q36 == "3"
+341.     replace plan_transfer = 1 if q36 == "1"
+342.     lab def plan_transfer -1 "No" 0 "Not sure" 1 "yes"
+343.     lab val plan_transfer plan_transfer
+344.     lab var plan_transfer "Q36: Do you plan to transfer to 4-year college (if CCC)"
+345. 
 .     gen plan_transfer_cat = .
-341.     replace plan_transfer_cat = 1 if plan_transfer==1
-342.     replace plan_transfer_cat = 2 if inlist(plan_transfer,-1,0)
-343.     replace plan_transfer_cat = 3 if inlist(where_attend_coll, 2,3,4,6)
-344.     lab define plan_transfer_cat 1 "plan to transfer" 2 "Unsure or no transfer" 3 "4 year"
-345.     lab val plan_transfer_cat plan_transfer_cat
-346.     lab var plan_transfer_cat "categories for crosstab, by plan to transfer"
-347. 
+346.     replace plan_transfer_cat = 1 if plan_transfer==1
+347.     replace plan_transfer_cat = 2 if inlist(plan_transfer,-1,0)
+348.     replace plan_transfer_cat = 3 if inlist(where_attend_coll, 2,3,4,6)
+349.     lab define plan_transfer_cat 1 "plan to transfer" 2 "Unsure or no transfer" 3 "4 year"
+350.     lab val plan_transfer_cat plan_transfer_cat
+351.     lab var plan_transfer_cat "categories for crosstab, by plan to transfer"
+352. 
 .     // Q37 *NEW*: What factors influenced your decision to start at a community college and transfer? (Select all that apply)
 .     rename q37 transfer_factor_raw 
-348.     lab var transfer_factor_raw "Q37: What factors influenced decision to star at CC and transfer"
-349. 
+353.     lab var transfer_factor_raw "Q37: What factors influenced decision to star at CC and transfer"
+354. 
 .     gen transfer_factor_afford = (strpos(transfer_factor_raw, "1")!=0)
-350.     lab var transfer_factor_afford "Q37 Transfer factor: affordability"
-351.     gen transfer_factor_proximity = (strpos(transfer_factor_raw, "2")!=0)
-352.     lab var transfer_factor_proximity "Q37 transfer factor: proximity to home"
-353.     gen transfer_factor_path = (strpos(transfer_factor_raw, "3")!=0)
-354.     lab var transfer_factor_path "Q37 transfer factor: unsure about major or career path"
-355.     gen transfer_factor_work = (strpos(transfer_factor_raw, "4")!=0)
-356.     lab var transfer_factor_work "Q37 transfer factor: need to work"
-357.     gen transfer_factor_partnership = (strpos(transfer_factor_raw, "5")!=0)
-358.     lab var transfer_factor_partnership "Q37 transfer factor: availability of transfer agreement/partnership"
-359.     gen transfer_factor_comfort = (strpos(transfer_factor_raw, "6")!=0)
-360.     lab var transfer_factor_comfort "Q37 transfer factor: feel more comfortable at CCC"
-361.     gen transfer_factor_rejected = (strpos(transfer_factor_raw, "7")!=0)
-362.     lab var transfer_factor_rejected "Q37 transfer factor: didn't get into 4 year university of choice"
-363.     gen transfer_factor_ready = (strpos(transfer_factor_raw, "8")!=0)
-364.     lab var transfer_factor_ready "Q37 transfer factor: wasn't academically ready for 4-year university"
-365.     gen transfer_factor_other = (strpos(transfer_factor_raw, "9")!=0)
-366.     lab var transfer_factor_other "Q37 transfer factor: other (please explain)"
-367. 
-.     foreach v of varlist transfer_factor_afford - transfer_factor_other {
-368.         replace `v' = . if mi(transfer_factor_raw)
-369.     }
-370. 
-.     rename q37_9_text transfer_factor_other_text 
-371.     lab var transfer_factor_other_text "Text response to Q37 transfer factor: other"
+355.     lab var transfer_factor_afford "Q37 Transfer factor: affordability"
+356.     gen transfer_factor_proximity = (strpos(transfer_factor_raw, "2")!=0)
+357.     lab var transfer_factor_proximity "Q37 transfer factor: proximity to home"
+358.     gen transfer_factor_path = (strpos(transfer_factor_raw, "3")!=0)
+359.     lab var transfer_factor_path "Q37 transfer factor: unsure about major or career path"
+360.     gen transfer_factor_work = (strpos(transfer_factor_raw, "4")!=0)
+361.     lab var transfer_factor_work "Q37 transfer factor: need to work"
+362.     gen transfer_factor_partnership = (strpos(transfer_factor_raw, "5")!=0)
+363.     lab var transfer_factor_partnership "Q37 transfer factor: availability of transfer agreement/partnership"
+364.     gen transfer_factor_comfort = (strpos(transfer_factor_raw, "6")!=0)
+365.     lab var transfer_factor_comfort "Q37 transfer factor: feel more comfortable at CCC"
+366.     gen transfer_factor_rejected = (strpos(transfer_factor_raw, "7")!=0)
+367.     lab var transfer_factor_rejected "Q37 transfer factor: didn't get into 4 year university of choice"
+368.     gen transfer_factor_ready = (strpos(transfer_factor_raw, "8")!=0)
+369.     lab var transfer_factor_ready "Q37 transfer factor: wasn't academically ready for 4-year university"
+370.     gen transfer_factor_other = (strpos(transfer_factor_raw, "9")!=0)
+371.     lab var transfer_factor_other "Q37 transfer factor: other (please explain)"
 372. 
+.     foreach v of varlist transfer_factor_afford - transfer_factor_other {
+373.         replace `v' = . if mi(transfer_factor_raw)
+374.     }
+375. 
+.     rename q37_9_text transfer_factor_other_text 
+376.     lab var transfer_factor_other_text "Text response to Q37 transfer factor: other"
+377. 
 .     order plan_transfer transfer_factor*, after(how_sure_attend)
-373. 
+378. 
 .     // Q38 *NEW*: Where do you intend to transfer? 
 .     // the values are messed up
 .     /* original question coding: 1 "UC" 4 "CSU" 2 "Private in CA" 5 "Public Outside CA" 6 "Private Outside CA" 3 "Not Sure" */
 .     destring q38, replace 
-374.     gen where_transfer = 1 if q38==1
-375.     replace where_transfer = 2 if q38==4
-376.     replace where_transfer = 3 if q38==2
-377.     replace where_transfer=4 if q38==5
-378.     replace where_transfer=5 if q38==6
-379.     replace where_transfer=6 if q38==3
-380.     drop q38
-381.     lab define where_transfer 1 "UC" 2 "CSU" 3 "Private in CA" 4 "Public Outside CA" 5 "Private Outside CA" 6 "Not Sure"
-382.     lab val where_transfer where_transfer
-383.     lab var where_transfer "Q38: where do you intend to transfer"
-384. 
+379.     gen where_transfer = 1 if q38==1
+380.     replace where_transfer = 2 if q38==4
+381.     replace where_transfer = 3 if q38==2
+382.     replace where_transfer=4 if q38==5
+383.     replace where_transfer=5 if q38==6
+384.     replace where_transfer=6 if q38==3
+385.     drop q38
+386.     lab define where_transfer 1 "UC" 2 "CSU" 3 "Private in CA" 4 "Public Outside CA" 5 "Private Outside CA" 6 "Not Sure"
+387.     lab val where_transfer where_transfer
+388.     lab var where_transfer "Q38: where do you intend to transfer"
+389. 
 .     // Q39 *NEW*: Have you heard of the these transfer programs and pathways? (Select all that apply)
 .     rename q39 heard_pathway_raw 
-385.     lab var heard_pathway_raw "Q39: have you heard of these transfer programs and pathways"
-386. 
+390.     lab var heard_pathway_raw "Q39: have you heard of these transfer programs and pathways"
+391. 
 .     gen heard_pathway_tag = (strpos(heard_pathway_raw, "1")!=0)
-387.     lab var heard_pathway_tag "Q39 heard TAG"
-388.     gen heard_pathway_adt = (strpos(heard_pathway_raw, "2")!=0)
-389.     lab var heard_pathway_adt "Q39: heard ADT"
-390.     gen heard_pathway_igetc = (strpos(heard_pathway_raw, "3")!=0)
-391.     lab var heard_pathway_igetc "Q39: heard IGETC"
-392.     gen heard_pathway_cgetc = (strpos(heard_pathway_raw, "4")!=0)
-393.     lab var heard_pathway_cgetc "Q39: heard Cal-GETC"
-394.     gen heard_pathway_tsp = (strpos(heard_pathway_raw, "5")!=0)
-395.     lab var heard_pathway_tsp "Q39: heard TSP"
-396.     gen heard_pathway_none = (strpos(heard_pathway_raw, "6")!=0)
-397.     lab var heard_pathway_none "Q39: heard none"
-398.     gen heard_pathway_notsure = (strpos(heard_pathway_raw, "7")!=0)
-399.     lab var heard_pathway_notsure "Q39: heard not sure"
-400. 
+392.     lab var heard_pathway_tag "Q39 heard TAG"
+393.     gen heard_pathway_adt = (strpos(heard_pathway_raw, "2")!=0)
+394.     lab var heard_pathway_adt "Q39: heard ADT"
+395.     gen heard_pathway_igetc = (strpos(heard_pathway_raw, "3")!=0)
+396.     lab var heard_pathway_igetc "Q39: heard IGETC"
+397.     gen heard_pathway_cgetc = (strpos(heard_pathway_raw, "4")!=0)
+398.     lab var heard_pathway_cgetc "Q39: heard Cal-GETC"
+399.     gen heard_pathway_tsp = (strpos(heard_pathway_raw, "5")!=0)
+400.     lab var heard_pathway_tsp "Q39: heard TSP"
+401.     gen heard_pathway_none = (strpos(heard_pathway_raw, "6")!=0)
+402.     lab var heard_pathway_none "Q39: heard none"
+403.     gen heard_pathway_notsure = (strpos(heard_pathway_raw, "7")!=0)
+404.     lab var heard_pathway_notsure "Q39: heard not sure"
+405. 
 .     foreach v of varlist heard_pathway_tag - heard_pathway_notsure {
-401.         replace `v' = . if mi(heard_pathway_raw)
-402.     }
-403. 
+406.         replace `v' = . if mi(heard_pathway_raw)
+407.     }
+408. 
 .     order where_transfer heard_pathway*, after(transfer_factor_other_text)
-404. 
+409. 
 .     // Q40 *NEW*: What are you primary goals for attending a community college before transferring? (Select all that apply)
 .     rename q40 cc_goal_raw 
-405.     lab var cc_goal_raw "Q40: primary goals for attending CC before transferring"
-406. 
+410.     lab var cc_goal_raw "Q40: primary goals for attending CC before transferring"
+411. 
 .     gen cc_goal_degree = (strpos(cc_goal_raw, "1")!=0)
-407.     lab var cc_goal_degree "Q40: earn associate degree"
-408.     gen cc_goal_gened = (strpos(cc_goal_raw, "2")!=0)
-409.     lab var cc_goal_gened "Q40: complete gen ed requirements"
-410.     gen cc_goal_path = (strpos(cc_goal_raw, "3")!=0)
-411.     lab var cc_goal_path "Q40: explore major and career paths"
-412.     gen cc_goal_other = (strpos(cc_goal_raw, "4")!=0)
-413.     lab var cc_goal_other "Q40: other"
-414. 
-.     foreach v of varlist cc_goal_degree - cc_goal_other {
-415.         replace `v' = . if mi(cc_goal_raw)
-416.     }
-417. 
-.     rename q40_4_text cc_goal_other_text 
-418.     lab var cc_goal_other_text "Q40: open response for other"
+412.     lab var cc_goal_degree "Q40: earn associate degree"
+413.     gen cc_goal_gened = (strpos(cc_goal_raw, "2")!=0)
+414.     lab var cc_goal_gened "Q40: complete gen ed requirements"
+415.     gen cc_goal_path = (strpos(cc_goal_raw, "3")!=0)
+416.     lab var cc_goal_path "Q40: explore major and career paths"
+417.     gen cc_goal_other = (strpos(cc_goal_raw, "4")!=0)
+418.     lab var cc_goal_other "Q40: other"
 419. 
+.     foreach v of varlist cc_goal_degree - cc_goal_other {
+420.         replace `v' = . if mi(cc_goal_raw)
+421.     }
+422. 
+.     rename q40_4_text cc_goal_other_text 
+423.     lab var cc_goal_other_text "Q40: open response for other"
+424. 
 .     order cc_goal*, after(heard_pathway_notsure)
-420. 
+425. 
 .     // Q41 *NEW* open text box: Do you have any concerns about your plans to transfer? 
 .     rename q41 transfer_concern_text
-421.     lab var transfer_concern_text "Q41: any concern about plan to transfer"
-422. 
+426.     lab var transfer_concern_text "Q41: any concern about plan to transfer"
+427. 
 .     // Q42: Have any of the colleges that you have been accepted to contacted you about your financial aid offer (e.g. email, letter, phone call) ?
 .     destring q42, replace 
-423.     rename q42 coll_contact 
-424.     replace coll_contact = coll_contact - 1
-425.     lab define coll_contact 0 "None" 1 "Some" 2 "All"
-426.     lab val coll_contact coll_contact
-427.     lab var coll_contact "Q42: any college contacted you about finaid"
-428. 
+428.     rename q42 coll_contact 
+429.     replace coll_contact = coll_contact - 1
+430.     lab define coll_contact 0 "None" 1 "Some" 2 "All"
+431.     lab val coll_contact coll_contact
+432.     lab var coll_contact "Q42: any college contacted you about finaid"
+433. 
 .     // Q43: What did the colleges contact you about regarding your financial aid offer? (Select all that apply) 
 .     rename q43 coll_contact_subject_raw
-429.     label var coll_contact_subject_raw "Q43: what did the colleges contact you about regarding your finaid"
-430. 
+434.     label var coll_contact_subject_raw "Q43: what did the colleges contact you about regarding your finaid"
+435. 
 .     gen coll_contact_subject_doc = (strpos(coll_contact_subject_raw, "1") !=0)
-431.     gen coll_contact_subject_work = (strpos(coll_contact_subject_raw, "2") !=0)
-432.     gen coll_contact_subject_grant = (strpos(coll_contact_subject_raw, "3") !=0)
-433.     gen coll_contact_subject_loan = (strpos(coll_contact_subject_raw, "4") !=0)
-434. 
+436.     gen coll_contact_subject_work = (strpos(coll_contact_subject_raw, "2") !=0)
+437.     gen coll_contact_subject_grant = (strpos(coll_contact_subject_raw, "3") !=0)
+438.     gen coll_contact_subject_loan = (strpos(coll_contact_subject_raw, "4") !=0)
+439. 
 .     replace coll_contact_subject_doc =. if mi(coll_contact_subject_raw)
-435.     replace coll_contact_subject_work =. if mi(coll_contact_subject_raw)
-436.     replace coll_contact_subject_grant =. if mi(coll_contact_subject_raw)
-437.     replace coll_contact_subject_loan =. if mi(coll_contact_subject_raw)
-438. 
-.     lab var coll_contact_subject_doc "Q43: FAFSA/CADAA verification or additional documentation"
-439.     lab var coll_contact_subject_work "Q43: eligibility for work study"
-440.     lab var coll_contact_subject_grant "Q43: grants or scholarships"
-441.     lab var coll_contact_subject_loan "Q43: information about loans"
-442. 
-.     order transfer_concern_text coll_contact coll_contact_subject*, after(cc_goal_other_text)
+440.     replace coll_contact_subject_work =. if mi(coll_contact_subject_raw)
+441.     replace coll_contact_subject_grant =. if mi(coll_contact_subject_raw)
+442.     replace coll_contact_subject_loan =. if mi(coll_contact_subject_raw)
 443. 
+.     lab var coll_contact_subject_doc "Q43: FAFSA/CADAA verification or additional documentation"
+444.     lab var coll_contact_subject_work "Q43: eligibility for work study"
+445.     lab var coll_contact_subject_grant "Q43: grants or scholarships"
+446.     lab var coll_contact_subject_loan "Q43: information about loans"
+447. 
+.     order transfer_concern_text coll_contact coll_contact_subject*, after(cc_goal_other_text)
+448. 
 .     *************** college experience expectations
 .     // Q46: How do you plan to pay college tuition and fees? (Select all that apply)
 . 
 .     rename q46 pay_plan_raw
-444.     label var pay_plan_raw "Q54: how do you plan to pay college tuition and fees"
-445. 
+449.     label var pay_plan_raw "Q54: how do you plan to pay college tuition and fees"
+450. 
 .     order pay_plan_raw, after(coll_contact_subject_loan)
-446. 
+451. 
 .     gen pay_plan_scholarship = (strpos(pay_plan_raw, "1") !=0) if !mi(pay_plan_raw)
-447.     gen pay_plan_grant = (strpos(pay_plan_raw, "2") !=0) if !mi(pay_plan_raw)
-448.     gen pay_plan_saving = (strpos(pay_plan_raw, "3") !=0) if !mi(pay_plan_raw)
-449.     gen pay_plan_work = (strpos(pay_plan_raw, "4") !=0) if !mi(pay_plan_raw)
-450.     gen pay_plan_otherppl = (strpos(pay_plan_raw, "5") !=0) if !mi(pay_plan_raw)
-451.     gen pay_plan_loan = (strpos(pay_plan_raw, "6") !=0) if !mi(pay_plan_raw)
-452.     gen pay_plan_va = (strpos(pay_plan_raw, "7") !=0) if !mi(pay_plan_raw)
-453.     gen pay_plan_credit = (strpos(pay_plan_raw, "8") !=0) if !mi(pay_plan_raw)
-454. 
+452.     gen pay_plan_grant = (strpos(pay_plan_raw, "2") !=0) if !mi(pay_plan_raw)
+453.     gen pay_plan_saving = (strpos(pay_plan_raw, "3") !=0) if !mi(pay_plan_raw)
+454.     gen pay_plan_work = (strpos(pay_plan_raw, "4") !=0) if !mi(pay_plan_raw)
+455.     gen pay_plan_otherppl = (strpos(pay_plan_raw, "5") !=0) if !mi(pay_plan_raw)
+456.     gen pay_plan_loan = (strpos(pay_plan_raw, "6") !=0) if !mi(pay_plan_raw)
+457.     gen pay_plan_va = (strpos(pay_plan_raw, "7") !=0) if !mi(pay_plan_raw)
+458.     gen pay_plan_credit = (strpos(pay_plan_raw, "8") !=0) if !mi(pay_plan_raw)
+459. 
 .     lab var pay_plan_scholarship "Q46: scholarships"
-455.     lab var pay_plan_grant "Q46: grants"
-456.     lab var pay_plan_saving "Q46: my own savings"
-457.     lab var pay_plan_work "Q46: working while enrolled"
-458.     lab var pay_plan_otherppl "Q46: money from other people"
-459.     lab var pay_plan_loan "Q46: student loans"
-460.     lab var pay_plan_va "Q46: military/VA benefits"
-461.     lab var pay_plan_credit "Q46: credit cards"
-462. 
+460.     lab var pay_plan_grant "Q46: grants"
+461.     lab var pay_plan_saving "Q46: my own savings"
+462.     lab var pay_plan_work "Q46: working while enrolled"
+463.     lab var pay_plan_otherppl "Q46: money from other people"
+464.     lab var pay_plan_loan "Q46: student loans"
+465.     lab var pay_plan_va "Q46: military/VA benefits"
+466.     lab var pay_plan_credit "Q46: credit cards"
+467. 
 .     order pay_plan_raw, before(pay_plan_scholarship)
-463. 
+468. 
 .     // Q47: What are you most likely to study in college?
 .     rename q47 major_raw 
-464.     lab var major_raw "Q47: what are you most likely to study in college"
-465. 
+469.     lab var major_raw "Q47: what are you most likely to study in college"
+470. 
 .     gen major_business = (strpos(major_raw, "1") !=0) if !mi(major_raw)
-466.     gen major_engineering = (strpos(major_raw, "2") !=0) if !mi(major_raw)
-467.     gen major_science = (strpos(major_raw, "3") !=0) if !mi(major_raw)
-468.     gen major_social = (strpos(major_raw, "4") !=0) if !mi(major_raw)
-469.     gen major_humanity = (strpos(major_raw, "5") !=0) if !mi(major_raw)
-470.     gen major_health = (strpos(major_raw, "6") !=0) if !mi(major_raw)
-471.     gen major_education = (strpos(major_raw, "7") !=0) if !mi(major_raw)
-472.     gen major_applied = (strpos(major_raw, "8") !=0) if !mi(major_raw)
-473.     gen major_service = (strpos(major_raw, "9") !=0) if !mi(major_raw)
-474.     gen major_undecided = (strpos(major_raw, "10") !=0) if !mi(major_raw)
-475. 
+471.     gen major_engineering = (strpos(major_raw, "2") !=0) if !mi(major_raw)
+472.     gen major_science = (strpos(major_raw, "3") !=0) if !mi(major_raw)
+473.     gen major_social = (strpos(major_raw, "4") !=0) if !mi(major_raw)
+474.     gen major_humanity = (strpos(major_raw, "5") !=0) if !mi(major_raw)
+475.     gen major_health = (strpos(major_raw, "6") !=0) if !mi(major_raw)
+476.     gen major_education = (strpos(major_raw, "7") !=0) if !mi(major_raw)
+477.     gen major_applied = (strpos(major_raw, "8") !=0) if !mi(major_raw)
+478.     gen major_service = (strpos(major_raw, "9") !=0) if !mi(major_raw)
+479.     gen major_undecided = (strpos(major_raw, "10") !=0) if !mi(major_raw)
+480. 
 . 
 .     lab var major_business "Q47: Business"
-476.     lab var major_engineering "Q47: Engineering"
-477.     lab var major_science "Q47: Natural Scinces"
-478.     lab var major_social "Q47: Social Sciences"
-479.     lab var major_humanity "Q47: Humanities and Arts"
-480.     lab var major_health "Q47: Health Sciences"
-481.     lab var major_education "Q47: Education"
-482.     lab var major_applied "Q47: Applied Sciences"
-483.     lab var major_service "Q47: Public Service"
-484.     lab var major_undecided "Q47: Undecided"
-485. 
+481.     lab var major_engineering "Q47: Engineering"
+482.     lab var major_science "Q47: Natural Scinces"
+483.     lab var major_social "Q47: Social Sciences"
+484.     lab var major_humanity "Q47: Humanities and Arts"
+485.     lab var major_health "Q47: Health Sciences"
+486.     lab var major_education "Q47: Education"
+487.     lab var major_applied "Q47: Applied Sciences"
+488.     lab var major_service "Q47: Public Service"
+489.     lab var major_undecided "Q47: Undecided"
+490. 
 .     order major_raw, before(major_business)
-486. 
+491. 
 .     // Q48: What is the highest degree you hope to earn after you have completed all of your schooling?
 .     lab define highest_degree_lab 1 "Get a certificate in a vocational or technical field" ///
 >         2 "Associate degree  (AA/AS/ADT)" 3 "Bachelor’s Degree (BA/BS)" ///
 >         4 "Master’s Degree (MA/MS)" 5 "Doctoral Degree (Ph.D., M.D., J.D., etc.)" ///
 >         6 "I'm unsure"
-487.     destring q48, replace 
-488.     rename q48 highest_degree
-489.     label var highest_degree "Q48: highest degree you hope to earn"
-490.     lab val highest_degree highest_degree_lab
-491. 
+492.     destring q48, replace 
+493.     rename q48 highest_degree
+494.     label var highest_degree "Q48: highest degree you hope to earn"
+495.     lab val highest_degree highest_degree_lab
+496. 
 .     // Q50: When you think about college, how worried are you about the following?
 .     label define coll_worry_lab 0 "Not at all worried" 1 "Somewhat worried" 2 "Very worried"
-492.     foreach var of varlist tuition-support {
-493.         destring `var', generate(coll_worry_`var')
-494.         // currently coded 1,2,3
+497.     foreach var of varlist tuition-support {
+498.         destring `var', generate(coll_worry_`var')
+499.         // currently coded 1,2,3
 .         replace coll_worry_`var' = coll_worry_`var' - 1
-495.         lab val coll_worry_`var' coll_worry_lab
-496.         label var coll_worry_`var' "Q50: worry about college"
-497.         drop `var'
-498.     }
-499. 
+500.         lab val coll_worry_`var' coll_worry_lab
+501.         label var coll_worry_`var' "Q50: worry about college"
+502.         drop `var'
+503.     }
+504. 
 .     order coll_worry_tuition-coll_worry_support, after(highest_degree)
-500. 
+505. 
 . 
 .     **************** high school experience
 . 
 .     // Q53: Please tell us what type of high school you are graduating from:
 .     destring q53, replace 
-501.     rename q53 hs_type
-502.     lab define hs_type 1 "Public" 2 "Private" 3 "Home School"
-503.     label var hs_type "Q53: type of HS you are graduating from"
-504.     lab val hs_type hs_type
-505. 
+506.     rename q53 hs_type
+507.     lab define hs_type 1 "Public" 2 "Private" 3 "Home School"
+508.     label var hs_type "Q53: type of HS you are graduating from"
+509.     lab val hs_type hs_type
+510. 
 .     // Q54 *NEW*: What were your high school grades?
 .     destring q54, replace 
-506.     rename q54 hs_grade
-507.     lab define hs_grade 1 "Mostly A" 2 "Mostly A/B" 3 "Mostly B" 4 "Mostly B/C" 5 "Mostly C" 6 "Mostly C/D"
-508.     lab val hs_grade hs_grade
-509.     lab var hs_grade "Q54: high school grades"
-510. 
+511.     rename q54 hs_grade
+512.     lab define hs_grade 1 "Mostly A" 2 "Mostly A/B" 3 "Mostly B" 4 "Mostly B/C" 5 "Mostly C" 6 "Mostly C/D"
+513.     lab val hs_grade hs_grade
+514.     lab var hs_grade "Q54: high school grades"
+515. 
 .     // create a coarse category of hs grades
 .     gen hs_grade_coarse = hs_grade if inlist(hs_grade,1,2)
-511.     replace hs_grade_coarse = 3 if inlist(hs_grade,3,4)
-512.     replace hs_grade_coarse = 4 if inlist(hs_grade,5,6)
-513.     lab define hs_grade_coarse 1 "Mostly A" 2 "Mostly A/B" 3 "Mostly B or B/C" 4 "Mostly C or C/D"
-514.     lab val hs_grade_coarse hs_grade_coarse
-515.     lab var hs_grade_coarse "HS grade (coarse)"
-516. 
+516.     replace hs_grade_coarse = 3 if inlist(hs_grade,3,4)
+517.     replace hs_grade_coarse = 4 if inlist(hs_grade,5,6)
+518.     lab define hs_grade_coarse 1 "Mostly A" 2 "Mostly A/B" 3 "Mostly B or B/C" 4 "Mostly C or C/D"
+519.     lab val hs_grade_coarse hs_grade_coarse
+520.     lab var hs_grade_coarse "HS grade (coarse)"
+521. 
 .     // Q55: Are you on track to complete the "a-g" course requirements - the group of courses necessary for admission to UC and CSU?
 .     destring q55, replace 
-517.     rename q55 complete_atog
-518.     replace complete_atog = -1 if complete_atog==2
-519.     replace complete_atog = 0 if complete_atog == 3
-520.     label define complete_atog_lab -1 "No" 0 "Not Sure" 1 "Yes"
-521.     lab val complete_atog complete_atog_lab
-522.     label var complete_atog "Q55: are you on track to complete a-g"
-523. 
+522.     rename q55 complete_atog
+523.     replace complete_atog = -1 if complete_atog==2
+524.     replace complete_atog = 0 if complete_atog == 3
+525.     label define complete_atog_lab -1 "No" 0 "Not Sure" 1 "Yes"
+526.     lab val complete_atog complete_atog_lab
+527.     label var complete_atog "Q55: are you on track to complete a-g"
+528. 
 .     // Q56: How difficult was it to keep track of your "a-g" course progress?
 .     destring q56, replace 
-524.     rename q56 track_atog
-525.     replace track_atog = 0 if track_atog == 4
-526.     lab define track_atog 0 "Not Sure" 1 "Easy" 2 "Difficult" 3 "Very Difficult" 
-527.     lab val track_atog track_atog
-528.     lab var track_atog "Q56: How difficult to track a-g course progress"
-529. 
+529.     rename q56 track_atog
+530.     replace track_atog = 0 if track_atog == 4
+531.     lab define track_atog 0 "Not Sure" 1 "Easy" 2 "Difficult" 3 "Very Difficult" 
+532.     lab val track_atog track_atog
+533.     lab var track_atog "Q56: How difficult to track a-g course progress"
+534. 
 .     // Q57: Why are you not on track to complete the "a-g" course requirements? (Select all that apply)
 .     rename q57 why_no_atog_raw
-530.     label var why_no_atog_raw "Q57: why not on track to complete a-g"
-531. 
+535.     label var why_no_atog_raw "Q57: why not on track to complete a-g"
+536. 
 .     gen why_no_atog_notrequired = (strpos(why_no_atog_raw, "1") !=0) if !mi(why_no_atog_raw)
-532.     gen why_no_atog_unknown = (strpos(why_no_atog_raw, "2") !=0) if !mi(why_no_atog_raw)
-533.     gen why_no_atog_nocourse = (strpos(why_no_atog_raw, "3") !=0) if !mi(why_no_atog_raw)
-534.     gen why_no_atog_lowgrade = (strpos(why_no_atog_raw, "4") !=0) if !mi(why_no_atog_raw)
-535.     gen why_no_atog_nocollege = (strpos(why_no_atog_raw, "5") !=0) if !mi(why_no_atog_raw)
-536.     gen why_no_atog_other = (strpos(why_no_atog_raw, "6") !=0) if !mi(why_no_atog_raw)
-537. 
+537.     gen why_no_atog_unknown = (strpos(why_no_atog_raw, "2") !=0) if !mi(why_no_atog_raw)
+538.     gen why_no_atog_nocourse = (strpos(why_no_atog_raw, "3") !=0) if !mi(why_no_atog_raw)
+539.     gen why_no_atog_lowgrade = (strpos(why_no_atog_raw, "4") !=0) if !mi(why_no_atog_raw)
+540.     gen why_no_atog_nocollege = (strpos(why_no_atog_raw, "5") !=0) if !mi(why_no_atog_raw)
+541.     gen why_no_atog_other = (strpos(why_no_atog_raw, "6") !=0) if !mi(why_no_atog_raw)
+542. 
 .     lab var why_no_atog_notrequired "Q57: not required for the college I plan to attend"
-538.     lab var why_no_atog_unknown "Q57: didn't know about the requirements"
-539.     lab var why_no_atog_nocourse "Q57: my HS didn't offer necessary courses"
-540.     lab var why_no_atog_lowgrade "Q57: My grades were too low in some required courses"
-541.     lab var why_no_atog_nocollege "Q57: I am not planning to attend college"
-542.     lab var why_no_atog_other "Q57: Other"
-543. 
+543.     lab var why_no_atog_unknown "Q57: didn't know about the requirements"
+544.     lab var why_no_atog_nocourse "Q57: my HS didn't offer necessary courses"
+545.     lab var why_no_atog_lowgrade "Q57: My grades were too low in some required courses"
+546.     lab var why_no_atog_nocollege "Q57: I am not planning to attend college"
+547.     lab var why_no_atog_other "Q57: Other"
+548. 
 .     rename q57_6_text why_no_atog_other_text
-544.     lab var why_no_atog_other_text "Q57: why not on track to complete a-g: other (text)"
-545. 
+549.     lab var why_no_atog_other_text "Q57: why not on track to complete a-g: other (text)"
+550. 
 .     order why_no_atog_raw why_no_atog_other_text, after(why_no_atog_other)
-546. 
+551. 
 .     // Q59: Did you take any community college or CSU courses while in high school - sometimes referred to as dual enrollment? 
 .     destring q59, replace 
-547.     rename q59 de 
-548.     replace de = -1 if de==2
-549.     replace de = 0 if de==3 
-550.     lab define de -1 "No" 0 "Not Sure" 1 "Yes"
-551.     lab val de de 
-552.     lab var de "Q59: Did you take DE courses"
-553. 
+552.     rename q59 de 
+553.     replace de = -1 if de==2
+554.     replace de = 0 if de==3 
+555.     lab define de -1 "No" 0 "Not Sure" 1 "Yes"
+556.     lab val de de 
+557.     lab var de "Q59: Did you take DE courses"
+558. 
 .     // Q60: Why did you take these dual enrollment courses? (Select all that apply)
 .     rename q60 why_de_raw
-554.     label var why_de_raw "Q60: why did you take dual enrollment courses"
-555. 
+559.     label var why_de_raw "Q60: why did you take dual enrollment courses"
+560. 
 .     gen why_de_class = (strpos(why_de_raw, "1") !=0) if !mi(why_de_raw)
-556.     gen why_de_college = (strpos(why_de_raw, "2") !=0) if !mi(why_de_raw)
-557.     gen why_de_reduce = (strpos(why_de_raw, "3") !=0) if !mi(why_de_raw)
-558.     gen why_de_trade = (strpos(why_de_raw, "4") !=0) if !mi(why_de_raw)
-559.     gen why_de_admission = (strpos(why_de_raw, "6") !=0) if !mi(why_de_raw)
-560.     gen why_de_other = (strpos(why_de_raw, "5") !=0) if !mi(why_de_raw)
-561. 
+561.     gen why_de_college = (strpos(why_de_raw, "2") !=0) if !mi(why_de_raw)
+562.     gen why_de_reduce = (strpos(why_de_raw, "3") !=0) if !mi(why_de_raw)
+563.     gen why_de_trade = (strpos(why_de_raw, "4") !=0) if !mi(why_de_raw)
+564.     gen why_de_admission = (strpos(why_de_raw, "6") !=0) if !mi(why_de_raw)
+565.     gen why_de_other = (strpos(why_de_raw, "5") !=0) if !mi(why_de_raw)
+566. 
 .     lab var why_de_class "Q60: take classes not offered by my school"
-562.     lab var why_de_college "Q60: improve chance of getting into selective college"
-563.     lab var why_de_reduce "Q60: reduce number of courses needed in college"
-564.     lab var why_de_trade "Q60: to be ready for a trade or job after HS"
-565.     lab var why_de_admission "Q60: satisfy requirements for UC/CSU admission"
-566.     lab var why_de_other "Q60: other"
-567. 
+567.     lab var why_de_college "Q60: improve chance of getting into selective college"
+568.     lab var why_de_reduce "Q60: reduce number of courses needed in college"
+569.     lab var why_de_trade "Q60: to be ready for a trade or job after HS"
+570.     lab var why_de_admission "Q60: satisfy requirements for UC/CSU admission"
+571.     lab var why_de_other "Q60: other"
+572. 
 .     rename q60_5_text why_de_other_text
-568.     label var why_de_other_text "Q60: why did you take dual enrollment: other"
-569. 
+573.     label var why_de_other_text "Q60: why did you take dual enrollment: other"
+574. 
 .     order why_de_raw why_de_other_text, after(why_de_other)
-570. 
+575. 
 .     // Q61 *NEW*: What was the location of the dual enrollment (or college classes) that you took? (Select all that apply)
 .     rename q61 de_loc_raw
-571.     lab var de_loc_raw "Q61: DE course location"
-572. 
+576.     lab var de_loc_raw "Q61: DE course location"
+577. 
 .     gen de_loc_hs = (strpos(de_loc_raw, "1")!=0)
-573.     lab var de_loc_hs "Q61: hs campus"
-574.     gen de_loc_cc = (strpos(de_loc_raw, "2")!=0)
-575.     lab var de_loc_cc "Q61: CC campus"
-576.     gen de_loc_virtual = (strpos(de_loc_raw, "3")!=0)
-577.     lab var de_loc_virtual "Q61: virtually"
-578. 
+578.     lab var de_loc_hs "Q61: hs campus"
+579.     gen de_loc_cc = (strpos(de_loc_raw, "2")!=0)
+580.     lab var de_loc_cc "Q61: CC campus"
+581.     gen de_loc_virtual = (strpos(de_loc_raw, "3")!=0)
+582.     lab var de_loc_virtual "Q61: virtually"
+583. 
 .     foreach v of varlist de_loc_hs - de_loc_virtual {
-579.         replace `v' = . if mi(de_loc_raw)
-580.     }
-581. 
+584.         replace `v' = . if mi(de_loc_raw)
+585.     }
+586. 
 .     // Q62 *NEW*: What kind of dual enrollment courses did you take?
 .     rename q62 de_type_raw
-582.     lab var de_type_raw "Q62: type of DE course"
-583. 
+587.     lab var de_type_raw "Q62: type of DE course"
+588. 
 .     gen de_type_math = (strpos(de_type_raw, "1")!=0)
-584.     lab var de_type_math "Q62: DE math"
-585.     gen de_type_hist = (strpos(de_type_raw, "2")!=0)
-586.     lab var de_type_hist "Q62: DE history"
-587.     gen de_type_eng = (strpos(de_type_raw, "3")!=0)
-588.     lab var de_type_eng "Q62: DE English"
-589.     gen de_type_sci = (strpos(de_type_raw, "4")!=0)
-590.     lab var de_type_sci "Q62: DE Science"
-591.     gen de_type_fl = (strpos(de_type_raw, "5")!=0)
-592.     lab var de_type_fl "Q62: DE foreign language"
-593.     gen de_type_oth = (strpos(de_type_raw, "6")!=0)
-594.     lab var de_type_oth "Q62: Other"
-595. 
-.     foreach v of varlist de_type_math - de_type_oth {
-596.         replace `v' = . if mi(de_type_raw)
-597.     }
-598. 
-.     rename q62_6_text de_type_oth_text
-599.     lab var de_type_oth_text "Q62 type of DE course, open response for other"
+589.     lab var de_type_math "Q62: DE math"
+590.     gen de_type_hist = (strpos(de_type_raw, "2")!=0)
+591.     lab var de_type_hist "Q62: DE history"
+592.     gen de_type_eng = (strpos(de_type_raw, "3")!=0)
+593.     lab var de_type_eng "Q62: DE English"
+594.     gen de_type_sci = (strpos(de_type_raw, "4")!=0)
+595.     lab var de_type_sci "Q62: DE Science"
+596.     gen de_type_fl = (strpos(de_type_raw, "5")!=0)
+597.     lab var de_type_fl "Q62: DE foreign language"
+598.     gen de_type_oth = (strpos(de_type_raw, "6")!=0)
+599.     lab var de_type_oth "Q62: Other"
 600. 
+.     foreach v of varlist de_type_math - de_type_oth {
+601.         replace `v' = . if mi(de_type_raw)
+602.     }
+603. 
+.     rename q62_6_text de_type_oth_text
+604.     lab var de_type_oth_text "Q62 type of DE course, open response for other"
+605. 
 . 
 . 
 .     **************** Career plannning *NEW*
 . 
 .     // Q63: DO you have a future career in mind?
 .     destring q63, replace 
-601.     rename q63 have_career 
-602.     replace have_career = -1 if have_career==2
-603.     replace have_career = 0 if have_career==3
-604. 
-.     lab define have_career -1 "No" 0 "Not Sure" 1 "Yes"
-605.     lab val have_career have_career
-606.     lab var have_career "Q63: Do you have a future career in mind"
-607. 
-.     rename q63_1_text have_career_yes_text
-608.     lab var have_career_yes_text "Q63 open text for Yes to have future career in mind"
+606.     rename q63 have_career 
+607.     replace have_career = -1 if have_career==2
+608.     replace have_career = 0 if have_career==3
 609. 
+.     lab define have_career -1 "No" 0 "Not Sure" 1 "Yes"
+610.     lab val have_career have_career
+611.     lab var have_career "Q63: Do you have a future career in mind"
+612. 
+.     rename q63_1_text have_career_yes_text
+613.     lab var have_career_yes_text "Q63 open text for Yes to have future career in mind"
+614. 
 .     // Q64: Where did you learn about this career? select all that apply
 .     rename q64 where_learn_career_raw
-610.     lab var where_learn_career_raw "Q64: Where did you learn about this career"
-611. 
+615.     lab var where_learn_career_raw "Q64: Where did you learn about this career"
+616. 
 .     gen where_learn_career_hs = (strpos(where_learn_career_raw, "1")!=0)
-612.     lab var where_learn_career_hs "Q64: HS"
-613.     gen where_learn_career_parent = (strpos(where_learn_career_raw, "2")!=0)
-614.     lab var where_learn_career_parent "Q64: Parents"
-615.     gen where_learn_career_friend = (strpos(where_learn_career_raw, "3")!=0)
-616.     lab var where_learn_career_friend "Q64: friends"
-617.     gen where_learn_career_sm = (strpos(where_learn_career_raw, "4")!=0)
-618.     lab var where_learn_career_sm "Q64: social media"
-619.     gen where_learn_career_college = (strpos(where_learn_career_raw, "5")!=0)
-620.     lab var where_learn_career_college "Q64: College"
-621.     gen where_learn_career_other = (strpos(where_learn_career_raw, "6")!=0)
-622.     lab var where_learn_career_other "Q64: Other"
-623. 
-.     foreach v of varlist where_learn_career_hs - where_learn_career_other {
-624.         replace `v' = . if mi(where_learn_career_raw)
-625.     }
-626. 
-.     rename q64_6_text where_learn_career_other_text
-627.     lab var where_learn_career_other_text "Q64: open text for Other to where learn about this career"
+617.     lab var where_learn_career_hs "Q64: HS"
+618.     gen where_learn_career_parent = (strpos(where_learn_career_raw, "2")!=0)
+619.     lab var where_learn_career_parent "Q64: Parents"
+620.     gen where_learn_career_friend = (strpos(where_learn_career_raw, "3")!=0)
+621.     lab var where_learn_career_friend "Q64: friends"
+622.     gen where_learn_career_sm = (strpos(where_learn_career_raw, "4")!=0)
+623.     lab var where_learn_career_sm "Q64: social media"
+624.     gen where_learn_career_college = (strpos(where_learn_career_raw, "5")!=0)
+625.     lab var where_learn_career_college "Q64: College"
+626.     gen where_learn_career_other = (strpos(where_learn_career_raw, "6")!=0)
+627.     lab var where_learn_career_other "Q64: Other"
 628. 
+.     foreach v of varlist where_learn_career_hs - where_learn_career_other {
+629.         replace `v' = . if mi(where_learn_career_raw)
+630.     }
+631. 
+.     rename q64_6_text where_learn_career_other_text
+632.     lab var where_learn_career_other_text "Q64: open text for Other to where learn about this career"
+633. 
 .     // Q65: Have you done any career planning through school? If so, describe it below:
 .     destring q65, replace
-629.     rename q65 careerplan_hs
-630.     replace careerplan_hs = -1 if careerplan_hs == 2
-631.     replace careerplan_hs = 0 if careerplan_hs == 3
-632. 
-.     lab define careerplan_hs -1 "No" 0 "Not Sure" 1 "Yes"
-633.     lab val careerplan_hs careerplan_hs
-634.     lab var careerplan_hs "Q65: Have you done career planning in school"
-635. 
-.     rename q65_1_text careerplan_hs_yes_text
-636.     lab var careerplan_hs_yes_text "Q65: open text for Yes to done career planning in school"
+634.     rename q65 careerplan_hs
+635.     replace careerplan_hs = -1 if careerplan_hs == 2
+636.     replace careerplan_hs = 0 if careerplan_hs == 3
 637. 
+.     lab define careerplan_hs -1 "No" 0 "Not Sure" 1 "Yes"
+638.     lab val careerplan_hs careerplan_hs
+639.     lab var careerplan_hs "Q65: Have you done career planning in school"
+640. 
+.     rename q65_1_text careerplan_hs_yes_text
+641.     lab var careerplan_hs_yes_text "Q65: open text for Yes to done career planning in school"
+642. 
 .     // Q66: Have you taken coursework related to your future career
 .     destring q66, replace
-638.     rename q66 career_course
-639.     replace career_course = -1 if career_course == 2
-640.     replace career_course = 0 if career_course == 3
-641. 
-.     lab define career_course -1 "No" 0 "Not Sure" 1 "Yes"
-642.     lab val career_course career_course
-643.     lab var career_course "Q66: Have you taken course related to career"
-644. 
-.     rename q66_1_text career_course_yes_text
-645.     lab var career_course_yes_text "Q66: open text for Yes to taken course related to career"
+643.     rename q66 career_course
+644.     replace career_course = -1 if career_course == 2
+645.     replace career_course = 0 if career_course == 3
 646. 
+.     lab define career_course -1 "No" 0 "Not Sure" 1 "Yes"
+647.     lab val career_course career_course
+648.     lab var career_course "Q66: Have you taken course related to career"
+649. 
+.     rename q66_1_text career_course_yes_text
+650.     lab var career_course_yes_text "Q66: open text for Yes to taken course related to career"
+651. 
 .     // Q67: How important do you think it is that high schools do the following? Matrix question
 .     lab define important_3pt 1 "Not very important" 2 "Somewhat important" 3 "Very important"
-647. 
-.     rename q67_1 hs_important_rwm
-648.     rename q67_2 hs_important_civic
-649.     rename q67_3 hs_important_col
-650.     rename q67_4 hs_important_citizen
-651.     rename q67_5 hs_important_career
 652. 
+.     rename q67_1 hs_important_rwm
+653.     rename q67_2 hs_important_civic
+654.     rename q67_3 hs_important_col
+655.     rename q67_4 hs_important_citizen
+656.     rename q67_5 hs_important_career
+657. 
 .     foreach v of varlist hs_important_rwm - hs_important_career {
-653.         destring `v', replace 
-654.         lab val `v' important_3pt
-655.     }
-656. 
-.     lab var hs_important_rwm "Q67: important for HS to teach reading writing math"
-657.     lab var hs_important_civic "Q67: important to teach civic"
-658.     lab var hs_important_col "Q67: important to prep for college"
-659.     lab var hs_important_citizen "Q67: important to encourage active citizens"
-660.     lab var hs_important_career "Q67: important to prep for career"
+658.         destring `v', replace 
+659.         lab val `v' important_3pt
+660.     }
 661. 
+.     lab var hs_important_rwm "Q67: important for HS to teach reading writing math"
+662.     lab var hs_important_civic "Q67: important to teach civic"
+663.     lab var hs_important_col "Q67: important to prep for college"
+664.     lab var hs_important_citizen "Q67: important to encourage active citizens"
+665.     lab var hs_important_career "Q67: important to prep for career"
+666. 
 .     // Q68: How important is it to you that you vote in the next election?
 .     destring q68, generate(vote_important)
-662.     replace vote_important = 1 if q68 == "3"
-663.     replace vote_important = 3 if q68 == "1"
-664.     lab val vote_important important_3pt
-665.     lab var vote_important "Q68: how important to vote in next election"
-666. 
+667.     replace vote_important = 1 if q68 == "3"
+668.     replace vote_important = 3 if q68 == "1"
+669.     lab val vote_important important_3pt
+670.     lab var vote_important "Q68: how important to vote in next election"
+671. 
 .     **************** Demographics 
 . 
 .     //------------------------------
 .     // race
 .     //------------------------------
 .     rename q71 race_raw
-667.     gen black = 1 if strpos(race_raw, "1") !=0
-668.     replace black = 0 if strpos(race_raw, "1") ==0 & !mi(race_raw)
-669.     label var black "selected Black"
-670. 
+672.     gen black = 1 if strpos(race_raw, "1") !=0
+673.     replace black = 0 if strpos(race_raw, "1") ==0 & !mi(race_raw)
+674.     label var black "selected Black"
+675. 
 .     gen native = 1 if strpos(race_raw, "2") != 0
-671.     replace native = 0 if strpos(race_raw, "2") == 0 & !mi(race_raw)
-672.     label var native "selected American Indian/Alaskan Native"
-673. 
+676.     replace native = 0 if strpos(race_raw, "2") == 0 & !mi(race_raw)
+677.     label var native "selected American Indian/Alaskan Native"
+678. 
 .     gen asian = 1 if strpos(race_raw, "3") != 0
-674.     replace asian = 0 if strpos(race_raw, "3") ==0 & !mi(race_raw)
-675.     label var asian "selected Asian"
-676. 
+679.     replace asian = 0 if strpos(race_raw, "3") ==0 & !mi(race_raw)
+680.     label var asian "selected Asian"
+681. 
 .     gen filipino = 1 if strpos(race_raw, "4") !=0
-677.     replace filipino = 0 if strpos(race_raw, "4") == 0 & !mi(race_raw)
-678.     label var filipino "selected Filipino"
-679. 
+682.     replace filipino = 0 if strpos(race_raw, "4") == 0 & !mi(race_raw)
+683.     label var filipino "selected Filipino"
+684. 
 .     gen hispanic = 1 if strpos(race_raw, "5") != 0
-680.     replace hispanic = 0 if strpos(race_raw, "5") == 0 & !mi(race_raw)
-681.     label var hispanic "selected Hispanic"
-682. 
+685.     replace hispanic = 0 if strpos(race_raw, "5") == 0 & !mi(race_raw)
+686.     label var hispanic "selected Hispanic"
+687. 
 .     gen islander = 1 if strpos(race_raw, "6") !=0
-683.     replace islander = 0 if strpos(race_raw, "6") ==0 & !mi(race_raw)
-684.     label var islander "selected Pacific Islander"
-685. 
+688.     replace islander = 0 if strpos(race_raw, "6") ==0 & !mi(race_raw)
+689.     label var islander "selected Pacific Islander"
+690. 
 .     gen white = 1 if strpos(race_raw, "7") !=0
-686.     replace white = 0 if strpos(race_raw, "7") ==0 & !mi(race_raw)
-687.     label var white "selected White/Non-Hispanic"
-688. 
+691.     replace white = 0 if strpos(race_raw, "7") ==0 & !mi(race_raw)
+692.     label var white "selected White/Non-Hispanic"
+693. 
 .     // if other race was selected 
 .     gen other_race = 1 if strpos(race_raw, "8") !=0 
-689.     replace other_race = 0 if strpos(race_raw, "8") ==0 & !mi(race_raw)
-690.         /* & (black == 0) & (native == 0) & (asian == 0) & (filipino == 0) ///
+694.     replace other_race = 0 if strpos(race_raw, "8") ==0 & !mi(race_raw)
+695.         /* & (black == 0) & (native == 0) & (asian == 0) & (filipino == 0) ///
 >         & (hispanic == 0) & (islander == 0) & (white == 0)) */
 .     label var other_race "selected Other race"
-691. 
+696. 
 .     rename q71_8_text other_race_text
-692.     label var other_race_text "Q72: free response for race/ethnicity: other"
-693. 
+697.     label var other_race_text "Q72: free response for race/ethnicity: other"
+698. 
 .     // limit mutlirace to people who chose two or more from predefined options 
 .     gen numrace = 0
-694.     foreach v of varlist black-other_race {
-695.         replace numrace = numrace + `v'
-696.     }
-697. 
+699.     foreach v of varlist black-other_race {
+700.         replace numrace = numrace + `v'
+701.     }
+702. 
 .     ************** simple mutually exclusive race, 2024 version
 .     // differs from 2023 version in how multirace is defined
 .     label define race_simple_lab 1 "Black" 2 "Native" 3 "Asian" 4 "Filipino" ///
 >         5 "Hispanic" 6 "Pacific Islander" 7 "White" 8 "Other Race" ///
 >         9 "Multiracial" 
-698.     gen race_simple_24 = .
-699. 
+703.     gen race_simple_24 = .
+704. 
 .     // select only black, native, etc. 
 .     replace race_simple_24 = 1 if black == 1 & numrace == 1
-700.     replace race_simple_24 = 2 if native == 1 & numrace == 1
-701.     replace race_simple_24 = 3 if asian == 1 & numrace == 1
-702.     replace race_simple_24 = 4 if filipino == 1 & numrace == 1
-703.     replace race_simple_24 = 5 if hispanic == 1 & numrace == 1
-704.     replace race_simple_24 = 6 if islander == 1 & numrace == 1
-705.     replace race_simple_24 = 7 if white == 1 & numrace == 1
-706.     replace race_simple_24 = 8 if other_race == 1 & numrace == 1
-707.     // select 1 predefined and other race
+705.     replace race_simple_24 = 2 if native == 1 & numrace == 1
+706.     replace race_simple_24 = 3 if asian == 1 & numrace == 1
+707.     replace race_simple_24 = 4 if filipino == 1 & numrace == 1
+708.     replace race_simple_24 = 5 if hispanic == 1 & numrace == 1
+709.     replace race_simple_24 = 6 if islander == 1 & numrace == 1
+710.     replace race_simple_24 = 7 if white == 1 & numrace == 1
+711.     replace race_simple_24 = 8 if other_race == 1 & numrace == 1
+712.     // select 1 predefined and other race
 .     replace race_simple_24 = 1 if black == 1 & other_race == 1 & numrace == 2 
-708.     replace race_simple_24 = 2 if native == 1 & other_race == 1 & numrace == 2 
-709.     replace race_simple_24 = 3 if asian == 1 & other_race == 1 & numrace == 2 
-710.     replace race_simple_24 = 4 if filipino == 1 & other_race == 1 & numrace == 2 
-711.     replace race_simple_24 = 5 if hispanic == 1 & other_race == 1 & numrace == 2 
-712.     replace race_simple_24 = 6 if islander == 1 & other_race == 1 & numrace == 2 
-713.     replace race_simple_24 = 7 if white == 1 & other_race == 1 & numrace == 2 
-714.     // multiracial
+713.     replace race_simple_24 = 2 if native == 1 & other_race == 1 & numrace == 2 
+714.     replace race_simple_24 = 3 if asian == 1 & other_race == 1 & numrace == 2 
+715.     replace race_simple_24 = 4 if filipino == 1 & other_race == 1 & numrace == 2 
+716.     replace race_simple_24 = 5 if hispanic == 1 & other_race == 1 & numrace == 2 
+717.     replace race_simple_24 = 6 if islander == 1 & other_race == 1 & numrace == 2 
+718.     replace race_simple_24 = 7 if white == 1 & other_race == 1 & numrace == 2 
+719.     // multiracial
 .     // select 2 or more predefined options 
 .     replace race_simple_24 = 9 if (inrange(numrace, 2, 8) & other_race == 0) ///
 >         | (inrange(numrace, 3, 8) & other_race == 1)
-715.     label values race_simple_24 race_simple_lab
-716.     label var race_simple_24 "race narrowly defined (mutually exclusive), 2024 version"
-717. 
+720.     label values race_simple_24 race_simple_lab
+721.     label var race_simple_24 "race narrowly defined (mutually exclusive), 2024 version"
+722. 
 .     ************** simple mutually exclusive race, 2023 version
 .     gen race_simple_23 = .
-718.     label var race_simple_23 "mutually exclusive race, 2023 version"
-719.     replace race_simple_23 = race_simple_24 if numrace == 1
-720.     replace race_simple_23 = 9 if inrange(numrace, 2, 8)
-721.     lab val race_simple_23 race_simple_lab
-722. 
+723.     label var race_simple_23 "mutually exclusive race, 2023 version"
+724.     replace race_simple_23 = race_simple_24 if numrace == 1
+725.     replace race_simple_23 = 9 if inrange(numrace, 2, 8)
+726.     lab val race_simple_23 race_simple_lab
+727. 
 . 
 .     ************** mututally exclusive race based on URM hierarchy, same as 2023 version
 .     gen race_hrchy = .
-723.     lab var race_hrchy "mutually exclusive race based on URM hierarchy"
-724.     // initiate numerical value for category
+728.     lab var race_hrchy "mutually exclusive race based on URM hierarchy"
+729.     // initiate numerical value for category
 .     local j = 8
-725.     foreach cat in white other_race asian filipino islander hispanic black native {
-726.         replace race_hrchy = `j' if `cat' == 1
-727.         // copy the value label from the dummies
+730.     foreach cat in white other_race asian filipino islander hispanic black native {
+731.         replace race_hrchy = `j' if `cat' == 1
+732.         // copy the value label from the dummies
 .         local varlab: var lab `cat'
-728.         // remove unused part of string, keep only the race
+733.         // remove unused part of string, keep only the race
 .         local varlab = subinstr("`varlab'", "selected ", "", 1)
-729.         // update value label
+734.         // update value label
 .         lab define race_hrchy_lab `j' "`varlab'", add 
-730.         // update numerical category
+735.         // update numerical category
 .         local j = `j' - 1
-731.     }
-732.     label values race_hrchy race_hrchy_lab
-733. 
+736.     }
+737.     label values race_hrchy race_hrchy_lab
+738. 
 . 
 .     order race_raw other_race_text black-other_race numrace race_simple_24, after(vote_important)
-734. 
+739. 
 . 
 . 
 . 
@@ -1077,90 +1085,90 @@
 .     // Q72: What is the highest level of education completed among either of your parents (or those who raised you)?
 .     /* updated 8-6-2025 don't know is coded 7, everything else loses a rank */
 .     display "jake update here"
-735.     label define parent_edu_lab 1 "Did not complete high school" ///
+740.     label define parent_edu_lab 1 "Did not complete high school" ///
 >         2 "High school diploma" 3 "Some college, no college degree" ///
 >         4 "Associate degree" 5 "Bachelor's degree" ///
 >         6 "Graduate/Professional degree" 7 "Don't know"
-736.     destring q72, replace 
-737.     rename q72 parent_edu
-738.     lab val parent_edu parent_edu_lab
-739.     label var parent_edu "Q72: highest parent education"
-740. 
+741.     destring q72, replace 
+742.     rename q72 parent_edu
+743.     lab val parent_edu parent_edu_lab
+744.     label var parent_edu "Q72: highest parent education"
+745. 
 .     // first gen status, two ways 
 .     lab define firstgen 0 "Not firstgen" 1 "Firstgen"
-741.     gen firstgen_bydegree = inrange(parent_edu, 1,3)
-742.     replace firstgen_bydegree = . if mi(parent_edu)
-743. 
+746.     gen firstgen_bydegree = inrange(parent_edu, 1,3)
+747.     replace firstgen_bydegree = . if mi(parent_edu)
+748. 
 .     gen firstgen_byattend = inrange(parent_edu, 1, 2)
-744.     replace firstgen_byattend = . if mi(parent_edu)
-745.     /* added  8-6-2025*/
+749.     replace firstgen_byattend = . if mi(parent_edu)
+750.     /* added  8-6-2025*/
 .     replace firstgen_byattend = . if parent_edu==7
-746.     replace firstgen_bydegree = . if parent_edu==7
-747. 
+751.     replace firstgen_bydegree = . if parent_edu==7
+752. 
 . 
 .     lab val firstgen_byattend firstgen_bydegree firstgen
-748. 
+753. 
 .     // Q73: primary language at home
 .     destring q73, replace 
-749.     gen home_lang_eng = 2-q73 
-750.     lab define home_lang_eng 0 "No" 1 "Yes"
-751.     lab val home_lang_eng home_lang_eng
-752.     lab var home_lang_eng "Primary home language English"
-753. 
+754.     gen home_lang_eng = 2-q73 
+755.     lab define home_lang_eng 0 "No" 1 "Yes"
+756.     lab val home_lang_eng home_lang_eng
+757.     lab var home_lang_eng "Primary home language English"
+758. 
 .     rename q75 home_lang_other
-754.     label var home_lang_other "Q75: what language was primarily spoken at home"
-755. 
+759.     label var home_lang_other "Q75: what language was primarily spoken at home"
+760. 
 .     // Q77: do you currently have a job
 .     destring q77, replace 
-756.     gen has_job = 2- q77 
-757.     lab define has_job 0 "No" 1 "Yes"
-758.     lab val has_job has_job
-759.     lab var has_job "Q77: currently has a job"
-760. 
+761.     gen has_job = 2- q77 
+762.     lab define has_job 0 "No" 1 "Yes"
+763.     lab val has_job has_job
+764.     lab var has_job "Q77: currently has a job"
+765. 
 .     // Q78: How many hours a week do you work at your job?
 .     lab define hours_perweek 1 "Less than 10" 2 "10-19" 3 "20-30" 4 "More than 30"
-761.     destring q78, gen (hours_perweek)
-762.     lab val hours_perweek hours_perweek
-763.     lab var hours_perweek "Q78: how many hours work a week"
-764. 
+766.     destring q78, gen (hours_perweek)
+767.     lab val hours_perweek hours_perweek
+768.     lab var hours_perweek "Q78: how many hours work a week"
+769. 
 .     // Q80: gender identity 
 .     rename q80 gender_raw
-765. 
-.     label define gender_lab 1 "Woman" 2 "Man" 3 "Non-binary" 4 "Prefer not to say" 5 "Other"
-766.     destring gender_raw, gen(gender)
-767.     lab val gender gender_lab
-768. 
-.     rename q80_5_text gender_other_text
-769.     lab var gender_other_text "Free response for gender: other"
 770. 
-.     destring q81, gen(interview) 
-771.     lab def interview 1 "Yes" 2 "No"
-772.     lab val interview interview
+.     label define gender_lab 1 "Woman" 2 "Man" 3 "Non-binary" 4 "Prefer not to say" 5 "Other"
+771.     destring gender_raw, gen(gender)
+772.     lab val gender gender_lab
 773. 
-.     rename q83 interview_email 
-774.     replace interview_email = strlower(stritrim(strtrim(interview_email)))
+.     rename q80_5_text gender_other_text
+774.     lab var gender_other_text "Free response for gender: other"
 775. 
+.     destring q81, gen(interview) 
+776.     lab def interview 1 "Yes" 2 "No"
+777.     lab val interview interview
+778. 
+.     rename q83 interview_email 
+779.     replace interview_email = strlower(stritrim(strtrim(interview_email)))
+780. 
 . 
 .     rename q86 coll_excite
-776.     label var coll_excite "Q90: what excites you most about college"
-777. 
+781.     label var coll_excite "Q90: what excites you most about college"
+782. 
 .     rename q88 coll_challenge 
-778.     label var coll_challenge "Q92: biggest challenge you will face in college"
-779. 
+783.     label var coll_challenge "Q92: biggest challenge you will face in college"
+784. 
 .     order coll_excite coll_challenge, after(interview_email)
-780. 
+785. 
 . 
 . 
 . 
 .     //------------------ clear text variables
 .     include $projdir/do/macros_csac.doh 
-781. 
+786. 
 .     foreach v of local text_qs {
-782.         replace `v' =  strupper(stritrim(strtrim(`v')))
-783. 
+787.         replace `v' =  strupper(stritrim(strtrim(`v')))
+788. 
 . 
 .     }
-784. 
+789. 
 .     //------------ consolidate people who responded other to race and wrote in
 . 
 .     /* labelbook: 
@@ -1177,63 +1185,71 @@
 >     */
 .     // if only white, then white
 .     replace race_hrchy = 8 if other_race_text=="WHITE" & race_hrchy==7
-785.     replace race_hrchy = 6 if strpos(other_race_text, "ASIAN")!=0 & race_hrchy==7
-786.     replace race_hrchy = 3 if (strpos(other_race_text, "MEXICAN")!=0 ///
+790.     replace race_hrchy = 6 if strpos(other_race_text, "ASIAN")!=0 & race_hrchy==7
+791.     replace race_hrchy = 3 if (strpos(other_race_text, "MEXICAN")!=0 ///
 >         | strpos(other_race_text, "LATINO")!=0 ///
 >         | strpos(other_race_text, "LATINA")!=0 ///
 >         | strpos(other_race_text, "LATINX")!=0 ///
 >         | strpos(other_race_text, "HISPANIC")!=0) ///
 >         & race_hrchy==7
-787.     replace race_hrchy = 2 if strpos(other_race_text, "AFRICAN") !=0 ///
+792.     replace race_hrchy = 2 if strpos(other_race_text, "AFRICAN") !=0 ///
 >         | strpos(other_race_text, "BLACK") !=0 ///
 >         & race_hrchy==7
-788. 
+793. 
 . 
 . 
 .     //------ merge in NCES codes
 .     preserve 
-789.     import delimited  $projdir/dta/survey_25_nces.csv, varnames(1) clear
-790.     tempfile nces 
-791.     save `nces', replace 
-792.     restore 
-793. 
+794.     import delimited  $projdir/dta/survey_25_nces.csv, varnames(1) clear
+795.     tempfile nces 
+796.     save `nces', replace 
+797.     restore 
+798. 
 .     merge 1:1 responseid using `nces', keep(1 3) noupdate nogen  
-794. 
+799. 
 .     // the email variable seems different from what they provided in the survey
 .     lab var email "Email from merging on NCES codes"
-795.     rename stdt_hs_code nces_code 
-796.     lab var nces_code "NCES code for high school"
-797. 
+800.     rename stdt_hs_code nces_code 
+801.     lab var nces_code "NCES code for high school"
+802. 
 . 
 . 
 .     /* jake add - geographic info from NCES code 
 >     modified by CS aug 28 2025 */
 .     merge m:1 nces_code using "$projdir/dta/nces_to_merge.dta", keep(1 3) noupdate nogen
-798.     rename locale schoollocale
-799.     rename region schoolregion
-800. 
-.     gen schoollocale_comb= .
-801.     replace schoollocale_comb = 1 if inlist(schoollocale, 11,12,13)
-802.     replace schoollocale_comb = 2 if inlist(schoollocale, 21,22,23)
-803.     replace schoollocale_comb = 3 if inlist(schoollocale, 31,32,33)
-804.     replace schoollocale_comb = 4 if inlist(schoollocale, 41,42,43)
+803.     rename locale schoollocale
+804.     rename region schoolregion
 805. 
+.     gen schoollocale_comb= .
+806.     replace schoollocale_comb = 1 if inlist(schoollocale, 11,12,13)
+807.     replace schoollocale_comb = 2 if inlist(schoollocale, 21,22,23)
+808.     replace schoollocale_comb = 3 if inlist(schoollocale, 31,32,33)
+809.     replace schoollocale_comb = 4 if inlist(schoollocale, 41,42,43)
+810. 
 .     gen schoollocale_comb2 =.
-806.     replace schoollocale_comb2 = 1 if inlist(schoollocale, 11,12,13)
-807.     replace schoollocale_comb2 = 2 if inlist(schoollocale, 21,22,23)
-808.     replace schoollocale_comb2 = 3 if inlist(schoollocale, 31,32,33, 41,42,43)
-809. 
+811.     replace schoollocale_comb2 = 1 if inlist(schoollocale, 11,12,13)
+812.     replace schoollocale_comb2 = 2 if inlist(schoollocale, 21,22,23)
+813.     replace schoollocale_comb2 = 3 if inlist(schoollocale, 31,32,33, 41,42,43)
+814. 
 .     label def schoollocale_comb 1 "City" 2 "Suburb" 3 "Town" 4 "Rural"
-810.     label def schoollocale_comb2 1 "City" 2 "Suburb" 3 "Town/Rural"
-811. 
+815.     label def schoollocale_comb2 1 "City" 2 "Suburb" 3 "Town/Rural"
+816. 
 .     label val schoollocale_comb schoollocale_comb
-812.     label val schoollocale_comb2 schoollocale_comb2
-813. 
+817.     label val schoollocale_comb2 schoollocale_comb2
+818. 
 .     /* end jake add */
 . 
+. 
+.     foreach num in `all_qnums' {
+819.         foreach q in `q`num'_subqs' {
+820.             local `q'_str: variable label `q'
+821.         }
+822.     }
+823. 
+. 
 .     compress 
-814.     save $projdir/dta/csac_2025_initial_clean_`version'.dta, replace 
-815. }
+824.     save $projdir/dta/csac_2025_initial_clean_`version'.dta, replace 
+825. }
 (encoding automatically selected: ISO-8859-1)
 (188 vars, 11,845 obs)
 (file /home/tmp/St207438.000001 not found)
@@ -1327,6 +1343,7 @@ variable coll_applied_short was str41 now str47
 (215 real changes made)
 variable coll_applied_short was str47 now str57
 (174 real changes made)
+(2,906 real changes made)
 (5,831 missing values generated)
 (1,586 real changes made)
 (9,881 missing values generated)
@@ -2056,13 +2073,6 @@ delimiter now ;
 >     "How many hours a week do you work at your job?"
 >     ;
 
-. foreach num in `all_qnums' {;
-  2.     foreach q in `q`num'_subqs' {;
-  3.         local `q'_str: variable label `q';
-  4.     };
-  5. }
-> ;
-
 . local fafsa_qs 
 >     why_fafsa_requirement why_fafsa_assignment why_fafsa_eligible
 >     why_fafsa_expected why_fafsa_other
@@ -2236,6 +2246,13 @@ delimiter now ;
 >     schoollocale_comb2
 >     ;
 
+. local location_qs
+>     schoollocale
+>     schoolregion
+>     schoollocale_comb
+>     schoollocale_comb2
+>     ;
+
 . local text_qs 
 >     why_fafsa_other_text
 >     finaid_challenge_other_text
@@ -2259,19 +2276,32 @@ delimiter now ;
 >     coll_challenge
 >     ;
 
-.         local race_hrchy_str "Race";
+. local csac_qs 
+>     11 12 14 15 16 42 43 46
+>     ;
+
+. local csac_text_qs
+>     why_fafsa_other_text
+>     finaid_challenge_other_text
+>     ;
+
+.         local race_hrchy_str "Race/Ethnicity";
 
 . local gender_str "Gender";
 
 . local parent_edu_str "Parent Education";
 
-. local firstgen_byattend_str "First-Gen (Attend)";
+. local firstgen_byattend_str "First-Gen: Attend";
 
 . local firstgen_bydegree_str "First-Gen (Degree)";
 
 . local plan_transfer_cat_str "Transfer Intention Categories";
 
-. local hs_grade "High School Grades";
+. local hs_grade_coarse_str "High School Grades";
+
+. local schoolregion_str "Region";
+
+. local schoollocale_comb_str "Locale";
 
 . #delimit cr 
 delimiter now cr
@@ -2339,6 +2369,7 @@ file /home/tmp/St207438.000003 saved as .dta format
   variable coll_applied_notsure was float now byte
   variable coll_applied_none was float now byte
   variable coll_applied_coded was long now byte
+  variable coll_applied_coded_single was long now byte
   variable coll_applied_coded_trunc was float now byte
   variable coll_applied_only_ccc was float now byte
   variable coll_applied_only_csu was float now byte
@@ -2563,7 +2594,7 @@ file /home/tmp/St207438.000003 saved as .dta format
   variable why_no_atog_raw was strL now str5
   variable why_de_raw was strL now str9
   why_de_other_text is strL now coalesced
-  (22,780,256 bytes saved)
+  (22,815,867 bytes saved)
 file /home/research/ca_ed_lab/projects/csac_survey2025/dta/csac_2025_initial_clean_jul.dta saved
 (encoding automatically selected: ISO-8859-1)
 (188 vars, 13,299 obs)
@@ -2658,6 +2689,7 @@ variable coll_applied_short was str41 now str47
 (227 real changes made)
 variable coll_applied_short was str47 now str57
 (189 real changes made)
+(2,994 real changes made)
 (7,030 missing values generated)
 (1,644 real changes made)
 (11,207 missing values generated)
@@ -3387,13 +3419,6 @@ delimiter now ;
 >     "How many hours a week do you work at your job?"
 >     ;
 
-. foreach num in `all_qnums' {;
-  2.     foreach q in `q`num'_subqs' {;
-  3.         local `q'_str: variable label `q';
-  4.     };
-  5. }
-> ;
-
 . local fafsa_qs 
 >     why_fafsa_requirement why_fafsa_assignment why_fafsa_eligible
 >     why_fafsa_expected why_fafsa_other
@@ -3567,6 +3592,13 @@ delimiter now ;
 >     schoollocale_comb2
 >     ;
 
+. local location_qs
+>     schoollocale
+>     schoolregion
+>     schoollocale_comb
+>     schoollocale_comb2
+>     ;
+
 . local text_qs 
 >     why_fafsa_other_text
 >     finaid_challenge_other_text
@@ -3590,19 +3622,32 @@ delimiter now ;
 >     coll_challenge
 >     ;
 
-.         local race_hrchy_str "Race";
+. local csac_qs 
+>     11 12 14 15 16 42 43 46
+>     ;
+
+. local csac_text_qs
+>     why_fafsa_other_text
+>     finaid_challenge_other_text
+>     ;
+
+.         local race_hrchy_str "Race/Ethnicity";
 
 . local gender_str "Gender";
 
 . local parent_edu_str "Parent Education";
 
-. local firstgen_byattend_str "First-Gen (Attend)";
+. local firstgen_byattend_str "First-Gen: Attend";
 
 . local firstgen_bydegree_str "First-Gen (Degree)";
 
 . local plan_transfer_cat_str "Transfer Intention Categories";
 
-. local hs_grade "High School Grades";
+. local hs_grade_coarse_str "High School Grades";
+
+. local schoolregion_str "Region";
+
+. local schoollocale_comb_str "Locale";
 
 . #delimit cr 
 delimiter now cr
@@ -3670,6 +3715,7 @@ file /home/tmp/St207438.000006 saved as .dta format
   variable coll_applied_notsure was float now byte
   variable coll_applied_none was float now byte
   variable coll_applied_coded was long now byte
+  variable coll_applied_coded_single was long now byte
   variable coll_applied_coded_trunc was float now byte
   variable coll_applied_only_ccc was float now byte
   variable coll_applied_only_csu was float now byte
@@ -3895,14 +3941,17 @@ file /home/tmp/St207438.000006 saved as .dta format
   variable why_no_atog_raw was strL now str5
   variable why_de_raw was strL now str9
   why_de_other_text is strL now coalesced
-  (25,150,796 bytes saved)
+  (25,190,625 bytes saved)
 file /home/research/ca_ed_lab/projects/csac_survey2025/dta/csac_2025_initial_clean_aug.dta saved
 
+. 
+. 
+. 
 . 
 . 
 . log close 
       name:  <unnamed>
        log:  /home/research/ca_ed_lab/projects/csac_survey2025/log/clean/clean_qualtrics_download.txt
   log type:  text
- closed on:   8 Sep 2025, 13:19:19
+ closed on:  15 Dec 2025, 16:08:40
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

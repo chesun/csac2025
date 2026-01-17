@@ -2,7 +2,7 @@
       name:  <unnamed>
        log:  /home/research/ca_ed_lab/projects/csac_survey2025/log/explore/tab_questions_parent_edu_jul.txt
   log type:  text
- opened on:  15 Dec 2025, 16:06:17
+ opened on:  22 Dec 2025, 15:58:54
 hs_senior by parent_edu
 
 +----------------+
@@ -309,29 +309,29 @@ finaid_challenge_tech by parent_edu
   Q72: highest parent |     difficulties
             education |         0          1 |     Total
 ----------------------+----------------------+----------
-Did not complete high |       579        500 |     1,079 
-                      |     53.66      46.34 |    100.00 
+Did not complete high |       903        176 |     1,079 
+                      |     83.69      16.31 |    100.00 
 ----------------------+----------------------+----------
-  High school diploma |       655        831 |     1,486 
-                      |     44.08      55.92 |    100.00 
+  High school diploma |     1,266        220 |     1,486 
+                      |     85.20      14.80 |    100.00 
 ----------------------+----------------------+----------
-Some college, no coll |       269        334 |       603 
-                      |     44.61      55.39 |    100.00 
+Some college, no coll |       502        101 |       603 
+                      |     83.25      16.75 |    100.00 
 ----------------------+----------------------+----------
-     Associate degree |       155        159 |       314 
-                      |     49.36      50.64 |    100.00 
+     Associate degree |       280         34 |       314 
+                      |     89.17      10.83 |    100.00 
 ----------------------+----------------------+----------
-    Bachelor's degree |       310        440 |       750 
-                      |     41.33      58.67 |    100.00 
+    Bachelor's degree |       663         87 |       750 
+                      |     88.40      11.60 |    100.00 
 ----------------------+----------------------+----------
-Graduate/Professional |       320        416 |       736 
-                      |     43.48      56.52 |    100.00 
+Graduate/Professional |       652         84 |       736 
+                      |     88.59      11.41 |    100.00 
 ----------------------+----------------------+----------
-           Don't know |       199        171 |       370 
-                      |     53.78      46.22 |    100.00 
+           Don't know |       317         53 |       370 
+                      |     85.68      14.32 |    100.00 
 ----------------------+----------------------+----------
-                Total |     2,487      2,851 |     5,338 
-                      |     46.59      53.41 |    100.00 
+                Total |     4,583        755 |     5,338 
+                      |     85.86      14.14 |    100.00 
 finaid_challenge_none by parent_edu
 
 +----------------+
@@ -6205,5 +6205,5 @@ Graduate/Professional |        88         90         48         22 |       248
       name:  <unnamed>
        log:  /home/research/ca_ed_lab/projects/csac_survey2025/log/explore/tab_questions_parent_edu_jul.txt
   log type:  text
- closed on:  15 Dec 2025, 16:06:17
+ closed on:  22 Dec 2025, 15:58:54
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

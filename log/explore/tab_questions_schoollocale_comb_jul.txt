@@ -2,7 +2,7 @@
       name:  <unnamed>
        log:  /home/research/ca_ed_lab/projects/csac_survey2025/log/explore/tab_questions_schoollocale_comb_jul.txt
   log type:  text
- opened on:  15 Dec 2025, 16:06:19
+ opened on:  22 Dec 2025, 15:58:56
 hs_senior by schoollocale_comb
 
 +----------------+
@@ -237,20 +237,20 @@ finaid_challenge_tech by schoollocale_comb
 schoolloca |     difficulties
    le_comb |         0          1 |     Total
 -----------+----------------------+----------
-      City |       952      1,125 |     2,077 
-           |     45.84      54.16 |    100.00 
+      City |     1,775        302 |     2,077 
+           |     85.46      14.54 |    100.00 
 -----------+----------------------+----------
-    Suburb |       924      1,147 |     2,071 
-           |     44.62      55.38 |    100.00 
+    Suburb |     1,790        281 |     2,071 
+           |     86.43      13.57 |    100.00 
 -----------+----------------------+----------
-      Town |       150        193 |       343 
-           |     43.73      56.27 |    100.00 
+      Town |       280         63 |       343 
+           |     81.63      18.37 |    100.00 
 -----------+----------------------+----------
-     Rural |       137        162 |       299 
-           |     45.82      54.18 |    100.00 
+     Rural |       255         44 |       299 
+           |     85.28      14.72 |    100.00 
 -----------+----------------------+----------
-     Total |     2,163      2,627 |     4,790 
-           |     45.16      54.84 |    100.00 
+     Total |     4,100        690 |     4,790 
+           |     85.59      14.41 |    100.00 
 finaid_challenge_none by schoollocale_comb
 
 +----------------+
@@ -4648,5 +4648,5 @@ schoolloca |       Q78: how many hours work a week
       name:  <unnamed>
        log:  /home/research/ca_ed_lab/projects/csac_survey2025/log/explore/tab_questions_schoollocale_comb_jul.txt
   log type:  text
- closed on:  15 Dec 2025, 16:06:19
+ closed on:  22 Dec 2025, 15:58:56
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

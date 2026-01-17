@@ -2,7 +2,7 @@
       name:  <unnamed>
        log:  /home/research/ca_ed_lab/projects/csac_survey2025/log/explore/tab_fafsa_challenge.txt
   log type:  text
- opened on:  15 Dec 2025, 16:46:40
+ opened on:  22 Dec 2025, 15:58:59
 
 . 
 . foreach q of local q14_subqs {
@@ -4485,10 +4485,9 @@ Town/Rural |       638         18 |       656
      Total |     4,766        137 |     4,903 
            |     97.21       2.79 |    100.00 
 
-. 
 . log close 
       name:  <unnamed>
        log:  /home/research/ca_ed_lab/projects/csac_survey2025/log/explore/tab_fafsa_challenge.txt
   log type:  text
- closed on:  15 Dec 2025, 16:46:40
+ closed on:  22 Dec 2025, 15:58:59
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

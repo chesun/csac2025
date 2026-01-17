@@ -2,7 +2,7 @@
       name:  <unnamed>
        log:  /home/research/ca_ed_lab/projects/csac_survey2025/log/explore/tab_questions_plan_transfer_cat_jul.txt
   log type:  text
- opened on:  15 Dec 2025, 16:06:18
+ opened on:  22 Dec 2025, 15:58:54
 hs_senior by plan_transfer_cat
 
 +----------------+
@@ -214,17 +214,17 @@ finaid_challenge_tech by plan_transfer_cat
  crosstab, by plan to |     difficulties
              transfer |         0          1 |     Total
 ----------------------+----------------------+----------
-     plan to transfer |       837        972 |     1,809 
-                      |     46.27      53.73 |    100.00 
+     plan to transfer |     1,527        282 |     1,809 
+                      |     84.41      15.59 |    100.00 
 ----------------------+----------------------+----------
-Unsure or no transfer |       337        352 |       689 
-                      |     48.91      51.09 |    100.00 
+Unsure or no transfer |       601         88 |       689 
+                      |     87.23      12.77 |    100.00 
 ----------------------+----------------------+----------
-               4 year |     1,213      1,489 |     2,702 
-                      |     44.89      55.11 |    100.00 
+               4 year |     2,343        359 |     2,702 
+                      |     86.71      13.29 |    100.00 
 ----------------------+----------------------+----------
-                Total |     2,387      2,813 |     5,200 
-                      |     45.90      54.10 |    100.00 
+                Total |     4,471        729 |     5,200 
+                      |     85.98      14.02 |    100.00 
 finaid_challenge_none by plan_transfer_cat
 
 +----------------+
@@ -3693,5 +3693,5 @@ Unsure or no transfer |        17         41         29         14 |       101
       name:  <unnamed>
        log:  /home/research/ca_ed_lab/projects/csac_survey2025/log/explore/tab_questions_plan_transfer_cat_jul.txt
   log type:  text
- closed on:  15 Dec 2025, 16:06:18
+ closed on:  22 Dec 2025, 15:58:55
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

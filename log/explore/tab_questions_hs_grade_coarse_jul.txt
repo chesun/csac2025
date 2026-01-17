@@ -2,7 +2,7 @@
       name:  <unnamed>
        log:  /home/research/ca_ed_lab/projects/csac_survey2025/log/explore/tab_questions_hs_grade_coarse_jul.txt
   log type:  text
- opened on:  15 Dec 2025, 16:06:18
+ opened on:  22 Dec 2025, 15:58:55
 hs_senior by hs_grade_coarse
 
 +----------------+
@@ -237,20 +237,20 @@ finaid_challenge_tech by hs_grade_coarse
        HS grade |     difficulties
        (coarse) |         0          1 |     Total
 ----------------+----------------------+----------
-       Mostly A |       669        921 |     1,590 
-                |     42.08      57.92 |    100.00 
+       Mostly A |     1,389        201 |     1,590 
+                |     87.36      12.64 |    100.00 
 ----------------+----------------------+----------
-     Mostly A/B |     1,126      1,206 |     2,332 
-                |     48.28      51.72 |    100.00 
+     Mostly A/B |     1,999        333 |     2,332 
+                |     85.72      14.28 |    100.00 
 ----------------+----------------------+----------
-Mostly B or B/C |       653        747 |     1,400 
-                |     46.64      53.36 |    100.00 
+Mostly B or B/C |     1,192        208 |     1,400 
+                |     85.14      14.86 |    100.00 
 ----------------+----------------------+----------
-Mostly C or C/D |       149        137 |       286 
-                |     52.10      47.90 |    100.00 
+Mostly C or C/D |       235         51 |       286 
+                |     82.17      17.83 |    100.00 
 ----------------+----------------------+----------
-          Total |     2,597      3,011 |     5,608 
-                |     46.31      53.69 |    100.00 
+          Total |     4,815        793 |     5,608 
+                |     85.86      14.14 |    100.00 
 finaid_challenge_none by hs_grade_coarse
 
 +----------------+
@@ -4645,5 +4645,5 @@ Mostly C or C/D |         9         18         19          7 |        53
       name:  <unnamed>
        log:  /home/research/ca_ed_lab/projects/csac_survey2025/log/explore/tab_questions_hs_grade_coarse_jul.txt
   log type:  text
- closed on:  15 Dec 2025, 16:06:18
+ closed on:  22 Dec 2025, 15:58:55
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

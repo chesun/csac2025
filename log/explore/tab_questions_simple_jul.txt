@@ -2,7 +2,7 @@
       name:  <unnamed>
        log:  /home/research/ca_ed_lab/projects/csac_survey2025/log/explore/tab_questions_simple_jul.txt
   log type:  text
- opened on:  15 Dec 2025, 16:06:17
+ opened on:  22 Dec 2025, 15:58:53
 tabulation of hs_senior
 
         Q8: |
@@ -96,8 +96,8 @@ challenges: |
 difficultie |
           s |      Freq.     Percent        Cum.
 ------------+-----------------------------------
-          0 |      2,928       45.69       45.69
-          1 |      3,481       54.31      100.00
+          0 |      5,499       85.80       85.80
+          1 |        910       14.20      100.00
 ------------+-----------------------------------
       Total |      6,409      100.00
 tabulation of finaid_challenge_none
@@ -1888,5 +1888,5 @@ More than 30 |        124       10.39      100.00
       name:  <unnamed>
        log:  /home/research/ca_ed_lab/projects/csac_survey2025/log/explore/tab_questions_simple_jul.txt
   log type:  text
- closed on:  15 Dec 2025, 16:06:17
+ closed on:  22 Dec 2025, 15:58:53
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
