@@ -2,7 +2,7 @@
       name:  <unnamed>
        log:  /home/research/ca_ed_lab/projects/csac_survey2025/log/explore/tab_questions_schoolregion_aug.txt
   log type:  text
- opened on:  22 Dec 2025, 15:58:58
+ opened on:  20 Jan 2026, 18:10:19
 hs_senior by schoolregion
 
 +----------------+
@@ -7762,5 +7762,5 @@ S San Joaquin Valley |        14         24         20          9 |        67
       name:  <unnamed>
        log:  /home/research/ca_ed_lab/projects/csac_survey2025/log/explore/tab_questions_schoolregion_aug.txt
   log type:  text
- closed on:  22 Dec 2025, 15:58:59
+ closed on:  20 Jan 2026, 18:10:19
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

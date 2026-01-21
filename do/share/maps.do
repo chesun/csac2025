@@ -34,13 +34,20 @@ replace plan_transfer_yes = . if mi(plan_transfer)
 gen de_yes = (de==1)
 replace de_yes=. if mi(de)
 
-keep schoolcountyfips schoolregion plan_transfer_yes transfer_factor_proximity de_yes
+** heard about fafsa juinor or prior
+gen heard_fafsa_early = .
+replace heard_fafsa_early = 1 if inlist(when_heard_fafsa, 2, 3)
+replace heard_fafsa_early = 0 if when_heard_fafsa==1
+lab var heard_fafsa_early "Heard FAFSA Junior Year or Prior"
+
+local mapvars plan_transfer_yes transfer_factor_proximity de_yes heard_fafsa_early
+keep schoolcountyfips schoolregion `mapvars'
 keep if !mi(plan_transfer_yes) | !mi(transfer_factor_proximity) | !mi(de_yes)
 keep if !mi(schoolcountyfips)
 
 rename schoolcountyfips geoid 
 
-collapse plan_transfer_yes transfer_factor_proximity de_yes, by(schoolregion)
+collapse `mapvars', by(schoolregion)
 tempfile byregion 
 save `byregion', replace 
 
@@ -62,7 +69,7 @@ merge m:1 schoolregion using `byregion', nogen keep(3)
 save $projdir/dta/char_by_county.dta, replace 
 export delimited geoid transfer_factor_proximity using $projdir/out/proximity_by_county.csv, replace 
 
-export delimited geoid plan_transfer_yes transfer_factor_proximity de_yes using $projdir/out/map_data_by_county.csv, replace
+export delimited geoid `mapvars' using $projdir/out/map_data_by_county.csv, replace
 ** merge to shapefile 
 merge 1:1 geoid using counties.dta
 
@@ -74,6 +81,9 @@ graph export  transfer_factor_proximity.png, replace
 
 spmap de_yes using coord, id(id) fcolor(Blues) clmethod(custom) clbreaks(0.32 0.35 0.38 0.41 0.44 0.47 0.51)
 graph export  de_yes.png, replace 
+
+spmap heard_fafsa_early using coord, id(id) fcolor(Blues) 
+graph export  heard_fafsa_early.png, replace 
 
 
 * export county region xwalk 

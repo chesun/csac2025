@@ -2,7 +2,7 @@
       name:  <unnamed>
        log:  /home/research/ca_ed_lab/projects/csac_survey2025/log/explore/tab_questions_parent_edu_jul.txt
   log type:  text
- opened on:  22 Dec 2025, 15:58:54
+ opened on:  20 Jan 2026, 18:10:14
 hs_senior by parent_edu
 
 +----------------+
@@ -6205,5 +6205,5 @@ Graduate/Professional |        88         90         48         22 |       248
       name:  <unnamed>
        log:  /home/research/ca_ed_lab/projects/csac_survey2025/log/explore/tab_questions_parent_edu_jul.txt
   log type:  text
- closed on:  22 Dec 2025, 15:58:54
+ closed on:  20 Jan 2026, 18:10:14
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

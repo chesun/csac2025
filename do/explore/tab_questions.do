@@ -149,4 +149,12 @@ tab race_hrchy why_fafsa_first3, row
 
 tab schoolregion firstgen_byattend, row
 
+di "cont gen"
+tab schoolregion support_received_parent if firstgen_byattend == 0, row 
+tab schoolregion support_received_counselor if firstgen_byattend == 0, row 
+di "first gen"
+tab schoolregion support_received_parent if firstgen_byattend == 1, row 
+tab schoolregion support_received_counselor if firstgen_byattend == 1, row 
+
+
 log close 

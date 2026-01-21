@@ -2,7 +2,7 @@
       name:  <unnamed>
        log:  /home/research/ca_ed_lab/projects/csac_survey2025/log/explore/tab_questions_schoollocale_comb_jul.txt
   log type:  text
- opened on:  22 Dec 2025, 15:58:56
+ opened on:  20 Jan 2026, 18:10:16
 hs_senior by schoollocale_comb
 
 +----------------+
@@ -4648,5 +4648,5 @@ schoolloca |       Q78: how many hours work a week
       name:  <unnamed>
        log:  /home/research/ca_ed_lab/projects/csac_survey2025/log/explore/tab_questions_schoollocale_comb_jul.txt
   log type:  text
- closed on:  22 Dec 2025, 15:58:56
+ closed on:  20 Jan 2026, 18:10:16
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

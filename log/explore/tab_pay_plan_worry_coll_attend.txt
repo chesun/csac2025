@@ -2,7 +2,7 @@
       name:  <unnamed>
        log:  /home/research/ca_ed_lab/projects/csac_survey2025/log/explore/tab_pay_plan_worry_coll_attend.txt
   log type:  text
- opened on:  22 Dec 2025, 15:58:59
+ opened on:  20 Jan 2026, 18:10:20
 
 . 
 . foreach n in 46 50 {
@@ -689,5 +689,5 @@ None of these |        89         79         29 |       197
       name:  <unnamed>
        log:  /home/research/ca_ed_lab/projects/csac_survey2025/log/explore/tab_pay_plan_worry_coll_attend.txt
   log type:  text
- closed on:  22 Dec 2025, 15:58:59
+ closed on:  20 Jan 2026, 18:10:20
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
