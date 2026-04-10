@@ -146,6 +146,8 @@ lab var why_fafsa_first3 "Requirement or assignment or expected"
 
 tab race_hrchy why_fafsa_first3, row 
 
+tab firstgen_byattend why_fafsa_first3, row 
+
 
 tab schoolregion firstgen_byattend, row
 
