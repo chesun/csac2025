@@ -38,7 +38,9 @@ Thumbs.db
 
 # Claude Code local files (not shared across machines)
 .claude/settings.local.json
-.claude/state/
+.claude/state/*
+!.claude/state/primary_source_surnames.txt
+!.claude/state/verification-ledger.md
 CLAUDE.local.md
 
 # IDE
