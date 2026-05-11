@@ -1,104 +1,121 @@
-# CLAUDE.MD -- Applied Microeconomics Research with Claude Code
+# CLAUDE.md — Research Workflow with Claude Code
 
-**Project:** 2025 California High School Senior Survey
-**Institution:** California Education Lab, UC Davis
-**Partners:** California Student Aid Commission (CSAC), Cradle to Career Data System (C2C)
-**Branch:** main
+<!-- HOW TO USE: This is the universal (main) template.
+     If your research is applied micro (observational data, identification
+     strategies), check out the `applied-micro` branch after forking.
+     If your research is behavioral/experimental (lab, field, online
+     experiments, formal theory), check out the `behavioral` branch.
+     Otherwise, main works on its own as a general-purpose research template.
 
----
+     Replace [BRACKETED PLACEHOLDERS] with your project info.
+     Keep this file under ~150 lines — Claude loads it every session.
+     Based on clo-author (Hugo Sant'Anna) + infrastructure from
+     Pedro Sant'Anna, adapted for research-paper workflows. -->
 
-## Project Overview
-
-Survey of every California high school senior who filed a FAFSA or CADAA (Dream Act application), distributed by CSAC via email. Focuses on financial aid experience and transition to college.
-
-### Deliverables
-
-| Deliverable | Status | Format | Link |
-|-------------|--------|--------|------|
-| C2C Student Experience Report | Published | Web report | [c2c.ca.gov](https://c2c.ca.gov/resources/student-experience-report-2025-academic-year/) |
-| CSAC Report | Under revision | Word/Google Doc | Under review by lab directors and agency partners |
-
-### Key Constraints
-
-- **Remote data:** Survey data lives on the Scribe server at UC Davis. Claude cannot access the server directly. Do files are uploaded and executed there.
-- **Figures from Excel:** Most report graphs are produced in `Main Report Tables.xlsx` (on Box).
-- **Stata on server:** Claude reviews code and generates new do files with documented assumptions.
-- **Stats source of truth:** All stats come from the draft text or `Main Report Tables.xlsx`. Mental math on existing numbers is fine. Never invent numbers. If a stat can't be found, ask.
-- **No assumptions:** Do not guess or assume details about workflow, infrastructure, tools, or preferences. Only state what was explicitly provided. If a detail is missing and relevant, leave it out or ask.
+**Project:** [YOUR PROJECT NAME]
+**Institution:** [YOUR INSTITUTION]
+**Branch:** main (universal)
+**Primary analysis language:** [e.g., Stata 17 / R / Python / Julia]
+**LaTeX engine:** [pdflatex | xelatex]
+**Overleaf path:** [optional — e.g., ~/Library/CloudStorage/Dropbox/Apps/Overleaf/project-name. If set, compile/verify tooling targets this path instead of in-repo paper/ and talks/.]
 
 ---
 
 ## Core Principles
 
-- **Plan first** -- enter plan mode before non-trivial tasks; save plans to `quality_reports/plans/`
-- **Verify after** -- compile and confirm output at the end of every task
-- **Quality gates** -- weighted aggregate score; nothing ships below 80/100; see `quality.md`
-- **Worker-critic pairs** -- every creator has a paired critic; critics never edit files
-- **[LEARN] tags** -- when corrected, save `[LEARN:category] wrong -> right` to MEMORY.md
+- **Plan first** — enter plan mode before non-trivial tasks; save plans to `quality_reports/plans/`
+- **Verify after** — compile and confirm output at the end of every task
+- **Single source of truth** — the paper is authoritative; talks and supplements derive from it (see `single-source-of-truth.md`)
+- **Quality gates** — weighted aggregate score; nothing ships below 80/100 (see `quality.md`)
+- **Worker-critic pairs** — every creator has a paired critic; critics never edit files (see `agents.md`)
+- **Primary source first** — before citing a paper in a load-bearing artifact, read the PDF and produce reading notes in `master_supporting_docs/literature/reading_notes/`; hooks block edits otherwise (see `primary-source-first.md`)
+- **Decisions are ADRs** — substantive decisions live in `decisions/NNNN_slug.md` (see `decision-log.md`)
+- **Track TODOs** — project root `TODO.md` (see `todo-tracking.md`)
+- **Auto-memory** — corrections and preferences saved automatically via Claude Code's built-in memory system
+
+---
+
+## Getting Started
+
+1. Fill in the `[BRACKETED PLACEHOLDERS]` in this file.
+2. Decide whether you want an overlay:
+   - Observational-data, identification-strategy research → `git checkout applied-micro`
+   - Experimental, theoretical, or behavioral research → `git checkout behavioral`
+   - General-purpose → stay on `main`.
+3. Run `/discover interview [topic]` to build your research specification, or `/new-project [topic]` for the full orchestrated pipeline.
 
 ---
 
 ## Folder Structure
 
 ```
-csac2025/
+[YOUR-PROJECT]/
 ├── CLAUDE.md                    # This file
+├── TODO.md                      # Active work tracker (see todo-tracking.md)
+├── README.md                    # Project README
 ├── .claude/                     # Rules, skills, agents, hooks
-├── Bibliography_base.bib        # Centralized bibliography
-├── do/                          # Stata do files (primary analysis code)
-│   ├── main.do                  # Master file -- runs all do files
-│   ├── settings.do              # Globals for paths, machine-specific branching
-│   ├── macros_csac.doh          # Helper macros (included via `include`)
-│   ├── clean/                   # Data cleaning scripts
-│   ├── explore/                 # Exploratory analysis
-│   └── share/                   # Output for sharing (maps, appendix, etc.)
-├── dta/                         # Datasets (shapefiles, crosswalks, intermediates)
-├── doc/                         # Documentation
-├── out/                         # Output files (CSVs, docs for sharing)
-├── log/                         # Stata log files
-├── figures/                     # Final figures (.pdf, .png) referenced in reports
-├── tables/                      # Final tables (.tex) referenced in paper
-├── paper/                       # LaTeX manuscript (if applicable)
+├── decisions/                   # ADRs — NNNN_slug.md, append-only (see decision-log.md)
+├── paper/                       # Main LaTeX manuscript (source of truth)
+│   ├── main.tex                 # Primary paper file (populate when starting)
 │   └── sections/                # Section-level .tex files
-├── slides/                      # Presentation files (PowerPoint, Beamer)
-├── preambles/                   # LaTeX headers / shared preamble
-├── supplementary/               # Online appendix and supplements
-├── replication/                 # Replication package for deposit
-├── py/                          # Python scripts and utilities
-├── explorations/                # Research sandbox
-├── quality_reports/             # Plans, session logs, reviews, scores
-├── templates/                   # Session log, quality report templates
-├── master_supporting_docs/      # Reference papers and data docs
-└── venv/                        # Python virtual environment (gitignored)
+├── talks/                       # Derivative Beamer presentations (job_market / seminar / short / lightning)
+├── figures/                     # Final figures (.pdf, .png) referenced in paper
+├── tables/                      # Final tables (.tex) referenced in paper
+├── preambles/                   # Shared LaTeX preamble / header
+├── data/
+│   ├── raw/                     # Original untouched data (often gitignored)
+│   └── cleaned/                 # Processed datasets
+├── scripts/                     # Analysis code (stata/, R/, python/)
+├── replication/                 # AEA replication package (code + data + README)
+├── explorations/                # Research sandbox (see exploration-folder-protocol)
+├── quality_reports/             # Plans, specs, reviews, session logs, merges
+├── templates/                   # Session log, quality report, requirements spec templates
+└── master_supporting_docs/
+    ├── literature/              # Primary sources (gated by primary-source-first hook)
+    │   ├── papers/              # PDFs (surname_year naming)
+    │   └── reading_notes/       # One .md per cited paper
+    └── supporting_papers/       # Methodology references, textbook chapters
 ```
+
+**If using Overleaf:** keep `paper/` and `talks/` as stubs (or symlinks to your Overleaf directory). Point compile and verify tooling at the Overleaf path via the `Overleaf path:` header above — rules and skills honor that override.
 
 ---
 
-## Server Paths
+## Bulk Content Storage
 
-The remote server uses these paths (defined in `do/settings.do`):
+This template ships with three storage tiers for content that doesn't fit plain git well:
 
-```stata
-global projdir  "/home/research/ca_ed_lab/projects/csac_survey2025"
-global rawdtadir "/home/research/ca_ed_lab/data/restricted_access/raw/csac_survey/2025"
-global csac2023projdir "/home/research/ca_ed_lab/projects/csac_survey2023"
-global csac2024projdir "/home/research/ca_ed_lab/projects/csac_survey2024"
+- **Plain git** — code, LaTeX, ADRs, plans, reading notes (markdown), data documentation
+- **Git LFS** (opt-in) — paper PDFs (`master_supporting_docs/literature/papers/*.pdf`), large generated figures
+- **DVC** (opt-in) — data files (`data/raw/`, `data/cleaned/`); pointers in git, blobs in a private remote (Dropbox is the default)
+
+Default state for a fresh fork: PDFs gitignored, no LFS, no DVC. Each project decides whether to enable LFS / DVC based on whether it has a substantial paper library and / or evolving data that needs versioning.
+
+**Setup on a new machine** (after `git clone`):
+
+```bash
+brew install git-lfs dvc        # one-time per machine
+git lfs install                 # registers LFS hooks
+./bin/setup-machine.sh          # if present; else: git lfs pull && dvc pull
 ```
+
+**Daily workflow:** LFS is filesystem-transparent (use normal git commands). DVC is two-step (`git push` + `dvc push` after committing data changes). Before declaring a session done, run `/tools sync-status` to verify everything is pushed.
+
+For full architecture, enabling instructions, and rollback: see `.claude/rules/data-version-control.md` and `quality_reports/plans/*lfs-dvc-migration-plan.md`.
 
 ---
 
 ## Commands
 
 ```bash
-# Paper compilation (3-pass, pdflatex)
+# Paper compilation (3-pass) — adjust engine and paths per project
 cd paper && pdflatex -interaction=nonstopmode main.tex
-BIBINPUTS=..:$BIBINPUTS bibtex main
+BIBINPUTS=..:$BIBINPUTS bibtex main    # or: biber main (with biblatex)
 pdflatex -interaction=nonstopmode main.tex
 pdflatex -interaction=nonstopmode main.tex
-
-# Talk compilation (pdflatex with preambles)
-cd slides && TEXINPUTS=../preambles:$TEXINPUTS pdflatex -interaction=nonstopmode talk.tex
 ```
+
+See `.claude/skills/tools/SKILL.md` for the `/tools compile` subcommand that automates this.
 
 ---
 
@@ -109,40 +126,37 @@ cd slides && TEXINPUTS=../preambles:$TEXINPUTS pdflatex -interaction=nonstopmode
 | 80 | Commit | Weighted aggregate (blocking) |
 | 90 | PR | Weighted aggregate (blocking) |
 | 95 | Submission | Aggregate + all components >= 80 |
-| -- | Advisory | Talks (reported, non-blocking) |
+| — | Advisory | Talks (non-blocking) |
 
-See `quality.md` for weighted aggregation formula.
+See `quality.md` for weighted aggregation formula and per-target deduction tables.
 
 ---
 
-## Skills Quick Reference
+## Skills Quick Reference (universal)
 
 | Command | What It Does |
 |---------|-------------|
-| `/new-project [topic]` | Full pipeline: idea -> paper (orchestrated) |
+| `/new-project [topic]` | Full pipeline: idea → paper (orchestrated) |
 | `/discover [mode] [topic]` | Discovery: interview, literature, data, ideation |
-| `/strategize [question]` | Identification strategy or pre-analysis plan |
 | `/analyze [dataset]` | End-to-end data analysis |
 | `/write [section]` | Draft paper sections (anti-hedging, notation protocol) |
 | `/humanize [path]` | Strip AI writing patterns from any external-facing doc (paper, slide, README, blog, cover/response letter) |
-| `/review [file/--flag]` | Quality reviews (routes by target: paper, code, peer) |
+| `/review [file/--flag]` | Quality reviews (routes by target) |
 | `/revise [report]` | R&R cycle: classify + route referee comments |
 | `/talk [mode] [format]` | Create, audit, or compile Beamer presentations |
-| `/submit [mode]` | Journal targeting -> package -> audit -> final gate |
-| `/challenge [file --mode]` | Devil's advocate: `--paper`, `--identification`, `--fresh` |
-| `/balance [treatment]` | Generate balance tables (Stata/R) |
-| `/event-study [spec]` | Event study plots with pre-trends and CIs |
-| `/compile-latex [file]` | 3-pass pdflatex + bibtex (papers and talks) |
-| `/tools [subcommand]` | Utilities: commit, validate-bib, context-status, learn, etc. |
+| `/submit [mode]` | Journal targeting → package → audit → final gate |
+| `/challenge [file --mode]` | Devil's advocate: `--paper`, `--fresh`, etc. |
+| `/tools [subcommand]` | Utilities: commit, compile, validate-bib, context-status, learn |
+
+Overlay branches add paradigm-specific skills: `applied-micro` adds `/strategize`, `/balance`, `/event-study`; `behavioral` adds `/design`, `/theory`, `/otree`, `/qualtrics`, `/preregister`.
 
 ---
 
 ## Current Project State
 
-| Component | Location | Status | Description |
-|-----------|----------|--------|-------------|
-| C2C Report | Published externally | Complete | Student experience report, 2025 academic year |
-| CSAC Report | `paper/csac_2025_draft_apr_09_2026.docx` | Under revision | Being reviewed by lab directors and agency partners |
-| Stata Code | `do/` | Active | Cleaning, exploration, and sharing scripts |
-| Figures | `Main Report Tables.xlsx` (Box) / `figures/` | Active | Most graphs from Excel; some Stata-generated |
-| Replication | `replication/` | Not started | -- |
+| Component | File | Status | Description |
+|-----------|------|--------|-------------|
+| Paper | `paper/main.tex` | [draft/submitted/R&R] | [Brief description] |
+| Data | `scripts/` | [complete/in-progress] | [Analysis description] |
+| Replication | `replication/` | [not started/ready] | [Deposit status] |
+| Job Market Talk | `talks/job_market_talk.tex` | — | [Status] |
