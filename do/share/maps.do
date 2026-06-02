@@ -88,3 +88,5 @@ graph export  heard_fafsa_early.png, replace
 
 * export county region xwalk 
 export delimited geoid countyname schoolregion using $projdir/out/county_region_xwalk.csv, replace 
+
+export delimited countyname schoolregion heard_fafsa_early using $projdir/out/fig3_county_region_rate.csv, replace
