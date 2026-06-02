@@ -1,0 +1,297 @@
+-------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  /home/research/ca_ed_lab/projects/csac_survey2024/log/explore/expl
+> ore_sample_char.smcl
+  log type:  smcl
+ opened on:   7 Aug 2024, 13:30:26
+
+. 
+. graph drop _all
+
+. set more off
+
+. set varabbrev off
+
+. set graphics off
+
+. set scheme s1color
+
+. set seed 1984
+
+. 
+. use $projdir/dta/csac_2024_initial_clean, clear
+
+. 
+. //------------------------------------------------
+. // HS Senior status and college going
+. //------------------------------------------------
+. 
+. tab hs_senior 
+
+        W8: |
+  Graduated |
+      HS in |
+  spring or |
+summer 2024 |      Freq.     Percent        Cum.
+------------+-----------------------------------
+         No |      2,431       17.27       17.27
+        Yes |     11,642       82.73      100.00
+------------+-----------------------------------
+      Total |     14,073      100.00
+
+. 
+. tab attend_coll if hs_senior == 1
+
+Q27: plan to |
+      attend |
+  college in |
+    the fall |      Freq.     Percent        Cum.
+-------------+-----------------------------------
+I don't know |        417        4.16        4.16
+          No |        164        1.64        5.79
+         Yes |      9,448       94.21      100.00
+-------------+-----------------------------------
+       Total |     10,029      100.00
+
+. 
+. 
+. 
+. //------------------------------------------------
+. // demographics
+. //------------------------------------------------
+. 
+. di "race"
+race
+
+. 
+. tab race if hs_senior==1 
+
+    cleaned race |      Freq.     Percent        Cum.
+-----------------+-----------------------------------
+           Black |        388        4.54        4.54
+          Native |         29        0.34        4.88
+           Asian |        968       11.33       16.22
+        Filipino |        132        1.55       17.76
+        Hispanic |      4,430       51.87       69.64
+Pacific Islander |         24        0.28       69.92
+           White |      1,319       15.44       85.36
+     Multiracial |      1,250       14.64      100.00
+-----------------+-----------------------------------
+           Total |      8,540      100.00
+
+. 
+. 
+. di "parent education"
+parent education
+
+. 
+. tab parent_edu if hs_senior==1
+
+          Q73: highest parent education |      Freq.     Percent        Cum.
+----------------------------------------+-----------------------------------
+                             Don't know |        507        5.80        5.80
+                       Associate degree |        452        5.17       10.98
+                      Bachelor's degree |      1,277       14.61       25.59
+           Did not complete high school |      1,813       20.75       46.34
+Graduate/Professional degree beyond Bac |      1,167       13.36       59.69
+                    High school diploma |      2,389       27.34       87.03
+        Some college, no college degree |      1,133       12.97      100.00
+----------------------------------------+-----------------------------------
+                                  Total |      8,738      100.00
+
+. 
+. 
+. di "home language is english"
+home language is english
+
+. 
+. tab home_lang_eng if hs_senior == 1
+
+    Q76: Is |
+    English |
+    primary |
+language at |
+       home |      Freq.     Percent        Cum.
+------------+-----------------------------------
+         No |      3,979       45.48       45.48
+        Yes |      4,769       54.52      100.00
+------------+-----------------------------------
+      Total |      8,748      100.00
+
+. 
+. di "has a job"
+has a job
+
+. 
+. tab has_job if hs_senior == 1
+
+       Q80: |
+current has |
+      a job |      Freq.     Percent        Cum.
+------------+-----------------------------------
+         No |      6,510       74.39       74.39
+        Yes |      2,241       25.61      100.00
+------------+-----------------------------------
+      Total |      8,751      100.00
+
+. 
+. di "gender"
+gender
+
+. 
+. tab gender if hs_senior == 1
+
+                                Q83 |      Freq.     Percent        Cum.
+------------------------------------+-----------------------------------
+                                Man |      3,169       36.26       36.26
+                              Woman |      5,162       59.06       95.32
+                         Non-binary |        193        2.21       97.53
+                  Prefer not to say |        180        2.06       99.59
+Other (please feel free to specify) |         36        0.41      100.00
+------------------------------------+-----------------------------------
+                              Total |      8,740      100.00
+
+. 
+. 
+. 
+. //------------------------------------------------
+. // tools and factors in college selection 
+. //------------------------------------------------
+. 
+. di "Q45: how helpful was..."
+Q45: how helpful was...
+
+. 
+. foreach var of varlist helpful_source_* {
+  2.     tab `var' if hs_senior == 1
+  3. }
+
+  Q45: how helpful |
+ was HS counselors |
+      and teachers |      Freq.     Percent        Cum.
+-------------------+-----------------------------------
+Not at all helpful |        844        9.65        9.65
+  Somewhat helpful |      3,936       44.99       54.64
+      Very Helpful |      3,968       45.36      100.00
+-------------------+-----------------------------------
+             Total |      8,748      100.00
+
+  Q45: how helpful |
+      were parents |      Freq.     Percent        Cum.
+-------------------+-----------------------------------
+Not at all helpful |      1,539       18.67       18.67
+  Somewhat helpful |      3,759       45.59       64.26
+      Very Helpful |      2,947       35.74      100.00
+-------------------+-----------------------------------
+             Total |      8,245      100.00
+
+  Qrt: how helpful |
+       were family |
+           members |      Freq.     Percent        Cum.
+-------------------+-----------------------------------
+Not at all helpful |      1,757       27.65       27.65
+  Somewhat helpful |      2,828       44.50       72.15
+      Very Helpful |      1,770       27.85      100.00
+-------------------+-----------------------------------
+             Total |      6,355      100.00
+
+  Q45: how helpful |
+      were friends |      Freq.     Percent        Cum.
+-------------------+-----------------------------------
+Not at all helpful |      1,535       21.58       21.58
+  Somewhat helpful |      4,153       58.39       79.98
+      Very Helpful |      1,424       20.02      100.00
+-------------------+-----------------------------------
+             Total |      7,112      100.00
+
+  Q45: how helpful |
+  was social media |      Freq.     Percent        Cum.
+-------------------+-----------------------------------
+Not at all helpful |      2,047       32.01       32.01
+  Somewhat helpful |      3,353       52.43       84.44
+      Very Helpful |        995       15.56      100.00
+-------------------+-----------------------------------
+             Total |      6,395      100.00
+
+  Q45: how helpful |
+      were college |
+     website/staff |      Freq.     Percent        Cum.
+-------------------+-----------------------------------
+Not at all helpful |      1,021       12.92       12.92
+  Somewhat helpful |      4,492       56.85       69.77
+      Very Helpful |      2,389       30.23      100.00
+-------------------+-----------------------------------
+             Total |      7,902      100.00
+
+  Q45: how helpful |
+       was private |
+ college counselor |      Freq.     Percent        Cum.
+-------------------+-----------------------------------
+Not at all helpful |        859       20.58       20.58
+  Somewhat helpful |      1,839       44.06       64.64
+      Very Helpful |      1,476       35.36      100.00
+-------------------+-----------------------------------
+             Total |      4,174      100.00
+
+. 
+. di "Q47: social media platforms"
+Q47: social media platforms
+
+. 
+. sum social_reddit - social_other if hs_senior == 1
+
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+social_red~t |     11,642    .0514516    .2209266          0          1
+   social_fb |     11,642    .0125408    .1112861          0          1
+   social_yt |     11,642    .1249785    .3307088          0          1
+social_tik~k |     11,642    .1764302    .3812021          0          1
+socila_insta |     11,642     .202972    .4022291          0          1
+-------------+---------------------------------------------------------
+social_twi~r |     11,642    .0144305    .1192623          0          1
+social_other |     11,642    .0401993    .1964347          0          1
+
+. 
+. di "Q49: who helpd you fill out the college application"
+Q49: who helpd you fill out the college application
+
+. sum help_parent - help_self if hs_senior==1
+
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+ help_parent |     11,642    .3373991    .4728426          0          1
+ help_family |     11,642    .1124377    .3159178          0          1
+help_teacher |     11,642    .1586497    .3653648          0          1
+help_colls~f |     11,642    .0679437      .25166          0          1
+help_privc~r |     11,642    .0535131    .2250641          0          1
+-------------+---------------------------------------------------------
+help_hscou~r |     11,642    .3126611    .4635974          0          1
+  help_other |     11,642    .0413159    .1990284          0          1
+   help_self |     11,642    .2472084    .4314074          0          1
+
+. 
+. di "Q50: college planning resources"
+Q50: college planning resources
+
+. sum resrc_finaidtool - resrc_other  if hs_senior==1
+
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+resrc_fina~l |     11,642    .3031266    .4596292          0          1
+resrc_webs~e |     11,642    .4138464    .4925428          0          1
+resrc_comp~l |     11,642     .129531    .3358011          0          1
+resrc_agtool |     11,642           0           0          0          0
+resrc_appt~l |     11,642    .2223845    .4158659          0          1
+-------------+---------------------------------------------------------
+resrc_essa~l |     11,642    .1016148    .3021541          0          1
+resrc_priv~r |     11,642    .0623604    .2418194          0          1
+ resrc_other |     11,642    .0209586    .1432519          0          1
+
+. 
+. log close 
+      name:  <unnamed>
+       log:  /home/research/ca_ed_lab/projects/csac_survey2024/log/explore/expl
+> ore_sample_char.smcl
+  log type:  smcl
+ closed on:   7 Aug 2024, 13:30:26
+-------------------------------------------------------------------------------
