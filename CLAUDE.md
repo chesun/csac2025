@@ -1,5 +1,7 @@
 # CLAUDE.MD -- Applied Microeconomics Research with Claude Code
 
+> **Part of the [CEL Resource Hub](https://christinasun.net/cel_resource_hub/)** — Christina Sun's index of CEL code handoffs plus setup and workflow guides for inheriting them. Hub page for this repo: <https://christinasun.net/cel_resource_hub/repositories/csac-2025/>.
+
 **Project:** 2025 California High School Senior Survey
 **Institution:** California Education Lab, UC Davis
 **Partners:** California Student Aid Commission (CSAC), Cradle to Career Data System (C2C)
