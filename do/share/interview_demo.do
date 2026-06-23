@@ -22,4 +22,4 @@ import delimited $projdir/dta/interview_email_random150_batch1_flag.csv, varname
 
 merge 1:1 responseid using $projdir/dta/csac_2025_initial_clean.dta, keepusing(`demo_qs' `other_tab_qs') keep(3) 
 
-export delimited $projdir/out/interview_email_random150_batch1_withdemo.csv
+export delimited $projdir/out/interview_email_random150_batch1_withdemo.csv, replace 
