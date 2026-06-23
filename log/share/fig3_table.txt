@@ -1,0 +1,78 @@
+------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  /home/research/ca_ed_lab/projects/csac_survey2025/log/share/fig3_table.txt
+  log type:  text
+ opened on:   2 Jun 2026, 16:01:00
+
+. 
+. use $projdir/dta/char_by_county.dta, clear
+
+. 
+. // schoolregion carries the "region" value label, so the CSV will write
+. // the region name (e.g., "SF Bay Area") not the numeric code.
+. keep countyname schoolregion heard_fafsa_early
+variable countyname not found
+r(111);
+
+end of do-file
+
+r(111);
+
+. use $projdir/dta/char_by_county.dta, clear
+
+. desc heard_fafsa_early
+
+Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+------------------------------------------------------------------------------------------------------------------
+heard_fafsa_e~y float   %9.0g                 (mean) heard_fafsa_early
+
+. desc heard_fafsa_early, det
+
+Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+------------------------------------------------------------------------------------------------------------------
+heard_fafsa_e~y float   %9.0g                 (mean) heard_fafsa_early
+
+. sum heard_fafsa_early
+
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+heard_fafs~y |         58    .6331926    .0670553   .5172414   .6901408
+
+. desc'
+' invalid name
+r(198);
+
+. desc
+
+Contains data from /home/research/ca_ed_lab/projects/csac_survey2025/dta/char_by_county.dta
+ Observations:            58                  
+    Variables:             6                  20 Jan 2026 18:42
+------------------------------------------------------------------------------------------------------------------
+Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+------------------------------------------------------------------------------------------------------------------
+geoid           str5    %9s                   CNTY
+schoolregion    float   %20.0g     region     
+plan_transfer~s float   %9.0g                 (mean) plan_transfer_yes
+transfer_fact~y float   %9.0g                 (mean) transfer_factor_proximity
+de_yes          float   %9.0g                 (mean) de_yes
+heard_fafsa_e~y float   %9.0g                 (mean) heard_fafsa_early
+------------------------------------------------------------------------------------------------------------------
+Sorted by: 
+
+. do $projdir/do/share/maps.do
+
+. /* make stata maps */
+. 
+. /* to run this do file, type
+> do $projdir/do/share/maps.do
+>  */
+. 
+. log close _all
+      name:  <unnamed>
+       log:  /home/research/ca_ed_lab/projects/csac_survey2025/log/share/fig3_table.txt
+  log type:  text
+ closed on:   2 Jun 2026, 16:09:29
+------------------------------------------------------------------------------------------------------------------

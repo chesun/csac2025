@@ -2,7 +2,7 @@
       name:  <unnamed>
        log:  /home/research/ca_ed_lab/projects/csac_survey2025/log/explore/tab_pay_plan_worry_coll_applied.txt
   log type:  text
- opened on:  20 Jan 2026, 18:10:20
+ opened on:  23 Jun 2026, 12:01:06
 
 . foreach n in 46 50 {
   2.     foreach q of local q`n'_subqs {
@@ -533,5 +533,5 @@ coll_applied_coded_si |     Q50: worry about college
       name:  <unnamed>
        log:  /home/research/ca_ed_lab/projects/csac_survey2025/log/explore/tab_pay_plan_worry_coll_applied.txt
   log type:  text
- closed on:  20 Jan 2026, 18:10:20
+ closed on:  23 Jun 2026, 12:01:06
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

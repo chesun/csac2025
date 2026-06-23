@@ -2,7 +2,7 @@
       name:  <unnamed>
        log:  /home/research/ca_ed_lab/projects/csac_survey2025/log/explore/tab_questions_schoollocale_aug.txt
   log type:  text
- opened on:  20 Jan 2026, 18:10:19
+ opened on:  23 Jun 2026, 12:01:05
 hs_senior by schoollocale
 
 +----------------+
@@ -8797,5 +8797,5 @@ Suburban Midsize |        15         15          8          4 |        42
       name:  <unnamed>
        log:  /home/research/ca_ed_lab/projects/csac_survey2025/log/explore/tab_questions_schoollocale_aug.txt
   log type:  text
- closed on:  20 Jan 2026, 18:10:19
+ closed on:  23 Jun 2026, 12:01:05
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

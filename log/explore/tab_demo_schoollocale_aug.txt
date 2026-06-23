@@ -2,7 +2,7 @@
       name:  <unnamed>
        log:  /home/research/ca_ed_lab/projects/csac_survey2025/log/explore/tab_demo_schoollocale_aug.txt
   log type:  text
- opened on:  20 Jan 2026, 18:10:19
+ opened on:  23 Jun 2026, 12:01:06
 race_hrchy by schoollocale
 
 +----------------+
@@ -256,5 +256,5 @@ Suburban Midsize |        78         74 |       152
       name:  <unnamed>
        log:  /home/research/ca_ed_lab/projects/csac_survey2025/log/explore/tab_demo_schoollocale_aug.txt
   log type:  text
- closed on:  20 Jan 2026, 18:10:19
+ closed on:  23 Jun 2026, 12:01:06
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

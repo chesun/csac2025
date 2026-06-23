@@ -1200,13 +1200,13 @@
 \row
 \trowd\trgaph108\trleft-108\cellx1200\cellx2100\cellx3000\cellx3900
 \ql {0}\cell
-\qr {3087}\cell
-\qr {45.73}\cell
-\qr {45.73}\cell
+\qr {5796}\cell
+\qr {85.87}\cell
+\qr {85.87}\cell
 \row
 \ql {1}\cell
-\qr {3663}\cell
-\qr {54.27}\cell
+\qr {954}\cell
+\qr {14.13}\cell
 \qr {100.00}\cell
 \row
 \trowd\trgaph108\trleft-108\clbrdrt\brdrw10\brdrs\cellx1200\clbrdrt\brdrw10\brdrs\cellx2100\clbrdrt\brdrw10\brdrs\cellx3000\clbrdrt\brdrw10\brdrs\cellx3900 
@@ -1247,9 +1247,9 @@
 \clbrdrr\brdrw10\brdrs \clbrdrt\brdrw25\brdrs\cellx3000
 \fs24\pard\intbl\ql {American Indian/Alaskan Native}\cell
 \clbrdrt\brdrw25\brdrs\cellx4000
-\fs24\pard\intbl\qr {48}\cell
+\fs24\pard\intbl\qr {102}\cell
 \clbrdrt\brdrw25\brdrs\cellx5000
-\fs24\pard\intbl\qr {67}\cell
+\fs24\pard\intbl\qr {13}\cell
 \clbrdrt\brdrw25\brdrs\cellx6000
 \fs24\pard\intbl\qr {115}\cell
 \row}
@@ -1257,9 +1257,9 @@
 \clbrdrr\brdrw10\brdrs \cellx3000
 \fs24\pard\intbl\ql {}\cell
 \cellx4000
-\fs24\pard\intbl\qr {41.74}\cell
+\fs24\pard\intbl\qr {88.70}\cell
 \cellx5000
-\fs24\pard\intbl\qr {58.26}\cell
+\fs24\pard\intbl\qr {11.30}\cell
 \cellx6000
 \fs24\pard\intbl\qr {100.00}\cell
 \row}
@@ -1267,9 +1267,9 @@
 \clbrdrr\brdrw10\brdrs \cellx3000
 \fs24\pard\intbl\ql {Black}\cell
 \cellx4000
-\fs24\pard\intbl\qr {151}\cell
+\fs24\pard\intbl\qr {323}\cell
 \cellx5000
-\fs24\pard\intbl\qr {222}\cell
+\fs24\pard\intbl\qr {50}\cell
 \cellx6000
 \fs24\pard\intbl\qr {373}\cell
 \row}
@@ -1277,9 +1277,9 @@
 \clbrdrr\brdrw10\brdrs \cellx3000
 \fs24\pard\intbl\ql {}\cell
 \cellx4000
-\fs24\pard\intbl\qr {40.48}\cell
+\fs24\pard\intbl\qr {86.60}\cell
 \cellx5000
-\fs24\pard\intbl\qr {59.52}\cell
+\fs24\pard\intbl\qr {13.40}\cell
 \cellx6000
 \fs24\pard\intbl\qr {100.00}\cell
 \row}
@@ -1287,9 +1287,9 @@
 \clbrdrr\brdrw10\brdrs \cellx3000
 \fs24\pard\intbl\ql {Hispanic}\cell
 \cellx4000
-\fs24\pard\intbl\qr {1558}\cell
+\fs24\pard\intbl\qr {2696}\cell
 \cellx5000
-\fs24\pard\intbl\qr {1643}\cell
+\fs24\pard\intbl\qr {505}\cell
 \cellx6000
 \fs24\pard\intbl\qr {3201}\cell
 \row}
@@ -1297,9 +1297,9 @@
 \clbrdrr\brdrw10\brdrs \cellx3000
 \fs24\pard\intbl\ql {}\cell
 \cellx4000
-\fs24\pard\intbl\qr {48.67}\cell
+\fs24\pard\intbl\qr {84.22}\cell
 \cellx5000
-\fs24\pard\intbl\qr {51.33}\cell
+\fs24\pard\intbl\qr {15.78}\cell
 \cellx6000
 \fs24\pard\intbl\qr {100.00}\cell
 \row}
@@ -1307,9 +1307,9 @@
 \clbrdrr\brdrw10\brdrs \cellx3000
 \fs24\pard\intbl\ql {Pacific Islander}\cell
 \cellx4000
-\fs24\pard\intbl\qr {12}\cell
+\fs24\pard\intbl\qr {23}\cell
 \cellx5000
-\fs24\pard\intbl\qr {19}\cell
+\fs24\pard\intbl\qr {8}\cell
 \cellx6000
 \fs24\pard\intbl\qr {31}\cell
 \row}
@@ -1317,9 +1317,9 @@
 \clbrdrr\brdrw10\brdrs \cellx3000
 \fs24\pard\intbl\ql {}\cell
 \cellx4000
-\fs24\pard\intbl\qr {38.71}\cell
+\fs24\pard\intbl\qr {74.19}\cell
 \cellx5000
-\fs24\pard\intbl\qr {61.29}\cell
+\fs24\pard\intbl\qr {25.81}\cell
 \cellx6000
 \fs24\pard\intbl\qr {100.00}\cell
 \row}
@@ -1327,9 +1327,9 @@
 \clbrdrr\brdrw10\brdrs \cellx3000
 \fs24\pard\intbl\ql {Filipino}\cell
 \cellx4000
-\fs24\pard\intbl\qr {62}\cell
+\fs24\pard\intbl\qr {145}\cell
 \cellx5000
-\fs24\pard\intbl\qr {105}\cell
+\fs24\pard\intbl\qr {22}\cell
 \cellx6000
 \fs24\pard\intbl\qr {167}\cell
 \row}
@@ -1337,9 +1337,9 @@
 \clbrdrr\brdrw10\brdrs \cellx3000
 \fs24\pard\intbl\ql {}\cell
 \cellx4000
-\fs24\pard\intbl\qr {37.13}\cell
+\fs24\pard\intbl\qr {86.83}\cell
 \cellx5000
-\fs24\pard\intbl\qr {62.87}\cell
+\fs24\pard\intbl\qr {13.17}\cell
 \cellx6000
 \fs24\pard\intbl\qr {100.00}\cell
 \row}
@@ -1347,9 +1347,9 @@
 \clbrdrr\brdrw10\brdrs \cellx3000
 \fs24\pard\intbl\ql {Asian}\cell
 \cellx4000
-\fs24\pard\intbl\qr {294}\cell
+\fs24\pard\intbl\qr {598}\cell
 \cellx5000
-\fs24\pard\intbl\qr {378}\cell
+\fs24\pard\intbl\qr {74}\cell
 \cellx6000
 \fs24\pard\intbl\qr {672}\cell
 \row}
@@ -1357,9 +1357,9 @@
 \clbrdrr\brdrw10\brdrs \cellx3000
 \fs24\pard\intbl\ql {}\cell
 \cellx4000
-\fs24\pard\intbl\qr {43.75}\cell
+\fs24\pard\intbl\qr {88.99}\cell
 \cellx5000
-\fs24\pard\intbl\qr {56.25}\cell
+\fs24\pard\intbl\qr {11.01}\cell
 \cellx6000
 \fs24\pard\intbl\qr {100.00}\cell
 \row}
@@ -1367,9 +1367,9 @@
 \clbrdrr\brdrw10\brdrs \cellx3000
 \fs24\pard\intbl\ql {Other race}\cell
 \cellx4000
-\fs24\pard\intbl\qr {55}\cell
+\fs24\pard\intbl\qr {102}\cell
 \cellx5000
-\fs24\pard\intbl\qr {68}\cell
+\fs24\pard\intbl\qr {21}\cell
 \cellx6000
 \fs24\pard\intbl\qr {123}\cell
 \row}
@@ -1377,9 +1377,9 @@
 \clbrdrr\brdrw10\brdrs \cellx3000
 \fs24\pard\intbl\ql {}\cell
 \cellx4000
-\fs24\pard\intbl\qr {44.72}\cell
+\fs24\pard\intbl\qr {82.93}\cell
 \cellx5000
-\fs24\pard\intbl\qr {55.28}\cell
+\fs24\pard\intbl\qr {17.07}\cell
 \cellx6000
 \fs24\pard\intbl\qr {100.00}\cell
 \row}
@@ -1387,9 +1387,9 @@
 \clbrdrr\brdrw10\brdrs \cellx3000
 \fs24\pard\intbl\ql {White/Non-Hispanic}\cell
 \cellx4000
-\fs24\pard\intbl\qr {365}\cell
+\fs24\pard\intbl\qr {698}\cell
 \cellx5000
-\fs24\pard\intbl\qr {415}\cell
+\fs24\pard\intbl\qr {82}\cell
 \cellx6000
 \fs24\pard\intbl\qr {780}\cell
 \row}
@@ -1397,9 +1397,9 @@
 \clbrdrr\brdrw10\brdrs \cellx3000
 \fs24\pard\intbl\ql {}\cell
 \cellx4000
-\fs24\pard\intbl\qr {46.79}\cell
+\fs24\pard\intbl\qr {89.49}\cell
 \cellx5000
-\fs24\pard\intbl\qr {53.21}\cell
+\fs24\pard\intbl\qr {10.51}\cell
 \cellx6000
 \fs24\pard\intbl\qr {100.00}\cell
 \row}
@@ -1407,9 +1407,9 @@
 \clbrdrr\brdrw10\brdrs \clbrdrt\brdrw10\brdrs\cellx3000
 \fs24\pard\intbl\ql {Total}\cell
 \clbrdrt\brdrw10\brdrs\cellx4000
-\fs24\pard\intbl\qr {2545}\cell
+\fs24\pard\intbl\qr {4687}\cell
 \clbrdrt\brdrw10\brdrs\cellx5000
-\fs24\pard\intbl\qr {2917}\cell
+\fs24\pard\intbl\qr {775}\cell
 \clbrdrt\brdrw10\brdrs\cellx6000
 \fs24\pard\intbl\qr {5462}\cell
 \row}
@@ -1417,9 +1417,9 @@
 \clbrdrr\brdrw10\brdrs \cellx3000
 \fs24\pard\intbl\ql {}\cell
 \cellx4000
-\fs24\pard\intbl\qr {46.59}\cell
+\fs24\pard\intbl\qr {85.81}\cell
 \cellx5000
-\fs24\pard\intbl\qr {53.41}\cell
+\fs24\pard\intbl\qr {14.19}\cell
 \cellx6000
 \fs24\pard\intbl\qr {100.00}\cell
 \row}
@@ -1455,9 +1455,9 @@
 \clbrdrr\brdrw10\brdrs \clbrdrt\brdrw25\brdrs\cellx2074
 \fs24\pard\intbl\ql {Woman}\cell
 \clbrdrt\brdrw25\brdrs\cellx3074
-\fs24\pard\intbl\qr {1566}\cell
+\fs24\pard\intbl\qr {2824}\cell
 \clbrdrt\brdrw25\brdrs\cellx4074
-\fs24\pard\intbl\qr {1713}\cell
+\fs24\pard\intbl\qr {455}\cell
 \clbrdrt\brdrw25\brdrs\cellx5074
 \fs24\pard\intbl\qr {3279}\cell
 \row}
@@ -1465,9 +1465,9 @@
 \clbrdrr\brdrw10\brdrs \cellx2074
 \fs24\pard\intbl\ql {}\cell
 \cellx3074
-\fs24\pard\intbl\qr {47.76}\cell
+\fs24\pard\intbl\qr {86.12}\cell
 \cellx4074
-\fs24\pard\intbl\qr {52.24}\cell
+\fs24\pard\intbl\qr {13.88}\cell
 \cellx5074
 \fs24\pard\intbl\qr {100.00}\cell
 \row}
@@ -1475,9 +1475,9 @@
 \clbrdrr\brdrw10\brdrs \cellx2074
 \fs24\pard\intbl\ql {Man}\cell
 \cellx3074
-\fs24\pard\intbl\qr {839}\cell
+\fs24\pard\intbl\qr {1630}\cell
 \cellx4074
-\fs24\pard\intbl\qr {1075}\cell
+\fs24\pard\intbl\qr {284}\cell
 \cellx5074
 \fs24\pard\intbl\qr {1914}\cell
 \row}
@@ -1485,9 +1485,9 @@
 \clbrdrr\brdrw10\brdrs \cellx2074
 \fs24\pard\intbl\ql {}\cell
 \cellx3074
-\fs24\pard\intbl\qr {43.83}\cell
+\fs24\pard\intbl\qr {85.16}\cell
 \cellx4074
-\fs24\pard\intbl\qr {56.17}\cell
+\fs24\pard\intbl\qr {14.84}\cell
 \cellx5074
 \fs24\pard\intbl\qr {100.00}\cell
 \row}
@@ -1495,9 +1495,9 @@
 \clbrdrr\brdrw10\brdrs \cellx2074
 \fs24\pard\intbl\ql {Non-binary}\cell
 \cellx3074
-\fs24\pard\intbl\qr {58}\cell
+\fs24\pard\intbl\qr {90}\cell
 \cellx4074
-\fs24\pard\intbl\qr {49}\cell
+\fs24\pard\intbl\qr {17}\cell
 \cellx5074
 \fs24\pard\intbl\qr {107}\cell
 \row}
@@ -1505,9 +1505,9 @@
 \clbrdrr\brdrw10\brdrs \cellx2074
 \fs24\pard\intbl\ql {}\cell
 \cellx3074
-\fs24\pard\intbl\qr {54.21}\cell
+\fs24\pard\intbl\qr {84.11}\cell
 \cellx4074
-\fs24\pard\intbl\qr {45.79}\cell
+\fs24\pard\intbl\qr {15.89}\cell
 \cellx5074
 \fs24\pard\intbl\qr {100.00}\cell
 \row}
@@ -1515,9 +1515,9 @@
 \clbrdrr\brdrw10\brdrs \cellx2074
 \fs24\pard\intbl\ql {Prefer not to say}\cell
 \cellx3074
-\fs24\pard\intbl\qr {59}\cell
+\fs24\pard\intbl\qr {110}\cell
 \cellx4074
-\fs24\pard\intbl\qr {68}\cell
+\fs24\pard\intbl\qr {17}\cell
 \cellx5074
 \fs24\pard\intbl\qr {127}\cell
 \row}
@@ -1525,9 +1525,9 @@
 \clbrdrr\brdrw10\brdrs \cellx2074
 \fs24\pard\intbl\ql {}\cell
 \cellx3074
-\fs24\pard\intbl\qr {46.46}\cell
+\fs24\pard\intbl\qr {86.61}\cell
 \cellx4074
-\fs24\pard\intbl\qr {53.54}\cell
+\fs24\pard\intbl\qr {13.39}\cell
 \cellx5074
 \fs24\pard\intbl\qr {100.00}\cell
 \row}
@@ -1535,9 +1535,9 @@
 \clbrdrr\brdrw10\brdrs \cellx2074
 \fs24\pard\intbl\ql {Other}\cell
 \cellx3074
-\fs24\pard\intbl\qr {19}\cell
+\fs24\pard\intbl\qr {28}\cell
 \cellx4074
-\fs24\pard\intbl\qr {15}\cell
+\fs24\pard\intbl\qr {6}\cell
 \cellx5074
 \fs24\pard\intbl\qr {34}\cell
 \row}
@@ -1545,9 +1545,9 @@
 \clbrdrr\brdrw10\brdrs \cellx2074
 \fs24\pard\intbl\ql {}\cell
 \cellx3074
-\fs24\pard\intbl\qr {55.88}\cell
+\fs24\pard\intbl\qr {82.35}\cell
 \cellx4074
-\fs24\pard\intbl\qr {44.12}\cell
+\fs24\pard\intbl\qr {17.65}\cell
 \cellx5074
 \fs24\pard\intbl\qr {100.00}\cell
 \row}
@@ -1555,9 +1555,9 @@
 \clbrdrr\brdrw10\brdrs \clbrdrt\brdrw10\brdrs\cellx2074
 \fs24\pard\intbl\ql {Total}\cell
 \clbrdrt\brdrw10\brdrs\cellx3074
-\fs24\pard\intbl\qr {2541}\cell
+\fs24\pard\intbl\qr {4682}\cell
 \clbrdrt\brdrw10\brdrs\cellx4074
-\fs24\pard\intbl\qr {2920}\cell
+\fs24\pard\intbl\qr {779}\cell
 \clbrdrt\brdrw10\brdrs\cellx5074
 \fs24\pard\intbl\qr {5461}\cell
 \row}
@@ -1565,9 +1565,9 @@
 \clbrdrr\brdrw10\brdrs \cellx2074
 \fs24\pard\intbl\ql {}\cell
 \cellx3074
-\fs24\pard\intbl\qr {46.53}\cell
+\fs24\pard\intbl\qr {85.74}\cell
 \cellx4074
-\fs24\pard\intbl\qr {53.47}\cell
+\fs24\pard\intbl\qr {14.26}\cell
 \cellx5074
 \fs24\pard\intbl\qr {100.00}\cell
 \row}
@@ -1603,9 +1603,9 @@
 \clbrdrr\brdrw10\brdrs \clbrdrt\brdrw25\brdrs\cellx1464
 \fs24\pard\intbl\ql {Not firstgen}\cell
 \clbrdrt\brdrw25\brdrs\cellx2464
-\fs24\pard\intbl\qr {1070}\cell
+\fs24\pard\intbl\qr {2129}\cell
 \clbrdrt\brdrw25\brdrs\cellx3464
-\fs24\pard\intbl\qr {1373}\cell
+\fs24\pard\intbl\qr {314}\cell
 \clbrdrt\brdrw25\brdrs\cellx4464
 \fs24\pard\intbl\qr {2443}\cell
 \row}
@@ -1613,9 +1613,9 @@
 \clbrdrr\brdrw10\brdrs \cellx1464
 \fs24\pard\intbl\ql {}\cell
 \cellx2464
-\fs24\pard\intbl\qr {43.80}\cell
+\fs24\pard\intbl\qr {87.15}\cell
 \cellx3464
-\fs24\pard\intbl\qr {56.20}\cell
+\fs24\pard\intbl\qr {12.85}\cell
 \cellx4464
 \fs24\pard\intbl\qr {100.00}\cell
 \row}
@@ -1623,9 +1623,9 @@
 \clbrdrr\brdrw10\brdrs \cellx1464
 \fs24\pard\intbl\ql {Firstgen}\cell
 \cellx2464
-\fs24\pard\intbl\qr {1274}\cell
+\fs24\pard\intbl\qr {2238}\cell
 \cellx3464
-\fs24\pard\intbl\qr {1372}\cell
+\fs24\pard\intbl\qr {408}\cell
 \cellx4464
 \fs24\pard\intbl\qr {2646}\cell
 \row}
@@ -1633,9 +1633,9 @@
 \clbrdrr\brdrw10\brdrs \cellx1464
 \fs24\pard\intbl\ql {}\cell
 \cellx2464
-\fs24\pard\intbl\qr {48.15}\cell
+\fs24\pard\intbl\qr {84.58}\cell
 \cellx3464
-\fs24\pard\intbl\qr {51.85}\cell
+\fs24\pard\intbl\qr {15.42}\cell
 \cellx4464
 \fs24\pard\intbl\qr {100.00}\cell
 \row}
@@ -1643,9 +1643,9 @@
 \clbrdrr\brdrw10\brdrs \clbrdrt\brdrw10\brdrs\cellx1464
 \fs24\pard\intbl\ql {Total}\cell
 \clbrdrt\brdrw10\brdrs\cellx2464
-\fs24\pard\intbl\qr {2344}\cell
+\fs24\pard\intbl\qr {4367}\cell
 \clbrdrt\brdrw10\brdrs\cellx3464
-\fs24\pard\intbl\qr {2745}\cell
+\fs24\pard\intbl\qr {722}\cell
 \clbrdrt\brdrw10\brdrs\cellx4464
 \fs24\pard\intbl\qr {5089}\cell
 \row}
@@ -1653,9 +1653,9 @@
 \clbrdrr\brdrw10\brdrs \cellx1464
 \fs24\pard\intbl\ql {}\cell
 \cellx2464
-\fs24\pard\intbl\qr {46.06}\cell
+\fs24\pard\intbl\qr {85.81}\cell
 \cellx3464
-\fs24\pard\intbl\qr {53.94}\cell
+\fs24\pard\intbl\qr {14.19}\cell
 \cellx4464
 \fs24\pard\intbl\qr {100.00}\cell
 \row}
@@ -1691,9 +1691,9 @@
 \clbrdrr\brdrw10\brdrs \clbrdrt\brdrw25\brdrs\cellx2440
 \fs24\pard\intbl\ql {Superior}\cell
 \clbrdrt\brdrw25\brdrs\cellx3440
-\fs24\pard\intbl\qr {225}\cell
+\fs24\pard\intbl\qr {426}\cell
 \clbrdrt\brdrw25\brdrs\cellx4440
-\fs24\pard\intbl\qr {263}\cell
+\fs24\pard\intbl\qr {62}\cell
 \clbrdrt\brdrw25\brdrs\cellx5440
 \fs24\pard\intbl\qr {488}\cell
 \row}
@@ -1701,9 +1701,9 @@
 \clbrdrr\brdrw10\brdrs \cellx2440
 \fs24\pard\intbl\ql {}\cell
 \cellx3440
-\fs24\pard\intbl\qr {46.11}\cell
+\fs24\pard\intbl\qr {87.30}\cell
 \cellx4440
-\fs24\pard\intbl\qr {53.89}\cell
+\fs24\pard\intbl\qr {12.70}\cell
 \cellx5440
 \fs24\pard\intbl\qr {100.00}\cell
 \row}
@@ -1711,9 +1711,9 @@
 \clbrdrr\brdrw10\brdrs \cellx2440
 \fs24\pard\intbl\ql {North Coast}\cell
 \cellx3440
-\fs24\pard\intbl\qr {49}\cell
+\fs24\pard\intbl\qr {86}\cell
 \cellx4440
-\fs24\pard\intbl\qr {52}\cell
+\fs24\pard\intbl\qr {15}\cell
 \cellx5440
 \fs24\pard\intbl\qr {101}\cell
 \row}
@@ -1721,9 +1721,9 @@
 \clbrdrr\brdrw10\brdrs \cellx2440
 \fs24\pard\intbl\ql {}\cell
 \cellx3440
-\fs24\pard\intbl\qr {48.51}\cell
+\fs24\pard\intbl\qr {85.15}\cell
 \cellx4440
-\fs24\pard\intbl\qr {51.49}\cell
+\fs24\pard\intbl\qr {14.85}\cell
 \cellx5440
 \fs24\pard\intbl\qr {100.00}\cell
 \row}
@@ -1731,9 +1731,9 @@
 \clbrdrr\brdrw10\brdrs \cellx2440
 \fs24\pard\intbl\ql {SF Bay Area}\cell
 \cellx3440
-\fs24\pard\intbl\qr {275}\cell
+\fs24\pard\intbl\qr {514}\cell
 \cellx4440
-\fs24\pard\intbl\qr {313}\cell
+\fs24\pard\intbl\qr {74}\cell
 \cellx5440
 \fs24\pard\intbl\qr {588}\cell
 \row}
@@ -1741,9 +1741,9 @@
 \clbrdrr\brdrw10\brdrs \cellx2440
 \fs24\pard\intbl\ql {}\cell
 \cellx3440
-\fs24\pard\intbl\qr {46.77}\cell
+\fs24\pard\intbl\qr {87.41}\cell
 \cellx4440
-\fs24\pard\intbl\qr {53.23}\cell
+\fs24\pard\intbl\qr {12.59}\cell
 \cellx5440
 \fs24\pard\intbl\qr {100.00}\cell
 \row}
@@ -1751,9 +1751,9 @@
 \clbrdrr\brdrw10\brdrs \cellx2440
 \fs24\pard\intbl\ql {N San Joaquin Valley}\cell
 \cellx3440
-\fs24\pard\intbl\qr {81}\cell
+\fs24\pard\intbl\qr {146}\cell
 \cellx4440
-\fs24\pard\intbl\qr {89}\cell
+\fs24\pard\intbl\qr {24}\cell
 \cellx5440
 \fs24\pard\intbl\qr {170}\cell
 \row}
@@ -1761,9 +1761,9 @@
 \clbrdrr\brdrw10\brdrs \cellx2440
 \fs24\pard\intbl\ql {}\cell
 \cellx3440
-\fs24\pard\intbl\qr {47.65}\cell
+\fs24\pard\intbl\qr {85.88}\cell
 \cellx4440
-\fs24\pard\intbl\qr {52.35}\cell
+\fs24\pard\intbl\qr {14.12}\cell
 \cellx5440
 \fs24\pard\intbl\qr {100.00}\cell
 \row}
@@ -1771,9 +1771,9 @@
 \clbrdrr\brdrw10\brdrs \cellx2440
 \fs24\pard\intbl\ql {Central Coast}\cell
 \cellx3440
-\fs24\pard\intbl\qr {145}\cell
+\fs24\pard\intbl\qr {267}\cell
 \cellx4440
-\fs24\pard\intbl\qr {182}\cell
+\fs24\pard\intbl\qr {60}\cell
 \cellx5440
 \fs24\pard\intbl\qr {327}\cell
 \row}
@@ -1781,9 +1781,9 @@
 \clbrdrr\brdrw10\brdrs \cellx2440
 \fs24\pard\intbl\ql {}\cell
 \cellx3440
-\fs24\pard\intbl\qr {44.34}\cell
+\fs24\pard\intbl\qr {81.65}\cell
 \cellx4440
-\fs24\pard\intbl\qr {55.66}\cell
+\fs24\pard\intbl\qr {18.35}\cell
 \cellx5440
 \fs24\pard\intbl\qr {100.00}\cell
 \row}
@@ -1791,9 +1791,9 @@
 \clbrdrr\brdrw10\brdrs \cellx2440
 \fs24\pard\intbl\ql {S San Joaquin Valley}\cell
 \cellx3440
-\fs24\pard\intbl\qr {210}\cell
+\fs24\pard\intbl\qr {429}\cell
 \cellx4440
-\fs24\pard\intbl\qr {298}\cell
+\fs24\pard\intbl\qr {79}\cell
 \cellx5440
 \fs24\pard\intbl\qr {508}\cell
 \row}
@@ -1801,9 +1801,9 @@
 \clbrdrr\brdrw10\brdrs \cellx2440
 \fs24\pard\intbl\ql {}\cell
 \cellx3440
-\fs24\pard\intbl\qr {41.34}\cell
+\fs24\pard\intbl\qr {84.45}\cell
 \cellx4440
-\fs24\pard\intbl\qr {58.66}\cell
+\fs24\pard\intbl\qr {15.55}\cell
 \cellx5440
 \fs24\pard\intbl\qr {100.00}\cell
 \row}
@@ -1811,9 +1811,9 @@
 \clbrdrr\brdrw10\brdrs \cellx2440
 \fs24\pard\intbl\ql {Inland Empire}\cell
 \cellx3440
-\fs24\pard\intbl\qr {284}\cell
+\fs24\pard\intbl\qr {544}\cell
 \cellx4440
-\fs24\pard\intbl\qr {351}\cell
+\fs24\pard\intbl\qr {91}\cell
 \cellx5440
 \fs24\pard\intbl\qr {635}\cell
 \row}
@@ -1821,9 +1821,9 @@
 \clbrdrr\brdrw10\brdrs \cellx2440
 \fs24\pard\intbl\ql {}\cell
 \cellx3440
-\fs24\pard\intbl\qr {44.72}\cell
+\fs24\pard\intbl\qr {85.67}\cell
 \cellx4440
-\fs24\pard\intbl\qr {55.28}\cell
+\fs24\pard\intbl\qr {14.33}\cell
 \cellx5440
 \fs24\pard\intbl\qr {100.00}\cell
 \row}
@@ -1831,9 +1831,9 @@
 \clbrdrr\brdrw10\brdrs \cellx2440
 \fs24\pard\intbl\ql {LA County}\cell
 \cellx3440
-\fs24\pard\intbl\qr {558}\cell
+\fs24\pard\intbl\qr {1065}\cell
 \cellx4440
-\fs24\pard\intbl\qr {679}\cell
+\fs24\pard\intbl\qr {172}\cell
 \cellx5440
 \fs24\pard\intbl\qr {1237}\cell
 \row}
@@ -1841,9 +1841,9 @@
 \clbrdrr\brdrw10\brdrs \cellx2440
 \fs24\pard\intbl\ql {}\cell
 \cellx3440
-\fs24\pard\intbl\qr {45.11}\cell
+\fs24\pard\intbl\qr {86.10}\cell
 \cellx4440
-\fs24\pard\intbl\qr {54.89}\cell
+\fs24\pard\intbl\qr {13.90}\cell
 \cellx5440
 \fs24\pard\intbl\qr {100.00}\cell
 \row}
@@ -1851,9 +1851,9 @@
 \clbrdrr\brdrw10\brdrs \cellx2440
 \fs24\pard\intbl\ql {Orange County}\cell
 \cellx3440
-\fs24\pard\intbl\qr {148}\cell
+\fs24\pard\intbl\qr {290}\cell
 \cellx4440
-\fs24\pard\intbl\qr {199}\cell
+\fs24\pard\intbl\qr {57}\cell
 \cellx5440
 \fs24\pard\intbl\qr {347}\cell
 \row}
@@ -1861,9 +1861,9 @@
 \clbrdrr\brdrw10\brdrs \cellx2440
 \fs24\pard\intbl\ql {}\cell
 \cellx3440
-\fs24\pard\intbl\qr {42.65}\cell
+\fs24\pard\intbl\qr {83.57}\cell
 \cellx4440
-\fs24\pard\intbl\qr {57.35}\cell
+\fs24\pard\intbl\qr {16.43}\cell
 \cellx5440
 \fs24\pard\intbl\qr {100.00}\cell
 \row}
@@ -1871,9 +1871,9 @@
 \clbrdrr\brdrw10\brdrs \cellx2440
 \fs24\pard\intbl\ql {SD - Imperial}\cell
 \cellx3440
-\fs24\pard\intbl\qr {179}\cell
+\fs24\pard\intbl\qr {334}\cell
 \cellx4440
-\fs24\pard\intbl\qr {205}\cell
+\fs24\pard\intbl\qr {50}\cell
 \cellx5440
 \fs24\pard\intbl\qr {384}\cell
 \row}
@@ -1881,9 +1881,9 @@
 \clbrdrr\brdrw10\brdrs \cellx2440
 \fs24\pard\intbl\ql {}\cell
 \cellx3440
-\fs24\pard\intbl\qr {46.61}\cell
+\fs24\pard\intbl\qr {86.98}\cell
 \cellx4440
-\fs24\pard\intbl\qr {53.39}\cell
+\fs24\pard\intbl\qr {13.02}\cell
 \cellx5440
 \fs24\pard\intbl\qr {100.00}\cell
 \row}
@@ -1891,9 +1891,9 @@
 \clbrdrr\brdrw10\brdrs \clbrdrt\brdrw10\brdrs\cellx2440
 \fs24\pard\intbl\ql {Total}\cell
 \clbrdrt\brdrw10\brdrs\cellx3440
-\fs24\pard\intbl\qr {2154}\cell
+\fs24\pard\intbl\qr {4101}\cell
 \clbrdrt\brdrw10\brdrs\cellx4440
-\fs24\pard\intbl\qr {2631}\cell
+\fs24\pard\intbl\qr {684}\cell
 \clbrdrt\brdrw10\brdrs\cellx5440
 \fs24\pard\intbl\qr {4785}\cell
 \row}
@@ -1901,9 +1901,9 @@
 \clbrdrr\brdrw10\brdrs \cellx2440
 \fs24\pard\intbl\ql {}\cell
 \cellx3440
-\fs24\pard\intbl\qr {45.02}\cell
+\fs24\pard\intbl\qr {85.71}\cell
 \cellx4440
-\fs24\pard\intbl\qr {54.98}\cell
+\fs24\pard\intbl\qr {14.29}\cell
 \cellx5440
 \fs24\pard\intbl\qr {100.00}\cell
 \row}
@@ -1939,9 +1939,9 @@
 \clbrdrr\brdrw10\brdrs \clbrdrt\brdrw25\brdrs\cellx732
 \fs24\pard\intbl\ql {City}\cell
 \clbrdrt\brdrw25\brdrs\cellx1464
-\fs24\pard\intbl\qr {975}\cell
+\fs24\pard\intbl\qr {1815}\cell
 \clbrdrt\brdrw25\brdrs\cellx2196
-\fs24\pard\intbl\qr {1151}\cell
+\fs24\pard\intbl\qr {311}\cell
 \clbrdrt\brdrw25\brdrs\cellx2928
 \fs24\pard\intbl\qr {2126}\cell
 \row}
@@ -1949,9 +1949,9 @@
 \clbrdrr\brdrw10\brdrs \cellx732
 \fs24\pard\intbl\ql {}\cell
 \cellx1464
-\fs24\pard\intbl\qr {45.86}\cell
+\fs24\pard\intbl\qr {85.37}\cell
 \cellx2196
-\fs24\pard\intbl\qr {54.14}\cell
+\fs24\pard\intbl\qr {14.63}\cell
 \cellx2928
 \fs24\pard\intbl\qr {100.00}\cell
 \row}
@@ -1959,9 +1959,9 @@
 \clbrdrr\brdrw10\brdrs \cellx732
 \fs24\pard\intbl\ql {Suburb}\cell
 \cellx1464
-\fs24\pard\intbl\qr {940}\cell
+\fs24\pard\intbl\qr {1834}\cell
 \cellx2196
-\fs24\pard\intbl\qr {1181}\cell
+\fs24\pard\intbl\qr {287}\cell
 \cellx2928
 \fs24\pard\intbl\qr {2121}\cell
 \row}
@@ -1969,9 +1969,9 @@
 \clbrdrr\brdrw10\brdrs \cellx732
 \fs24\pard\intbl\ql {}\cell
 \cellx1464
-\fs24\pard\intbl\qr {44.32}\cell
+\fs24\pard\intbl\qr {86.47}\cell
 \cellx2196
-\fs24\pard\intbl\qr {55.68}\cell
+\fs24\pard\intbl\qr {13.53}\cell
 \cellx2928
 \fs24\pard\intbl\qr {100.00}\cell
 \row}
@@ -1979,9 +1979,9 @@
 \clbrdrr\brdrw10\brdrs \cellx732
 \fs24\pard\intbl\ql {Town}\cell
 \cellx1464
-\fs24\pard\intbl\qr {153}\cell
+\fs24\pard\intbl\qr {286}\cell
 \cellx2196
-\fs24\pard\intbl\qr {198}\cell
+\fs24\pard\intbl\qr {65}\cell
 \cellx2928
 \fs24\pard\intbl\qr {351}\cell
 \row}
@@ -1989,9 +1989,9 @@
 \clbrdrr\brdrw10\brdrs \cellx732
 \fs24\pard\intbl\ql {}\cell
 \cellx1464
-\fs24\pard\intbl\qr {43.59}\cell
+\fs24\pard\intbl\qr {81.48}\cell
 \cellx2196
-\fs24\pard\intbl\qr {56.41}\cell
+\fs24\pard\intbl\qr {18.52}\cell
 \cellx2928
 \fs24\pard\intbl\qr {100.00}\cell
 \row}
@@ -1999,9 +1999,9 @@
 \clbrdrr\brdrw10\brdrs \cellx732
 \fs24\pard\intbl\ql {Rural}\cell
 \cellx1464
-\fs24\pard\intbl\qr {141}\cell
+\fs24\pard\intbl\qr {261}\cell
 \cellx2196
-\fs24\pard\intbl\qr {164}\cell
+\fs24\pard\intbl\qr {44}\cell
 \cellx2928
 \fs24\pard\intbl\qr {305}\cell
 \row}
@@ -2009,9 +2009,9 @@
 \clbrdrr\brdrw10\brdrs \cellx732
 \fs24\pard\intbl\ql {}\cell
 \cellx1464
-\fs24\pard\intbl\qr {46.23}\cell
+\fs24\pard\intbl\qr {85.57}\cell
 \cellx2196
-\fs24\pard\intbl\qr {53.77}\cell
+\fs24\pard\intbl\qr {14.43}\cell
 \cellx2928
 \fs24\pard\intbl\qr {100.00}\cell
 \row}
@@ -2019,9 +2019,9 @@
 \clbrdrr\brdrw10\brdrs \clbrdrt\brdrw10\brdrs\cellx732
 \fs24\pard\intbl\ql {Total}\cell
 \clbrdrt\brdrw10\brdrs\cellx1464
-\fs24\pard\intbl\qr {2209}\cell
+\fs24\pard\intbl\qr {4196}\cell
 \clbrdrt\brdrw10\brdrs\cellx2196
-\fs24\pard\intbl\qr {2694}\cell
+\fs24\pard\intbl\qr {707}\cell
 \clbrdrt\brdrw10\brdrs\cellx2928
 \fs24\pard\intbl\qr {4903}\cell
 \row}
@@ -2029,9 +2029,9 @@
 \clbrdrr\brdrw10\brdrs \cellx732
 \fs24\pard\intbl\ql {}\cell
 \cellx1464
-\fs24\pard\intbl\qr {45.05}\cell
+\fs24\pard\intbl\qr {85.58}\cell
 \cellx2196
-\fs24\pard\intbl\qr {54.95}\cell
+\fs24\pard\intbl\qr {14.42}\cell
 \cellx2928
 \fs24\pard\intbl\qr {100.00}\cell
 \row}
@@ -2067,9 +2067,9 @@
 \clbrdrr\brdrw10\brdrs \clbrdrt\brdrw25\brdrs\cellx2196
 \fs24\pard\intbl\ql {Mostly A}\cell
 \clbrdrt\brdrw25\brdrs\cellx3196
-\fs24\pard\intbl\qr {684}\cell
+\fs24\pard\intbl\qr {1418}\cell
 \clbrdrt\brdrw25\brdrs\cellx4196
-\fs24\pard\intbl\qr {938}\cell
+\fs24\pard\intbl\qr {204}\cell
 \clbrdrt\brdrw25\brdrs\cellx5196
 \fs24\pard\intbl\qr {1622}\cell
 \row}
@@ -2077,9 +2077,9 @@
 \clbrdrr\brdrw10\brdrs \cellx2196
 \fs24\pard\intbl\ql {}\cell
 \cellx3196
-\fs24\pard\intbl\qr {42.17}\cell
+\fs24\pard\intbl\qr {87.42}\cell
 \cellx4196
-\fs24\pard\intbl\qr {57.83}\cell
+\fs24\pard\intbl\qr {12.58}\cell
 \cellx5196
 \fs24\pard\intbl\qr {100.00}\cell
 \row}
@@ -2087,9 +2087,9 @@
 \clbrdrr\brdrw10\brdrs \cellx2196
 \fs24\pard\intbl\ql {Mostly A/B}\cell
 \cellx3196
-\fs24\pard\intbl\qr {1157}\cell
+\fs24\pard\intbl\qr {2055}\cell
 \cellx4196
-\fs24\pard\intbl\qr {1236}\cell
+\fs24\pard\intbl\qr {338}\cell
 \cellx5196
 \fs24\pard\intbl\qr {2393}\cell
 \row}
@@ -2097,9 +2097,9 @@
 \clbrdrr\brdrw10\brdrs \cellx2196
 \fs24\pard\intbl\ql {}\cell
 \cellx3196
-\fs24\pard\intbl\qr {48.35}\cell
+\fs24\pard\intbl\qr {85.88}\cell
 \cellx4196
-\fs24\pard\intbl\qr {51.65}\cell
+\fs24\pard\intbl\qr {14.12}\cell
 \cellx5196
 \fs24\pard\intbl\qr {100.00}\cell
 \row}
@@ -2107,9 +2107,9 @@
 \clbrdrr\brdrw10\brdrs \cellx2196
 \fs24\pard\intbl\ql {Mostly B or B/C}\cell
 \cellx3196
-\fs24\pard\intbl\qr {682}\cell
+\fs24\pard\intbl\qr {1251}\cell
 \cellx4196
-\fs24\pard\intbl\qr {788}\cell
+\fs24\pard\intbl\qr {219}\cell
 \cellx5196
 \fs24\pard\intbl\qr {1470}\cell
 \row}
@@ -2117,9 +2117,9 @@
 \clbrdrr\brdrw10\brdrs \cellx2196
 \fs24\pard\intbl\ql {}\cell
 \cellx3196
-\fs24\pard\intbl\qr {46.39}\cell
+\fs24\pard\intbl\qr {85.10}\cell
 \cellx4196
-\fs24\pard\intbl\qr {53.61}\cell
+\fs24\pard\intbl\qr {14.90}\cell
 \cellx5196
 \fs24\pard\intbl\qr {100.00}\cell
 \row}
@@ -2127,9 +2127,9 @@
 \clbrdrr\brdrw10\brdrs \cellx2196
 \fs24\pard\intbl\ql {Mostly C or C/D}\cell
 \cellx3196
-\fs24\pard\intbl\qr {158}\cell
+\fs24\pard\intbl\qr {250}\cell
 \cellx4196
-\fs24\pard\intbl\qr {148}\cell
+\fs24\pard\intbl\qr {56}\cell
 \cellx5196
 \fs24\pard\intbl\qr {306}\cell
 \row}
@@ -2137,9 +2137,9 @@
 \clbrdrr\brdrw10\brdrs \cellx2196
 \fs24\pard\intbl\ql {}\cell
 \cellx3196
-\fs24\pard\intbl\qr {51.63}\cell
+\fs24\pard\intbl\qr {81.70}\cell
 \cellx4196
-\fs24\pard\intbl\qr {48.37}\cell
+\fs24\pard\intbl\qr {18.30}\cell
 \cellx5196
 \fs24\pard\intbl\qr {100.00}\cell
 \row}
@@ -2147,9 +2147,9 @@
 \clbrdrr\brdrw10\brdrs \clbrdrt\brdrw10\brdrs\cellx2196
 \fs24\pard\intbl\ql {Total}\cell
 \clbrdrt\brdrw10\brdrs\cellx3196
-\fs24\pard\intbl\qr {2681}\cell
+\fs24\pard\intbl\qr {4974}\cell
 \clbrdrt\brdrw10\brdrs\cellx4196
-\fs24\pard\intbl\qr {3110}\cell
+\fs24\pard\intbl\qr {817}\cell
 \clbrdrt\brdrw10\brdrs\cellx5196
 \fs24\pard\intbl\qr {5791}\cell
 \row}
@@ -2157,9 +2157,9 @@
 \clbrdrr\brdrw10\brdrs \cellx2196
 \fs24\pard\intbl\ql {}\cell
 \cellx3196
-\fs24\pard\intbl\qr {46.30}\cell
+\fs24\pard\intbl\qr {85.89}\cell
 \cellx4196
-\fs24\pard\intbl\qr {53.70}\cell
+\fs24\pard\intbl\qr {14.11}\cell
 \cellx5196
 \fs24\pard\intbl\qr {100.00}\cell
 \row}

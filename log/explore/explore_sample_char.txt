@@ -1,8 +1,9 @@
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
       name:  <unnamed>
-       log:  /home/research/ca_ed_lab/projects/csac_survey2024/temp2025/log/explore/explore_sample_char.txt
+       log:  /home/research/ca_ed_lab/projects/csac_survey2025/log/explore/expl
+> ore_sample_char.txt
   log type:  text
- opened on:  12 Aug 2025, 16:56:32
+ opened on:  23 Jun 2026, 12:01:00
 
 . 
 . graph drop _all
@@ -329,7 +330,8 @@ S San Joaquin Valley |        523        7.55       33.02
 . 
 . log close 
       name:  <unnamed>
-       log:  /home/research/ca_ed_lab/projects/csac_survey2024/temp2025/log/explore/explore_sample_char.txt
+       log:  /home/research/ca_ed_lab/projects/csac_survey2025/log/explore/expl
+> ore_sample_char.txt
   log type:  text
- closed on:  12 Aug 2025, 16:56:32
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ closed on:  23 Jun 2026, 12:01:00
+-------------------------------------------------------------------------------
